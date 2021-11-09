@@ -27,7 +27,6 @@ namespace KuponySlevomat {
             if (e.KeyChar == (char)Keys.Enter) {
                 AddTicket();
 
-
                 txbEAN.Text = "";
             }
         }
