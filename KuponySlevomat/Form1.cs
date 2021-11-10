@@ -22,13 +22,39 @@ namespace KuponySlevomat {
         private void Form1_Load(object sender, EventArgs e) {
             txbEAN.Focus();
         }
+        private void CBoxCompany_SelectedIndexChanged(object sender, EventArgs e) {
+            txbEAN.Focus();
+        }
 
         private void txbEAN_Enter(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == (char)Keys.Enter) {
+                
+                if (ControlEAN()) {
                 AddTicket();
-
+                } else {
+                    MessageBox.Show("Neplatné zadání");
+                }
+                
                 txbEAN.Text = "";
             }
+        }
+
+        
+
+        private bool ControlEAN() {
+            bool ok = true;
+            string ean = txbEAN.Text.Trim();
+
+            if (ean.Length != 24 || ean.Length != 32) {
+                ok = false;
+            }
+
+            foreach (char character in txbEAN.Text.Trim()) {
+                if (!(character > 47 && character < 58)) {
+                    ok = false;
+                }
+            }
+            return ok;
         }
 
 
@@ -47,11 +73,16 @@ namespace KuponySlevomat {
             }
         }
         private void ShowInfo() {
-            lblEAN.Text = ticketController.Tickets[ticketController.Tickets.Count - 1].Ean;
-            lblAdded.Text = ticketController.Tickets[ticketController.Tickets.Count - 1].Added.ToString();
-            lblType.Text = ticketController.Tickets[ticketController.Tickets.Count - 1].Type;
-
+            int index = ticketController.Tickets.Count - 1;
+            lblEAN.Text = ticketController.Tickets[index].Ean;
+            lblAdded.Text = ticketController.Tickets[index].Added.ToString();
+            lblType.Text = ticketController.Tickets[index].Type;
+            lblCompany.Text = ticketController.Tickets[index].Company;
+            lblValue.Text = ticketController.Tickets[index].Value.ToString() + " Kč" ;
+            lblValidity.Text = "31.12.20" + ticketController.Tickets[index].Validity.ToString();
+            
             lblCountTickets.Text = ticketController.Tickets.Count.ToString();
         }
+
     }
 }

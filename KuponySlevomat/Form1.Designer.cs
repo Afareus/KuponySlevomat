@@ -131,6 +131,7 @@ namespace KuponySlevomat {
             this.CBoxCompany.Name = "CBoxCompany";
             this.CBoxCompany.Size = new System.Drawing.Size(144, 25);
             this.CBoxCompany.TabIndex = 8;
+            this.CBoxCompany.SelectedIndexChanged += new System.EventHandler(this.CBoxCompany_SelectedIndexChanged);
             // 
             // label1
             // 
