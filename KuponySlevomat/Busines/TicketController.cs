@@ -16,7 +16,15 @@ namespace KuponySlevomat.Busines {
         }
 
         internal void AddSodexoTicketToList(string ean) {
-            Tickets.Add(new SodexoDecoder().DecodedSodexoTicket(ean));
+            Tickets.Add(new SodexoDecoder().DecodeSodexoTicket(ean));
+        }
+
+        internal void AddUpTicketToList(string ean) {
+            Tickets.Add(new UpDecoder().DecodeUpTicket(ean));
+        }
+
+        internal void AddEdenredTicketToList(string ean) {
+            Tickets.Add(new EdenredDecoder().DecodeEdenredTicket(ean));
         }
     }
 }

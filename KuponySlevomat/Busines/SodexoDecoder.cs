@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 namespace KuponySlevomat.Busines {
     class SodexoDecoder {
 
-        public Ticket DecodedSodexoTicket(string ean) {
+        public Ticket DecodeSodexoTicket(string ean) {
 
             Ticket decodedTicket = new Ticket();
             decodedTicket.Ean = ean;
             decodedTicket.Company = "Sodexo";
-            decodedTicket.Type = DecodeSodexoType(ean);
-            decodedTicket.Value = DecodeSodexoValue(ean);
-            decodedTicket.Validity = DedoceSodexoValidity(ean);
+            decodedTicket.Type = DecodeType(ean);
+            decodedTicket.Value = DecodeValue(ean);
+            decodedTicket.Validity = DedoceValidity(ean);
             decodedTicket.Added = DateTime.Now;
 
             return decodedTicket;
         }
 
-        private int DedoceSodexoValidity(string ean) {
+        private int DedoceValidity(string ean) {
             if (ean.Substring(0, 2) == "30") {
                 return Int32.Parse(ean.Substring(2, 2)) + 2;
             } else {
@@ -29,11 +29,11 @@ namespace KuponySlevomat.Busines {
             }
         }
 
-        private int DecodeSodexoValue(string ean) {
+        private int DecodeValue(string ean) {
             return Int32.Parse(ean.Substring(4, 6)) / 100;
         }
 
-        private string DecodeSodexoType(string ean) {
+        private string DecodeType(string ean) {
             string eanPartofType = ean.Substring(0, 2);
 
             switch (eanPartofType) {
