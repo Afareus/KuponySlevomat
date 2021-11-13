@@ -15,8 +15,15 @@ namespace KuponySlevomat.Busines {
             Tickets = new List<Ticket>();
         }
 
-        internal void AddSodexoTicketToList(string ean) {
-            Tickets.Add(new SodexoDecoder().DecodeSodexoTicket(ean));
+        internal bool AddSodexoTicketToList(string ean) {
+            Ticket ticketToAdd = new SodexoDecoder().DecodeSodexoTicket(ean);
+            
+            if (ticketToAdd.Validity > 20 && ticketToAdd.Value <= 5000 && ticketToAdd.Type != "NEZNÁMÝ PASS") {    // podmínka pro uložení 
+                Tickets.Add(ticketToAdd);
+                return true;
+            } else {
+                return false;
+            }
         }
 
         internal void AddUpTicketToList(string ean) {

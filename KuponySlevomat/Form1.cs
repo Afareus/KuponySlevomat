@@ -32,12 +32,12 @@ namespace KuponySlevomat {
 
                 ConvertToCzKeyboard();
 
-                //if (IsCorectEAN()) {
-                //} else {
-                //    MessageBox.Show("Neplatné zadání");
-                //}
+                if (IsCorectEAN()) {
+                    AddTicket();
+                } else {
+                    MessageBox.Show("Neplatné zadání");
+                }
 
-                AddTicket();
                 
                 txbEAN.Text = "";
             }
@@ -82,22 +82,25 @@ namespace KuponySlevomat {
             bool ok = true;
             string ean = txbEAN.Text.Trim();
 
-            if (ean.Length != 24 || ean.Length != 32) {
+            if (ean.Length != 24 && ean.Length != 32) {
                 ok = false;
             }
 
             if (ean.Contains("x")) {
                 ok = false;
             }
-            
+
             return ok;
         }
 
 
         private void AddTicket() {
             if (CBoxCompany.SelectedIndex == 0) {
-                ticketController.AddSodexoTicketToList(txbEAN.Text.Trim());
-                ShowInfo();
+                if (!ticketController.AddSodexoTicketToList(txbEAN.Text.Trim()) && txbEAN.Text.Trim().Length != 24) {
+                    MessageBox.Show("Zkontrolujte výběr firmy kupónu");
+                } else {
+                    ShowInfo();
+                }
             } else if (CBoxCompany.SelectedIndex == 1) {
                 ticketController.AddUpTicketToList(txbEAN.Text.Trim());
                 ShowInfo();

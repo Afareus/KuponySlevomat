@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace KuponySlevomat.Busines {
     class SodexoDecoder {
+            Ticket decodedTicket = new Ticket();
 
         public Ticket DecodeSodexoTicket(string ean) {
 
-            Ticket decodedTicket = new Ticket();
             decodedTicket.Ean = ean;
             decodedTicket.Company = "Sodexo";
             decodedTicket.Type = DecodeType(ean);
