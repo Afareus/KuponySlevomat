@@ -38,7 +38,7 @@ namespace KuponySlevomat {
                     MessageBox.Show("Neplatné zadání");
                 }
 
-                
+
                 txbEAN.Text = "";
             }
         }
@@ -69,9 +69,8 @@ namespace KuponySlevomat {
                 } else if (charEAN[i] == 'é') {
                     okEAN[i] = '0';
                 } else if (charEAN[i] > 47 && charEAN[i] < 58) {
-                    okEAN[i] = charEAN[i];    
-                }
-                else {
+                    okEAN[i] = charEAN[i];
+                } else {
                     okEAN[i] = 'x';
                 }
             }
@@ -96,35 +95,44 @@ namespace KuponySlevomat {
 
         private void AddTicket() {
             if (CBoxCompany.SelectedIndex == 0) {
-                if (!ticketController.AddSodexoTicketToList(txbEAN.Text.Trim()) && txbEAN.Text.Trim().Length != 24) {
-                    MessageBox.Show("Zkontrolujte výběr firmy kupónu");
+                if (!ticketController.AddSodexoTicketToList(txbEAN.Text.Trim()) || txbEAN.Text.Trim().Length != 24) {
+                    MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
                 }
             } else if (CBoxCompany.SelectedIndex == 1) {
-                ticketController.AddUpTicketToList(txbEAN.Text.Trim());
-                ShowInfo();
+                if (!ticketController.AddUpTicketToList(txbEAN.Text.Trim()) || txbEAN.Text.Trim().Length != 24) {
+                    MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
+                } else {
+                    ShowInfo();
+                }
             } else if (CBoxCompany.SelectedIndex == 2) {
-                ticketController.AddEdenredTicketToList(txbEAN.Text.Trim());
-                ShowInfo();
+                if (!ticketController.AddEdenredTicketToList(txbEAN.Text.Trim()) || txbEAN.Text.Trim().Length != 32) {
+                    MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
+                } else {
+                    ShowInfo();
+                }
             } else {
                 MessageBox.Show("Nevybral jsi Firmu");
             }
         }
         private void ShowInfo() {
-            int index = ticketController.Tickets.Count - 1;
-            lblEAN.Text = ticketController.Tickets[index].Ean;
-            lblAdded.Text = ticketController.Tickets[index].Added.ToString();
-            lblType.Text = ticketController.Tickets[index].Type;
-            lblCompany.Text = ticketController.Tickets[index].Company;
-            lblValue.Text = ticketController.Tickets[index].Value.ToString() + " Kč" ;
-            if (ticketController.Tickets[index].Validity == 11) {
-                lblValidity.Text = "Na šeku";
-            } else {
-                lblValidity.Text = "31.12.20" + ticketController.Tickets[index].Validity.ToString();
+            if (ticketController.Tickets.Count != 0) {
+                int index = ticketController.Tickets.Count - 1;
+                lblEAN.Text = ticketController.Tickets[index].Ean;
+                lblAdded.Text = ticketController.Tickets[index].Added.ToString();
+                lblType.Text = ticketController.Tickets[index].Type;
+                lblCompany.Text = ticketController.Tickets[index].Company;
+                lblValue.Text = ticketController.Tickets[index].Value.ToString() + " Kč";
+                if (ticketController.Tickets[index].Validity == 99) {
+                    lblValidity.Text = "Na šeku";
+                } else {
+                    lblValidity.Text = "31.12.20" + ticketController.Tickets[index].Validity.ToString();
+                }
+
+                lblCountTickets.Text = ticketController.Tickets.Count.ToString();
             }
-            
-            lblCountTickets.Text = ticketController.Tickets.Count.ToString();
+
         }
 
     }

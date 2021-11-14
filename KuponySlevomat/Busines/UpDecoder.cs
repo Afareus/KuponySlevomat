@@ -15,7 +15,7 @@ namespace KuponySlevomat.Busines {
             decodedTicket.Company = "Up";
             decodedTicket.Type = DecodeType(ean);
             decodedTicket.Value = DecodeValue(ean);
-            decodedTicket.Validity = 11;
+            decodedTicket.Validity = 99;
             decodedTicket.Added = DateTime.Now;
 
             return decodedTicket;

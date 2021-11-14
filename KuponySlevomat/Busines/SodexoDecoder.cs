@@ -48,7 +48,7 @@ namespace KuponySlevomat.Busines {
                 case "82": return "Flexi Pass Individual";
                 case "83": return "Bonus Pass";
 
-                default: return "NEZNÁMÝ PASS";
+                default: return "NEZNÁMÝ TYP";
 
             }
         }

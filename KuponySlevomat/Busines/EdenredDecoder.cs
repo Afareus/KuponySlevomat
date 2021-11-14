@@ -28,19 +28,24 @@ namespace KuponySlevomat.Busines {
         }
 
         private string DecodeType(string ean) {
-            string eanPartofType = ean.Substring(27, 3);
-            switch (eanPartofType) {
-                case "001": return "Ticket Restaurant";
-                case "002": return "Edenred Čistý";
-                case "003": return "Kids";
-                case "004": return "Compliments Dárkový";
-                case "005": return "Sport&Kultura";
-                case "006": return "Holiday";
-                case "007": return "Academica";
-                case "008": return "Medica";
-                case "009": return "Multi";
-                case "010": return "Service";
-                default: return "NEZNÁMÝ TYP";
+            if (ean.Length == 32) {
+                string eanPartofType = ean.Substring(27, 3);
+                switch (eanPartofType) {
+                    case "001": return "Ticket Restaurant";
+                    case "002": return "Edenred Čistý";
+                    case "003": return "Kids";
+                    case "004": return "Compliments Dárkový";
+                    case "005": return "Sport&Kultura";
+                    case "006": return "Holiday";
+                    case "007": return "Academica";
+                    case "008": return "Medica";
+                    case "009": return "Multi";
+                    case "010": return "Service";
+                    default: return "NEZNÁMÝ TYP";
+                }
+            }
+            else { 
+                return "NEZNÁMÝ TYP"; 
             }
 
         }
