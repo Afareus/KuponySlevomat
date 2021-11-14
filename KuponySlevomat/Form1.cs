@@ -131,6 +131,9 @@ namespace KuponySlevomat {
                 }
 
                 lblCountTickets.Text = ticketController.Tickets.Count.ToString();
+
+                listBoxAddedTickets.Items.Clear();
+                listBoxAddedTickets.Items.AddRange(ticketController.Tickets.ToArray());
             }
 
         }

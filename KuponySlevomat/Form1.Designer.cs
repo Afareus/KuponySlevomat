@@ -43,6 +43,7 @@ namespace KuponySlevomat {
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.listBoxAddedTickets = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // txbEAN
@@ -60,54 +61,48 @@ namespace KuponySlevomat {
             this.lblEAN.AutoSize = true;
             this.lblEAN.Location = new System.Drawing.Point(102, 219);
             this.lblEAN.Name = "lblEAN";
-            this.lblEAN.Size = new System.Drawing.Size(103, 17);
+            this.lblEAN.Size = new System.Drawing.Size(0, 17);
             this.lblEAN.TabIndex = 1;
-            this.lblEAN.Text = "EAN0000000000";
             // 
             // lblCompany
             // 
             this.lblCompany.AutoSize = true;
             this.lblCompany.Location = new System.Drawing.Point(102, 250);
             this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(40, 17);
+            this.lblCompany.Size = new System.Drawing.Size(0, 17);
             this.lblCompany.TabIndex = 2;
-            this.lblCompany.Text = "Firma";
             // 
             // lblType
             // 
             this.lblType.AutoSize = true;
             this.lblType.Location = new System.Drawing.Point(102, 282);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(28, 17);
+            this.lblType.Size = new System.Drawing.Size(0, 17);
             this.lblType.TabIndex = 3;
-            this.lblType.Text = "Typ";
             // 
             // lblValue
             // 
             this.lblValue.AutoSize = true;
             this.lblValue.Location = new System.Drawing.Point(102, 315);
             this.lblValue.Name = "lblValue";
-            this.lblValue.Size = new System.Drawing.Size(59, 17);
+            this.lblValue.Size = new System.Drawing.Size(0, 17);
             this.lblValue.TabIndex = 4;
-            this.lblValue.Text = "Hodnota";
             // 
             // lblValidity
             // 
             this.lblValidity.AutoSize = true;
             this.lblValidity.Location = new System.Drawing.Point(102, 347);
             this.lblValidity.Name = "lblValidity";
-            this.lblValidity.Size = new System.Drawing.Size(54, 17);
+            this.lblValidity.Size = new System.Drawing.Size(0, 17);
             this.lblValidity.TabIndex = 5;
-            this.lblValidity.Text = "Platnost";
             // 
             // lblAdded
             // 
             this.lblAdded.AutoSize = true;
             this.lblAdded.Location = new System.Drawing.Point(102, 378);
             this.lblAdded.Name = "lblAdded";
-            this.lblAdded.Size = new System.Drawing.Size(53, 17);
+            this.lblAdded.Size = new System.Drawing.Size(0, 17);
             this.lblAdded.TabIndex = 6;
-            this.lblAdded.Text = "Přidáno";
             // 
             // lblCountTickets
             // 
@@ -226,11 +221,21 @@ namespace KuponySlevomat {
             this.label10.TabIndex = 18;
             this.label10.Text = "Přidáno kupónů:";
             // 
+            // listBoxAddedTickets
+            // 
+            this.listBoxAddedTickets.FormattingEnabled = true;
+            this.listBoxAddedTickets.ItemHeight = 17;
+            this.listBoxAddedTickets.Location = new System.Drawing.Point(408, 68);
+            this.listBoxAddedTickets.Name = "listBoxAddedTickets";
+            this.listBoxAddedTickets.Size = new System.Drawing.Size(355, 327);
+            this.listBoxAddedTickets.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 516);
+            this.Controls.Add(this.listBoxAddedTickets);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -279,6 +284,7 @@ namespace KuponySlevomat {
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ListBox listBoxAddedTickets;
     }
 }
 
