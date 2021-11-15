@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KuponySlevomat.Busines;
+using KuponySlevomat.Model;
 
 namespace KuponySlevomat {
     public partial class Form1 : Form {
@@ -130,13 +131,31 @@ namespace KuponySlevomat {
                     lblValidity.Text = "31.12.20" + ticketController.Tickets[index].Validity.ToString();
                 }
 
-                lblCountTickets.Text = ticketController.Tickets.Count.ToString();
-
-                listBoxAddedTickets.Items.Clear();
-                listBoxAddedTickets.Items.AddRange(ticketController.Tickets.ToArray());
+                ShowDataInListBox();
             }
+        }
+
+        private void ShowDataInListBox() {
+            listBoxAddedTickets.Items.Clear();
+            listBoxAddedTickets.Items.AddRange(ReturnAllAddedTickets());
+
+            lblCountTickets.Text = ticketController.Tickets.Count.ToString();
+        }
+
+        private Ticket[] ReturnAllAddedTickets() {
+            return ticketController.Tickets.ToArray();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e) {
 
         }
 
+        private void button1_Click(object sender, EventArgs e) {
+            int indexOfTicket = listBoxAddedTickets.SelectedIndex;
+            if (indexOfTicket >= 0) {
+                ticketController.Tickets.RemoveAt(indexOfTicket);
+                ShowDataInListBox();
+            }
+        }
     }
 }

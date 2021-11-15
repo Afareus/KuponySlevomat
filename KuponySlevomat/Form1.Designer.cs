@@ -44,6 +44,10 @@ namespace KuponySlevomat {
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.listBoxAddedTickets = new System.Windows.Forms.ListBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txbEAN
@@ -107,11 +111,12 @@ namespace KuponySlevomat {
             // lblCountTickets
             // 
             this.lblCountTickets.AutoSize = true;
-            this.lblCountTickets.Location = new System.Drawing.Point(132, 432);
+            this.lblCountTickets.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblCountTickets.Location = new System.Drawing.Point(445, 449);
             this.lblCountTickets.Name = "lblCountTickets";
-            this.lblCountTickets.Size = new System.Drawing.Size(100, 17);
+            this.lblCountTickets.Size = new System.Drawing.Size(19, 21);
             this.lblCountTickets.TabIndex = 7;
-            this.lblCountTickets.Text = "Přidáno kupónů";
+            this.lblCountTickets.Text = "0";
             // 
             // CBoxCompany
             // 
@@ -163,9 +168,9 @@ namespace KuponySlevomat {
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(22, 182);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(183, 21);
+            this.label4.Size = new System.Drawing.Size(209, 21);
             this.label4.TabIndex = 12;
-            this.label4.Text = "Poslední přidaný kupoń:";
+            this.label4.Text = "Poslední přidaná poukázka:";
             // 
             // label5
             // 
@@ -206,7 +211,7 @@ namespace KuponySlevomat {
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(23, 378);
+            this.label9.Location = new System.Drawing.Point(22, 378);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 17);
             this.label9.TabIndex = 17;
@@ -215,26 +220,69 @@ namespace KuponySlevomat {
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(23, 432);
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(296, 449);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(103, 17);
+            this.label10.Size = new System.Drawing.Size(143, 21);
             this.label10.TabIndex = 18;
-            this.label10.Text = "Přidáno kupónů:";
+            this.label10.Text = "Přidáno poukázek:";
             // 
             // listBoxAddedTickets
             // 
-            this.listBoxAddedTickets.FormattingEnabled = true;
             this.listBoxAddedTickets.ItemHeight = 17;
-            this.listBoxAddedTickets.Location = new System.Drawing.Point(408, 68);
+            this.listBoxAddedTickets.Location = new System.Drawing.Point(377, 68);
             this.listBoxAddedTickets.Name = "listBoxAddedTickets";
-            this.listBoxAddedTickets.Size = new System.Drawing.Size(355, 327);
+            this.listBoxAddedTickets.Size = new System.Drawing.Size(549, 293);
             this.listBoxAddedTickets.TabIndex = 19;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(510, 445);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(107, 31);
+            this.btnSave.TabIndex = 20;
+            this.btnSave.Text = "Uložit";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(377, 44);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(142, 21);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "Přidané poukázky:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(710, 379);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 28);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Odebrat";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(501, 385);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(200, 17);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Odebrat označenou poukázku   -";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 516);
+            this.ClientSize = new System.Drawing.Size(962, 498);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.listBoxAddedTickets);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -285,6 +333,10 @@ namespace KuponySlevomat {
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ListBox listBoxAddedTickets;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label12;
     }
 }
 

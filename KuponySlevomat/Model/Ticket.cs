@@ -15,5 +15,15 @@ namespace KuponySlevomat.Model {
         public DateTime Added { get; set; }
 
 
+        public override string ToString() {
+            if (Ean.Length == 32) {
+                return string.Format("{0,32} {1,20} {2,20} {3, 15}", Ean, Company, Type, Value);
+            } else {
+                return string.Format("{0,38} {1,20} {2,20} {3, 15}", Ean, Company, Type, Value);
+            }
+        }
+
     }
+
+    
 }
