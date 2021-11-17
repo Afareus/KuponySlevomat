@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "yU5nneKOEVyU2yS8ZFCJAEiKCmlXFmCh3H7ZG5KiolS7DAzZy5c97fyBhYj401rYdUyoPv1mVlXNxa2be8OQxw==",
+  "dgSpecHash": "H3zb8/QXNh8X/0GnlSQWstaYGQrWyddW4a5nOPMGji2sBo73QKN4yESl3fsCNZJhAFZslKbGPMRkG3MmVTz87g==",
   "success": true,
   "projectFilePath": "F:\\Projekty\\KuponySlevomat\\KuponySlevomat\\KuponySlevomat.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Gabriel Kovács\\.nuget\\packages\\microsoft.data.sqlite\\6.0.0\\microsoft.data.sqlite.6.0.0.nupkg.sha512",
+    "C:\\Users\\Gabriel Kovács\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.0\\microsoft.data.sqlite.core.6.0.0.nupkg.sha512",
+    "C:\\Users\\Gabriel Kovács\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.6\\sqlitepclraw.bundle_e_sqlite3.2.0.6.nupkg.sha512",
+    "C:\\Users\\Gabriel Kovács\\.nuget\\packages\\sqlitepclraw.core\\2.0.6\\sqlitepclraw.core.2.0.6.nupkg.sha512",
+    "C:\\Users\\Gabriel Kovács\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.6\\sqlitepclraw.lib.e_sqlite3.2.0.6.nupkg.sha512",
+    "C:\\Users\\Gabriel Kovács\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.0.6\\sqlitepclraw.provider.e_sqlite3.2.0.6.nupkg.sha512",
+    "C:\\Users\\Gabriel Kovács\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+  ],
   "logs": []
 }

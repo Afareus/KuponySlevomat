@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using KuponySlevomat.Busines;
 using KuponySlevomat.Model;
+using KuponySlevomat.Queries;
 
 namespace KuponySlevomat {
     public partial class Form1 : Form {
 
         private TicketController ticketController;
         private WriterReaderTxt writeReaderTxt;
+        private DatabaseQueries databaseQueries;
 
         public Form1() {
             InitializeComponent();
@@ -25,6 +27,7 @@ namespace KuponySlevomat {
             ticketController = new TicketController();
             writeReaderTxt = new WriterReaderTxt();
             txbPath.Text = writeReaderTxt.ReadText();
+            databaseQueries = new DatabaseQueries(txbPath.Text);
             txbEAN.Focus();
         }
         private void CBoxCompany_SelectedIndexChanged(object sender, EventArgs e) {
@@ -172,6 +175,22 @@ namespace KuponySlevomat {
             if (dr == DialogResult.OK) {
                 writeReaderTxt.WriteText(openFileDialog1.FileName);
                 txbPath.Text = writeReaderTxt.ReadText();
+                databaseQueries.Path = txbPath.Text;
+            }
+        }
+
+        private void btnCreateDB_Click(object sender, EventArgs e) {
+            saveFileDialog1.Title = "Zadejte umístění a název nové databáze";
+            saveFileDialog1.Filter = "Databáze (*.db3) | *.db3";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.InitialDirectory = Directory.GetCurrentDirectory();
+            DialogResult dr = saveFileDialog1.ShowDialog();
+
+            if (dr == DialogResult.OK) {
+                if (databaseQueries.CreateNewDB(saveFileDialog1.FileName)) {
+                    MessageBox.Show("Soubor s databází byl úspěšně vytvořen");
+                }
+                
             }
         }
     }

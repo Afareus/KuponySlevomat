@@ -70,6 +70,7 @@ namespace KuponySlevomat {
             this.btnSetPath = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -477,6 +478,7 @@ namespace KuponySlevomat {
             this.btnCreateDB.TabIndex = 6;
             this.btnCreateDB.Text = "Vytvořit";
             this.btnCreateDB.UseVisualStyleBackColor = true;
+            this.btnCreateDB.Click += new System.EventHandler(this.btnCreateDB_Click);
             // 
             // txbPath
             // 
@@ -602,6 +604,7 @@ namespace KuponySlevomat {
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
