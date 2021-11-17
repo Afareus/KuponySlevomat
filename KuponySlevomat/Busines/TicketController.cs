@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KuponySlevomat.Model;
+using KuponySlevomat.TicketsDecoders;
 
 namespace KuponySlevomat.Busines {
     class TicketController {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KuponySlevomat.Busines {
+namespace KuponySlevomat.TicketsDecoders {
     class UpDecoder {
 
         public Ticket DecodeUpTicket(string ean) {

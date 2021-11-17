@@ -63,9 +63,13 @@ namespace KuponySlevomat {
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.lblPath = new System.Windows.Forms.Label();
+            this.btnCreateDB = new System.Windows.Forms.Button();
+            this.txbPath = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.btnSetPath = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -454,41 +458,75 @@ namespace KuponySlevomat {
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnCreateDB);
+            this.panel3.Controls.Add(this.txbPath);
+            this.panel3.Controls.Add(this.label19);
+            this.panel3.Controls.Add(this.label18);
             this.panel3.Controls.Add(this.btnSetPath);
-            this.panel3.Controls.Add(this.lblPath);
             this.panel3.Controls.Add(this.label17);
             this.panel3.Location = new System.Drawing.Point(501, 566);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(475, 500);
             this.panel3.TabIndex = 27;
             // 
+            // btnCreateDB
+            // 
+            this.btnCreateDB.Location = new System.Drawing.Point(278, 203);
+            this.btnCreateDB.Name = "btnCreateDB";
+            this.btnCreateDB.Size = new System.Drawing.Size(70, 26);
+            this.btnCreateDB.TabIndex = 6;
+            this.btnCreateDB.Text = "Vytvořit";
+            this.btnCreateDB.UseVisualStyleBackColor = true;
+            // 
+            // txbPath
+            // 
+            this.txbPath.Location = new System.Drawing.Point(92, 102);
+            this.txbPath.Name = "txbPath";
+            this.txbPath.Size = new System.Drawing.Size(283, 25);
+            this.txbPath.TabIndex = 5;
+            this.txbPath.Text = "C:\\Users\\Public\\Documents\\databaze.dat";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(43, 105);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(43, 17);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Cesta:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(119, 206);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(153, 17);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Vytvořit Novou Databázi:";
+            // 
+            // btnSetPath
+            // 
+            this.btnSetPath.Location = new System.Drawing.Point(381, 102);
+            this.btnSetPath.Name = "btnSetPath";
+            this.btnSetPath.Size = new System.Drawing.Size(64, 26);
+            this.btnSetPath.TabIndex = 2;
+            this.btnSetPath.Text = "Upravit";
+            this.btnSetPath.UseVisualStyleBackColor = true;
+            this.btnSetPath.Click += new System.EventHandler(this.btnSetPath_Click);
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(168, 44);
+            this.label17.Location = new System.Drawing.Point(121, 44);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(134, 21);
+            this.label17.Size = new System.Drawing.Size(227, 21);
             this.label17.TabIndex = 0;
-            this.label17.Text = "Cesta k databázi:";
+            this.label17.Text = "Nastavení přístupů k databázi";
             // 
-            // lblPath
+            // openFileDialog1
             // 
-            this.lblPath.AutoSize = true;
-            this.lblPath.Location = new System.Drawing.Point(112, 96);
-            this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(247, 17);
-            this.lblPath.TabIndex = 1;
-            this.lblPath.Text = "C:\\Users\\Public\\Documents\\databaze.dat";
-            // 
-            // btnSetPath
-            // 
-            this.btnSetPath.Location = new System.Drawing.Point(168, 181);
-            this.btnSetPath.Name = "btnSetPath";
-            this.btnSetPath.Size = new System.Drawing.Size(134, 30);
-            this.btnSetPath.TabIndex = 2;
-            this.btnSetPath.Text = "Nastavit cestu";
-            this.btnSetPath.UseVisualStyleBackColor = true;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -558,8 +596,12 @@ namespace KuponySlevomat {
         private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnSetPath;
-        private System.Windows.Forms.Label lblPath;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnCreateDB;
+        private System.Windows.Forms.TextBox txbPath;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

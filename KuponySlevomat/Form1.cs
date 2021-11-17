@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,13 +15,16 @@ namespace KuponySlevomat {
     public partial class Form1 : Form {
 
         private TicketController ticketController;
+        private WriterReaderTxt writeReaderTxt;
 
         public Form1() {
             InitializeComponent();
-            ticketController = new TicketController();
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            ticketController = new TicketController();
+            writeReaderTxt = new WriterReaderTxt();
+            txbPath.Text = writeReaderTxt.ReadText();
             txbEAN.Focus();
         }
         private void CBoxCompany_SelectedIndexChanged(object sender, EventArgs e) {
@@ -158,5 +162,17 @@ namespace KuponySlevomat {
             }
         }
 
+        private void btnSetPath_Click(object sender, EventArgs e) {
+            openFileDialog1.Title = "Zvolte soubor";
+            openFileDialog1.Filter = "Databáze (*.db) | *.db | Databáze (*.db3) | *.db3";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.InitialDirectory = Directory.GetCurrentDirectory();
+            DialogResult dr = openFileDialog1.ShowDialog();
+
+            if (dr == DialogResult.OK) {
+                writeReaderTxt.WriteText(openFileDialog1.FileName);
+                txbPath.Text = writeReaderTxt.ReadText();
+            }
+        }
     }
 }
