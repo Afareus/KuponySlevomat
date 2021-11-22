@@ -15,6 +15,16 @@ namespace KuponySlevomat.Model {
         public DateTime Added { get; set; }
 
 
+        public Ticket(string ean, string company, string type, int value, int validity, DateTime added) {
+            this.Ean = ean;
+            this.Company = company;
+            this.Type = type;
+            this.Value = value;
+            this.Validity = validity;
+            this.Added = added;
+        }
+
+
         public override string ToString() {
             if (Ean.Length == 32) {
                 return string.Format("{0,32} {1,20} {2,20} {3, 15}", Ean, Company, Type, Value);

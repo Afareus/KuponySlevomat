@@ -275,7 +275,8 @@
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
-      "Microsoft.Data.Sqlite >= 6.0.0"
+      "Microsoft.Data.Sqlite >= 6.0.0",
+      "Microsoft.Data.Sqlite.Core >= 6.0.0"
     ]
   },
   "packageFolders": {
@@ -323,6 +324,10 @@
         "targetAlias": "net5.0-windows",
         "dependencies": {
           "Microsoft.Data.Sqlite": {
+            "target": "Package",
+            "version": "[6.0.0, )"
+          },
+          "Microsoft.Data.Sqlite.Core": {
             "target": "Package",
             "version": "[6.0.0, )"
           }

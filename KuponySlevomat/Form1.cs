@@ -154,6 +154,13 @@ namespace KuponySlevomat {
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
+            if (databaseQueries.SaveTickets()) {
+                MessageBox.Show("Uloženo");
+                ticketController.Tickets.Clear();
+                ShowDataInListBox();
+            } else {
+                MessageBox.Show("Něco se nepovedlo");
+            }
 
         }
 
@@ -190,8 +197,11 @@ namespace KuponySlevomat {
                 if (databaseQueries.CreateNewDB(saveFileDialog1.FileName)) {
                     MessageBox.Show("Soubor s databází byl úspěšně vytvořen");
                 }
-                
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e) {
+            Ticket[] allTickets = databaseQueries.GetAllTickets();              
         }
     }
 }

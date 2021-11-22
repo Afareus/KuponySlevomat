@@ -391,6 +391,7 @@ namespace KuponySlevomat {
             this.btnSearch.TabIndex = 7;
             this.btnSearch.Text = "Vyhledat";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label16
             // 
