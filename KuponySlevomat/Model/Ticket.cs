@@ -10,18 +10,21 @@ namespace KuponySlevomat.Model {
         public string Ean { get; set; }
         public string Company { get; set; }
         public string Type { get; set; }
-        public int Value { get; set; }
-        public int Validity { get; set; }
+        public string Value { get; set; }
+        public string Validity { get; set; }
         public DateTime Added { get; set; }
 
 
-        public Ticket(string ean, string company, string type, int value, int validity, DateTime added) {
+        public Ticket(string ean, string company, string type, string value, string validity, DateTime added) {
             this.Ean = ean;
             this.Company = company;
             this.Type = type;
             this.Value = value;
             this.Validity = validity;
             this.Added = added;
+        }
+
+        public Ticket() {
         }
 
 

@@ -15,14 +15,18 @@ namespace KuponySlevomat.TicketsDecoders {
             decodedTicket.Company = "Up";
             decodedTicket.Type = DecodeType(ean);
             decodedTicket.Value = DecodeValue(ean);
-            decodedTicket.Validity = 99;
+            decodedTicket.Validity = DecodeValidity();
             decodedTicket.Added = DateTime.Now;
 
             return decodedTicket;
         }
 
-        private int DecodeValue(string ean) {
-            return Int32.Parse(ean.Substring(12, 5));
+        private string DecodeValue(string ean) {
+            return ean.Substring(12, 5);
+        }
+
+        private string DecodeValidity() {
+            return "99";
         }
 
         private string DecodeType(string ean) {

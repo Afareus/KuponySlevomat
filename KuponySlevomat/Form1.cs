@@ -17,17 +17,15 @@ namespace KuponySlevomat {
 
         private TicketController ticketController;
         private WriterReaderTxt writeReaderTxt;
-        private DatabaseQueries databaseQueries;
 
         public Form1() {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            ticketController = new TicketController();
             writeReaderTxt = new WriterReaderTxt();
+            ticketController = new TicketController(writeReaderTxt.ReadText());
             txbPath.Text = writeReaderTxt.ReadText();
-            databaseQueries = new DatabaseQueries(txbPath.Text);
             txbEAN.Focus();
         }
         private void CBoxCompany_SelectedIndexChanged(object sender, EventArgs e) {
@@ -103,19 +101,19 @@ namespace KuponySlevomat {
 
         private void AddTicket() {
             if (CBoxCompany.SelectedIndex == 0) {
-                if (!ticketController.AddSodexoTicketToList(txbEAN.Text.Trim()) || txbEAN.Text.Trim().Length != 24) {
+                if (!ticketController.AddSodexoTicketToList(txbEAN.Text.Trim()) || txbEAN.Text.Trim().Length != 24) {     // k tomu se vrátit ! 
                     MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
                 }
             } else if (CBoxCompany.SelectedIndex == 1) {
-                if (!ticketController.AddUpTicketToList(txbEAN.Text.Trim()) || txbEAN.Text.Trim().Length != 24) {
+                if (!ticketController.AddUpTicketToList(txbEAN.Text.Trim()) || txbEAN.Text.Trim().Length != 24) {     // mají platit obě podmínky
                     MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
                 }
             } else if (CBoxCompany.SelectedIndex == 2) {
-                if (!ticketController.AddEdenredTicketToList(txbEAN.Text.Trim()) || txbEAN.Text.Trim().Length != 32) {
+                if (!ticketController.AddEdenredTicketToList(txbEAN.Text.Trim()) || txbEAN.Text.Trim().Length != 32) {      // má být and ne or !!!
                     MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
@@ -132,10 +130,10 @@ namespace KuponySlevomat {
                 lblType.Text = ticketController.Tickets[index].Type;
                 lblCompany.Text = ticketController.Tickets[index].Company;
                 lblValue.Text = ticketController.Tickets[index].Value.ToString() + " Kč";
-                if (ticketController.Tickets[index].Validity == 99) {
+                if (int.Parse(ticketController.Tickets[index].Validity) == 99) {
                     lblValidity.Text = "Na šeku";
                 } else {
-                    lblValidity.Text = "31.12.20" + ticketController.Tickets[index].Validity.ToString();
+                    lblValidity.Text = "31.12.20" + ticketController.Tickets[index].Validity;
                 }
 
                 ShowDataInListBox();
@@ -154,17 +152,16 @@ namespace KuponySlevomat {
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
-            if (databaseQueries.SaveTickets()) {
+            if (ticketController.SentAddedTicketToSave()) {
                 MessageBox.Show("Uloženo");
                 ticketController.Tickets.Clear();
                 ShowDataInListBox();
             } else {
                 MessageBox.Show("Něco se nepovedlo");
             }
-
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        private void btnOdebratTicket_Click(object sender, EventArgs e) {
             int indexOfTicket = listBoxAddedTickets.SelectedIndex;
             if (indexOfTicket >= 0) {
                 ticketController.Tickets.RemoveAt(indexOfTicket);
@@ -182,7 +179,7 @@ namespace KuponySlevomat {
             if (dr == DialogResult.OK) {
                 writeReaderTxt.WriteText(openFileDialog1.FileName);
                 txbPath.Text = writeReaderTxt.ReadText();
-                databaseQueries.Path = txbPath.Text;
+                ticketController.databaseQueries.Path = txbPath.Text;
             }
         }
 
@@ -194,14 +191,16 @@ namespace KuponySlevomat {
             DialogResult dr = saveFileDialog1.ShowDialog();
 
             if (dr == DialogResult.OK) {
-                if (databaseQueries.CreateNewDB(saveFileDialog1.FileName)) {
+                if (ticketController.databaseQueries.CreateNewDB(saveFileDialog1.FileName)) {
                     MessageBox.Show("Soubor s databází byl úspěšně vytvořen");
                 }
             }
         }
 
         private void btnSearch_Click(object sender, EventArgs e) {
-            Ticket[] allTickets = databaseQueries.GetAllTickets();              
+            Ticket[] allTickets = ticketController.databaseQueries.GetAllTickets();              // ještě dodělat zobrazení tohoto pole poukázek
+
+            listBoxShowSavedTickets.Items.AddRange(allTickets);
         }
     }
 }

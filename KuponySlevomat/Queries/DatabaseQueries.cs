@@ -21,11 +21,10 @@ namespace KuponySlevomat.Queries {
                                 [EAN] NVARCHAR(32) NOT NULL PRIMARY KEY,
                                 [Company] NVARCHAR(32),
                                 [Type] NVARCHAR(32), 
-                                [Value] INTEGER,
-                                [Validity] BYTE,
+                                [Value] NVARCHAR(8),
+                                [Validity] NVARCHAR(4),
                                 [Date] TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                                 )";
-            // [Date] DEFAULT DATE('now'),
 
             using (SqliteConnection conn = new SqliteConnection("data source =" + NewPath)) {
                 SqliteCommand cmd = new SqliteCommand(createQuery, conn);
@@ -46,7 +45,7 @@ namespace KuponySlevomat.Queries {
                 conn.Open();
                 using (SqliteDataReader reader = cmd.ExecuteReader()) {
                     while (reader.Read()) {
-                        Ticket ticket = new Ticket((string)reader["EAN"], (string)reader["Company"], (string)reader["Type"], (int)reader["Value"], (int)reader["Validity"], (DateTime)reader["Date"]);
+                        Ticket ticket = new Ticket((string)reader["EAN"], (string)reader["Company"], (string)reader["Type"], (string)reader["Value"], (string)reader["Validity"], new DateTime(2021,12,31));
                         tickets.Add(ticket);
                     }
                 }
@@ -55,8 +54,19 @@ namespace KuponySlevomat.Queries {
             return tickets.ToArray();
         }
 
-        internal bool SaveTickets() {
-            throw new NotImplementedException();           // metoda pro přidání poukázek do databáze
+        internal bool SaveTickets(Ticket[] ticketsToSave) {
+            string saveTicketQuery = "";
+
+            using (SqliteConnection conn = new SqliteConnection("data source =" + Path)) {
+                foreach (Ticket tic in ticketsToSave) {
+                    saveTicketQuery = "INSERT INTO Tickets(EAN,Company,Type,Value,Validity,Date) VALUES ('" + tic.Ean + "','" + tic.Company + "','" + tic.Type + "','" + tic.Value + "','" + tic.Validity + "','" + tic.Added + "')";
+                    SqliteCommand cmd = new SqliteCommand(saveTicketQuery, conn);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            return true;
         }
     }
 }

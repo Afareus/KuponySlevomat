@@ -21,16 +21,16 @@ namespace KuponySlevomat.TicketsDecoders {
             return decodedTicket;
         }
 
-        private int DedoceValidity(string ean) {
+        private string DedoceValidity(string ean) {
             if (ean.Substring(0, 2) == "30") {
-                return Int32.Parse(ean.Substring(2, 2)) + 2;
+                return (Int32.Parse(ean.Substring(2, 2)) + 2).ToString();
             } else {
-                return Int32.Parse(ean.Substring(2, 2));
+                return ean.Substring(2, 2);
             }
         }
 
-        private int DecodeValue(string ean) {
-            return Int32.Parse(ean.Substring(4, 6)) / 100;
+        private string DecodeValue(string ean) {
+            return (Int32.Parse(ean.Substring(4, 6)) / 100).ToString();
         }
 
         private string DecodeType(string ean) {
