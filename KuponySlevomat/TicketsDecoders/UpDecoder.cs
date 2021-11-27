@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 namespace KuponySlevomat.TicketsDecoders {
     class UpDecoder {
 
-        public Ticket DecodeUpTicket(string ean) {
-
+        public Ticket DecodeUpTicket(string ean, string date) {
             Ticket decodedTicket = new Ticket();
             decodedTicket.Ean = ean;
             decodedTicket.Company = "Up";
             decodedTicket.Type = DecodeType(ean);
             decodedTicket.Value = DecodeValue(ean);
             decodedTicket.Validity = DecodeValidity();
-            decodedTicket.Added = DateTime.Now;
+            decodedTicket.Added = date;
 
             return decodedTicket;
         }

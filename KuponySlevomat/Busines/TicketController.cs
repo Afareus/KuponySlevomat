@@ -19,9 +19,8 @@ namespace KuponySlevomat.Busines {
             databaseQueries = new DatabaseQueries(path);
         }
 
-        internal bool AddSodexoTicketToList(string ean) {
-            Ticket ticketToAdd = new SodexoDecoder().DecodeSodexoTicket(ean);
-            
+        internal bool AddSodexoTicketToList(string ean, string date) {
+            Ticket ticketToAdd = new SodexoDecoder().DecodeSodexoTicket(ean, date);
             if (int.Parse(ticketToAdd.Validity) > 20 && int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    // podmínka pro uložení 
                 Tickets.Add(ticketToAdd);
                 return true;
@@ -30,8 +29,8 @@ namespace KuponySlevomat.Busines {
             }
         }
 
-        internal bool AddUpTicketToList(string ean) {
-            Ticket ticketToAdd = new UpDecoder().DecodeUpTicket(ean);
+        internal bool AddUpTicketToList(string ean, string date) {
+            Ticket ticketToAdd = new UpDecoder().DecodeUpTicket(ean, date);
             if (int.Parse(ticketToAdd.Validity) > 20 && int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    // podmínka pro uložení 
                 Tickets.Add(ticketToAdd);
                 return true;
@@ -40,8 +39,8 @@ namespace KuponySlevomat.Busines {
             }
         }
 
-        internal bool AddEdenredTicketToList(string ean) {
-            Ticket ticketToAdd = new EdenredDecoder().DecodeEdenredTicket(ean);
+        internal bool AddEdenredTicketToList(string ean, string date) {
+            Ticket ticketToAdd = new EdenredDecoder().DecodeEdenredTicket(ean, date);
             if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    // podmínka pro uložení 
                 Tickets.Add(ticketToAdd);
                 return true;

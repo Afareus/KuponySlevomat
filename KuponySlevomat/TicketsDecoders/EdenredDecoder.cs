@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace KuponySlevomat.TicketsDecoders {
     class EdenredDecoder {
-        public Ticket DecodeEdenredTicket(string ean) {
+
+        public Ticket DecodeEdenredTicket(string ean, string date) {
             Ticket decodedTicket = new Ticket();
             decodedTicket.Ean = ean;
             decodedTicket.Company = "Edenred";
             decodedTicket.Type = DecodeType(ean);
             decodedTicket.Value = DecodeValue(ean);
             decodedTicket.Validity = DedoceValidity(ean);
-            decodedTicket.Added = DateTime.Now;
+            decodedTicket.Added = date;
 
             return decodedTicket;
         }

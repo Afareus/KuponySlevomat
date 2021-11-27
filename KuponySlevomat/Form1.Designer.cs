@@ -53,6 +53,8 @@ namespace KuponySlevomat {
             this.menuShowInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.dateTimePickerAcceptedDay = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
             this.listBoxShowSavedTickets = new System.Windows.Forms.ListBox();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -64,6 +66,7 @@ namespace KuponySlevomat {
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonTesotvaci = new System.Windows.Forms.Button();
             this.btnCreateDB = new System.Windows.Forms.Button();
             this.txbPath = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -91,56 +94,56 @@ namespace KuponySlevomat {
             // lblEAN
             // 
             this.lblEAN.AutoSize = true;
-            this.lblEAN.Location = new System.Drawing.Point(150, 235);
+            this.lblEAN.Location = new System.Drawing.Point(150, 319);
             this.lblEAN.Name = "lblEAN";
-            this.lblEAN.Size = new System.Drawing.Size(29, 17);
+            this.lblEAN.Size = new System.Drawing.Size(13, 17);
             this.lblEAN.TabIndex = 1;
-            this.lblEAN.Text = "000";
+            this.lblEAN.Text = "-";
             // 
             // lblCompany
             // 
             this.lblCompany.AutoSize = true;
-            this.lblCompany.Location = new System.Drawing.Point(150, 259);
+            this.lblCompany.Location = new System.Drawing.Point(150, 336);
             this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(29, 17);
+            this.lblCompany.Size = new System.Drawing.Size(13, 17);
             this.lblCompany.TabIndex = 2;
-            this.lblCompany.Text = "100";
+            this.lblCompany.Text = "-";
             // 
             // lblType
             // 
             this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(150, 286);
+            this.lblType.Location = new System.Drawing.Point(150, 353);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(29, 17);
+            this.lblType.Size = new System.Drawing.Size(13, 17);
             this.lblType.TabIndex = 3;
-            this.lblType.Text = "200";
+            this.lblType.Text = "-";
             // 
             // lblValue
             // 
             this.lblValue.AutoSize = true;
-            this.lblValue.Location = new System.Drawing.Point(150, 314);
+            this.lblValue.Location = new System.Drawing.Point(150, 370);
             this.lblValue.Name = "lblValue";
-            this.lblValue.Size = new System.Drawing.Size(29, 17);
+            this.lblValue.Size = new System.Drawing.Size(13, 17);
             this.lblValue.TabIndex = 4;
-            this.lblValue.Text = "300";
+            this.lblValue.Text = "-";
             // 
             // lblValidity
             // 
             this.lblValidity.AutoSize = true;
-            this.lblValidity.Location = new System.Drawing.Point(150, 342);
+            this.lblValidity.Location = new System.Drawing.Point(150, 387);
             this.lblValidity.Name = "lblValidity";
-            this.lblValidity.Size = new System.Drawing.Size(29, 17);
+            this.lblValidity.Size = new System.Drawing.Size(13, 17);
             this.lblValidity.TabIndex = 5;
-            this.lblValidity.Text = "400";
+            this.lblValidity.Text = "-";
             // 
             // lblAdded
             // 
             this.lblAdded.AutoSize = true;
-            this.lblAdded.Location = new System.Drawing.Point(150, 371);
+            this.lblAdded.Location = new System.Drawing.Point(150, 404);
             this.lblAdded.Name = "lblAdded";
-            this.lblAdded.Size = new System.Drawing.Size(29, 17);
+            this.lblAdded.Size = new System.Drawing.Size(13, 17);
             this.lblAdded.TabIndex = 6;
-            this.lblAdded.Text = "500";
+            this.lblAdded.Text = "-";
             // 
             // lblCountTickets
             // 
@@ -173,9 +176,9 @@ namespace KuponySlevomat {
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(47, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 21);
+            this.label1.Size = new System.Drawing.Size(45, 21);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Naskenuj nebo opiš EAN:";
+            this.label1.Text = "EAN:";
             // 
             // label2
             // 
@@ -183,14 +186,14 @@ namespace KuponySlevomat {
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(47, 114);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 21);
+            this.label2.Size = new System.Drawing.Size(56, 21);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Vyber firmu:\r\n";
+            this.label2.Text = "Firma:\r\n";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 235);
+            this.label3.Location = new System.Drawing.Point(47, 319);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 17);
             this.label3.TabIndex = 11;
@@ -200,7 +203,7 @@ namespace KuponySlevomat {
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(47, 203);
+            this.label4.Location = new System.Drawing.Point(47, 288);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(209, 21);
             this.label4.TabIndex = 12;
@@ -209,7 +212,7 @@ namespace KuponySlevomat {
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(47, 259);
+            this.label5.Location = new System.Drawing.Point(47, 336);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 17);
             this.label5.TabIndex = 13;
@@ -218,7 +221,7 @@ namespace KuponySlevomat {
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(47, 286);
+            this.label6.Location = new System.Drawing.Point(47, 353);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 17);
             this.label6.TabIndex = 14;
@@ -227,7 +230,7 @@ namespace KuponySlevomat {
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(47, 314);
+            this.label7.Location = new System.Drawing.Point(47, 370);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 17);
             this.label7.TabIndex = 15;
@@ -236,7 +239,7 @@ namespace KuponySlevomat {
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(47, 342);
+            this.label8.Location = new System.Drawing.Point(47, 387);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 17);
             this.label8.TabIndex = 16;
@@ -245,11 +248,11 @@ namespace KuponySlevomat {
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(47, 371);
+            this.label9.Location = new System.Drawing.Point(47, 404);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 17);
+            this.label9.Size = new System.Drawing.Size(48, 17);
             this.label9.TabIndex = 17;
-            this.label9.Text = "Přidáno:";
+            this.label9.Text = "Přijato:";
             // 
             // label10
             // 
@@ -340,6 +343,8 @@ namespace KuponySlevomat {
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label20);
+            this.panel1.Controls.Add(this.dateTimePickerAcceptedDay);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txbEAN);
             this.panel1.Controls.Add(this.lblAdded);
@@ -368,6 +373,24 @@ namespace KuponySlevomat {
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(976, 500);
             this.panel1.TabIndex = 25;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(47, 188);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(183, 21);
+            this.label20.TabIndex = 25;
+            this.label20.Text = "Datum přijetí poukázky:";
+            // 
+            // dateTimePickerAcceptedDay
+            // 
+            this.dateTimePickerAcceptedDay.Location = new System.Drawing.Point(47, 212);
+            this.dateTimePickerAcceptedDay.Name = "dateTimePickerAcceptedDay";
+            this.dateTimePickerAcceptedDay.Size = new System.Drawing.Size(200, 25);
+            this.dateTimePickerAcceptedDay.TabIndex = 24;
+            this.dateTimePickerAcceptedDay.ValueChanged += new System.EventHandler(this.dateTimePickerAcceptedDay_ValueChanged);
             // 
             // panel2
             // 
@@ -471,6 +494,7 @@ namespace KuponySlevomat {
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.buttonTesotvaci);
             this.panel3.Controls.Add(this.btnCreateDB);
             this.panel3.Controls.Add(this.txbPath);
             this.panel3.Controls.Add(this.label19);
@@ -481,6 +505,16 @@ namespace KuponySlevomat {
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(316, 500);
             this.panel3.TabIndex = 27;
+            // 
+            // buttonTesotvaci
+            // 
+            this.buttonTesotvaci.Location = new System.Drawing.Point(128, 394);
+            this.buttonTesotvaci.Name = "buttonTesotvaci";
+            this.buttonTesotvaci.Size = new System.Drawing.Size(75, 23);
+            this.buttonTesotvaci.TabIndex = 7;
+            this.buttonTesotvaci.Text = "button1";
+            this.buttonTesotvaci.UseVisualStyleBackColor = true;
+            this.buttonTesotvaci.Click += new System.EventHandler(this.buttonTesotvaci_Click);
             // 
             // btnCreateDB
             // 
@@ -520,7 +554,7 @@ namespace KuponySlevomat {
             // 
             // btnSetPath
             // 
-            this.btnSetPath.Location = new System.Drawing.Point(381, 102);
+            this.btnSetPath.Location = new System.Drawing.Point(25, 135);
             this.btnSetPath.Name = "btnSetPath";
             this.btnSetPath.Size = new System.Drawing.Size(64, 26);
             this.btnSetPath.TabIndex = 2;
@@ -618,6 +652,9 @@ namespace KuponySlevomat {
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ListBox listBoxShowSavedTickets;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DateTimePicker dateTimePickerAcceptedDay;
+        private System.Windows.Forms.Button buttonTesotvaci;
     }
 }
 

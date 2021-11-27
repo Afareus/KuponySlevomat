@@ -18,12 +18,13 @@ namespace KuponySlevomat.Queries {
         public bool CreateNewDB(string NewPath) {
             string createQuery = @"CREATE TABLE IF NOT EXISTS
                                 [Tickets] (
-                                [EAN] NVARCHAR(32) NOT NULL PRIMARY KEY,
+                                [Id] INTEGER PRIMARY KEY AUTOINCREMENT,
+                                [EAN] NVARCHAR(32) NOT NULL,
                                 [Company] NVARCHAR(32),
                                 [Type] NVARCHAR(32), 
                                 [Value] NVARCHAR(8),
                                 [Validity] NVARCHAR(4),
-                                [Date] TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                                [Date] DATE
                                 )";
 
             using (SqliteConnection conn = new SqliteConnection("data source =" + NewPath)) {
@@ -45,7 +46,7 @@ namespace KuponySlevomat.Queries {
                 conn.Open();
                 using (SqliteDataReader reader = cmd.ExecuteReader()) {
                     while (reader.Read()) {
-                        Ticket ticket = new Ticket((string)reader["EAN"], (string)reader["Company"], (string)reader["Type"], (string)reader["Value"], (string)reader["Validity"], new DateTime(2021,12,31));
+                        Ticket ticket = new Ticket((string)reader["EAN"], (string)reader["Company"], (string)reader["Type"], (string)reader["Value"], (string)reader["Validity"], (string)reader["Date"]);
                         tickets.Add(ticket);
                     }
                 }
@@ -55,14 +56,18 @@ namespace KuponySlevomat.Queries {
         }
 
         internal bool SaveTickets(Ticket[] ticketsToSave) {
-            string saveTicketQuery = "";
-
             using (SqliteConnection conn = new SqliteConnection("data source =" + Path)) {
                 foreach (Ticket tic in ticketsToSave) {
-                    saveTicketQuery = "INSERT INTO Tickets(EAN,Company,Type,Value,Validity,Date) VALUES ('" + tic.Ean + "','" + tic.Company + "','" + tic.Type + "','" + tic.Value + "','" + tic.Validity + "','" + tic.Added + "')";
+                    string saveTicketQuery = "INSERT INTO Tickets(EAN,Company,Type,Value,Validity,Date) VALUES ('" + tic.Ean + "','" + tic.Company + "','" + tic.Type + "','" + tic.Value + "','" + tic.Validity + "','" + tic.Added + "')";
                     SqliteCommand cmd = new SqliteCommand(saveTicketQuery, conn);
                     conn.Open();
-                    cmd.ExecuteNonQuery();
+                    try {
+                        cmd.ExecuteNonQuery();
+                    } catch (SqliteException) {
+                        return false;
+                    } finally {
+                        conn.Close();
+                    }
                     conn.Close();
                 }
             }

@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace KuponySlevomat.TicketsDecoders {
     class SodexoDecoder {
+
+        public Ticket DecodeSodexoTicket(string ean, string date) {
             Ticket decodedTicket = new Ticket();
-
-        public Ticket DecodeSodexoTicket(string ean) {
-
             decodedTicket.Ean = ean;
             decodedTicket.Company = "Sodexo";
             decodedTicket.Type = DecodeType(ean);
             decodedTicket.Value = DecodeValue(ean);
             decodedTicket.Validity = DedoceValidity(ean);
-            decodedTicket.Added = DateTime.Now;
+            decodedTicket.Added = date;
 
             return decodedTicket;
         }
