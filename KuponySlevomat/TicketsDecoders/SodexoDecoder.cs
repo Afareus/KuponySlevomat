@@ -1,9 +1,5 @@
 ﻿using KuponySlevomat.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KuponySlevomat.TicketsDecoders {
     class SodexoDecoder {
@@ -15,7 +11,12 @@ namespace KuponySlevomat.TicketsDecoders {
             decodedTicket.Type = DecodeType(ean);
             decodedTicket.Value = DecodeValue(ean);
             decodedTicket.Validity = DedoceValidity(ean);
-            decodedTicket.Added = date;
+
+            string day = date.Substring(0, 2);
+            string month = date.Substring(3, 2);
+            string year = date.Substring(6, 4);
+            string formatDate = $"{year}-{month}-{day}";
+            decodedTicket.Added = formatDate;
 
             return decodedTicket;
         }

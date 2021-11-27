@@ -449,16 +449,13 @@ namespace KuponySlevomat {
             // 
             // CBoxCompanySearch
             // 
+            this.CBoxCompanySearch.DisplayMember = "0";
             this.CBoxCompanySearch.FormattingEnabled = true;
-            this.CBoxCompanySearch.Items.AddRange(new object[] {
-            "Vše",
-            "Sodexo",
-            "Up",
-            "Edenred"});
             this.CBoxCompanySearch.Location = new System.Drawing.Point(47, 147);
             this.CBoxCompanySearch.Name = "CBoxCompanySearch";
             this.CBoxCompanySearch.Size = new System.Drawing.Size(121, 25);
             this.CBoxCompanySearch.TabIndex = 4;
+            this.CBoxCompanySearch.Tag = "";
             // 
             // label14
             // 

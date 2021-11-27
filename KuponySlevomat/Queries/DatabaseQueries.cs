@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace KuponySlevomat.Queries {
     class DatabaseQueries {
@@ -72,6 +73,36 @@ namespace KuponySlevomat.Queries {
                 }
             }
             return true;
+        }
+
+        internal Ticket[] GetTickets(int selectedIndex, DateTimePicker dateTimePickerFrom, DateTimePicker dateTimePickerTo) {
+
+            string dayFrom = dateTimePickerFrom.Value.ToString().Substring(0, 2);
+            string monthFrom = dateTimePickerFrom.Value.ToString().Substring(3, 2);
+            string yearFrom = dateTimePickerFrom.Value.ToString().Substring(6, 4);
+            string dateFrom = $"{yearFrom}-{monthFrom}-{dayFrom}";
+
+            string dayTo = dateTimePickerTo.Value.ToString().Substring(0, 2);
+            string monthTo = dateTimePickerTo.Value.ToString().Substring(3, 2);
+            string yearTo = dateTimePickerTo.Value.ToString().Substring(6, 4);
+            string dateTo = $"{yearTo}-{monthTo}-{dayTo}";
+
+            string selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" +dateFrom+ "' AND '" + dateTo + "'";
+    
+            List<Ticket> tickets = new List<Ticket>();
+
+            using (SqliteConnection conn = new SqliteConnection("data source =" + Path)) {
+                SqliteCommand cmd = new SqliteCommand(selectAllQuery, conn);
+                conn.Open();
+                using (SqliteDataReader reader = cmd.ExecuteReader()) {
+                    while (reader.Read()) {
+                        Ticket ticket = new Ticket((string)reader["EAN"], (string)reader["Company"], (string)reader["Type"], (string)reader["Value"], (string)reader["Validity"], (string)reader["Date"]);
+                        tickets.Add(ticket);
+                    }
+                }
+                conn.Close();
+            }
+            return tickets.ToArray();
         }
     }
 }
