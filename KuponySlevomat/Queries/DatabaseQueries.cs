@@ -87,7 +87,18 @@ namespace KuponySlevomat.Queries {
             string yearTo = dateTimePickerTo.Value.ToString().Substring(6, 4);
             string dateTo = $"{yearTo}-{monthTo}-{dayTo}";
 
-            string selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" +dateFrom+ "' AND '" + dateTo + "'";
+            string selectAllQuery;
+
+            if (selectedIndex == 1) {
+                selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "' AND Company = 'Sodexo'";
+            } else if (selectedIndex == 2) {
+                selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "' AND Company = 'Up'";
+            } else if (selectedIndex == 3) {
+                selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "' AND Company = 'Edenred'";
+            } else {
+                selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "'";
+            }
+
     
             List<Ticket> tickets = new List<Ticket>();
 

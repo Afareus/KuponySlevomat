@@ -226,6 +226,8 @@ namespace KuponySlevomat {
             MessageBox.Show(date);
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e) {
 
+        }
     }
 }
