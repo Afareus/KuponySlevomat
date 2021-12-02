@@ -28,10 +28,15 @@ namespace KuponySlevomat.Model {
         }
 
         public override string ToString() {
+            string day = Added.Substring(8, 2);
+            string month = Added.Substring(5, 2);
+            string year = Added.Substring(0, 4);
+            string AddedCzFormat = $"{day}.{month}.{year}";
+
             if (Ean.Length == 32) {
-                return string.Format("{0,32} {1,20} {2,20} {3, 15} {4,10}", Ean, Company, Type, int.Parse(Value), Added);
+                return string.Format("{0,32} {1,20} {2,20} {3, 15} {4,22}", Ean, Company, Type, int.Parse(Value), AddedCzFormat);
             } else {
-                return string.Format("{0,38} {1,20} {2,20} {3, 15} {4,10}", Ean, Company, Type, int.Parse(Value), Added);
+                return string.Format("{0,38} {1,20} {2,20} {3, 15} {4,22}", Ean, Company, Type, int.Parse(Value), AddedCzFormat);
             }
         }
 

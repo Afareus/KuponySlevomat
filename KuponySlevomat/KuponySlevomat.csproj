@@ -4,13 +4,28 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon />
+    <ApplicationIcon>icon.ico</ApplicationIcon>
     <StartupObject />
+    <Authors>Afareus</Authors>
+    <Product>KuponySken</Product>
+    <PackageId>KuponySken</PackageId>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl />
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <NeutralLanguage></NeutralLanguage>
+    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.0" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net5.0-windows\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

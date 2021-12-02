@@ -141,7 +141,7 @@ namespace KuponySlevomat {
                 lblAdded.Text = ticketController.Tickets[index].Added.ToString();
                 lblType.Text = ticketController.Tickets[index].Type;
                 lblCompany.Text = ticketController.Tickets[index].Company;
-                lblValue.Text = ticketController.Tickets[index].Value.ToString() + " Kč";
+                lblValue.Text = ticketController.Tickets[index].Value;
                 if (int.Parse(ticketController.Tickets[index].Validity) == 99) {
                     lblValidity.Text = "Na šeku";
                 } else {
@@ -157,6 +157,12 @@ namespace KuponySlevomat {
             listBoxAddedTickets.Items.AddRange(ReturnAllAddedTickets());
 
             lblCountTickets.Text = ticketController.Tickets.Count.ToString();
+
+            int totalValue = 0;
+            foreach (Ticket tic in ReturnAllAddedTickets()) {
+                totalValue += Int32.Parse(tic.Value);
+            }
+            lblTotalValue.Text = totalValue.ToString() + " Kč";
         }
 
         private Ticket[] ReturnAllAddedTickets() {
@@ -210,24 +216,30 @@ namespace KuponySlevomat {
         }
 
         private void btnSearch_Click(object sender, EventArgs e) {
-            //Ticket[] allTickets = ticketController.databaseQueries.GetAllTickets();
-
             Ticket[] loadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
 
             listBoxShowSavedTickets.Items.Clear();
             listBoxShowSavedTickets.Items.AddRange(loadedTickets);
+
+            lblTotalCountFromDB.Text = loadedTickets.Count().ToString();
+
+            int totalValue = 0;
+            foreach (Ticket tic in loadedTickets) {
+                totalValue += Int32.Parse(tic.Value);
+            }
+            lblTotalValueFromDB.Text = totalValue.ToString();
         }
 
-        private void buttonTesotvaci_Click(object sender, EventArgs e) {                     // testovací button pro formát Date
-            string day = dateTimePickerAcceptedDay.Value.ToString().Substring(0, 2);
-            string month = dateTimePickerAcceptedDay.Value.ToString().Substring(3, 2);
-            string year = dateTimePickerAcceptedDay.Value.ToString().Substring(6, 4);
-            string date = $"{year}-{month}-{day}";
-            MessageBox.Show(date);
+        private void menuAddTickets_Click(object sender, EventArgs e) {
+            panel1.BringToFront();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e) {
+        private void menuShowInfo_Click(object sender, EventArgs e) {
+            panel2.BringToFront();
+        }
 
+        private void menuSettings_Click(object sender, EventArgs e) {
+            panel3.BringToFront();
         }
     }
 }
