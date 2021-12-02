@@ -51,7 +51,11 @@ namespace KuponySlevomat {
                 ConvertToCzKeyboard();
 
                 if (IsCorectEAN()) {
-                    AddTicket();
+                    if (!DuplicateTicket()) {
+                        AddTicket();
+                    } else {
+                        MessageBox.Show("Tento kupón jste již vložili!");
+                    }
                 } else {
                     MessageBox.Show("Neplatné zadání");
                 }
@@ -110,22 +114,31 @@ namespace KuponySlevomat {
             return ok;
         }
 
+        private bool DuplicateTicket() {
+            Ticket ticket = null;
+            ticket = ticketController.Tickets.FirstOrDefault(tic => tic.Ean.Equals(txbEAN.Text.Trim()));
+            if (ticket != null) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 
         private void AddTicket() {
             if (CBoxCompany.SelectedIndex == 0) {
-                if (!ticketController.AddSodexoTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) && txbEAN.Text.Trim().Length != 24) {     // k tomu se vrátit ! 
+                if (!ticketController.AddSodexoTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) || txbEAN.Text.Trim().Length != 24) { 
                     MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
                 }
             } else if (CBoxCompany.SelectedIndex == 1) {
-                if (!ticketController.AddUpTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) && txbEAN.Text.Trim().Length != 24) {     // mají platit obě podmínky
+                if (!ticketController.AddUpTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) || txbEAN.Text.Trim().Length != 24) { 
                     MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
                 }
             } else if (CBoxCompany.SelectedIndex == 2) {
-                if (!ticketController.AddEdenredTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) && txbEAN.Text.Trim().Length != 32) {      // má být and ne or !!!
+                if (!ticketController.AddEdenredTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) || txbEAN.Text.Trim().Length != 32) { 
                     MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
@@ -227,7 +240,7 @@ namespace KuponySlevomat {
             foreach (Ticket tic in loadedTickets) {
                 totalValue += Int32.Parse(tic.Value);
             }
-            lblTotalValueFromDB.Text = totalValue.ToString();
+            lblTotalValueFromDB.Text = totalValue.ToString() + " Kč";
         }
 
         private void menuAddTickets_Click(object sender, EventArgs e) {

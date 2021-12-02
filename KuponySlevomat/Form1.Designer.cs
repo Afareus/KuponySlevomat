@@ -53,6 +53,7 @@ namespace KuponySlevomat {
             this.menuShowInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -280,9 +281,9 @@ namespace KuponySlevomat {
             // listBoxAddedTickets
             // 
             this.listBoxAddedTickets.ItemHeight = 17;
-            this.listBoxAddedTickets.Location = new System.Drawing.Point(401, 60);
+            this.listBoxAddedTickets.Location = new System.Drawing.Point(417, 61);
             this.listBoxAddedTickets.Name = "listBoxAddedTickets";
-            this.listBoxAddedTickets.Size = new System.Drawing.Size(526, 310);
+            this.listBoxAddedTickets.Size = new System.Drawing.Size(519, 310);
             this.listBoxAddedTickets.TabIndex = 19;
             // 
             // btnSave
@@ -322,7 +323,7 @@ namespace KuponySlevomat {
             this.menuSettings});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(985, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(988, 25);
             this.menuStrip1.TabIndex = 24;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -349,6 +350,7 @@ namespace KuponySlevomat {
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label31);
             this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.label23);
             this.panel1.Controls.Add(this.label22);
@@ -379,15 +381,24 @@ namespace KuponySlevomat {
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Location = new System.Drawing.Point(0, 28);
+            this.panel1.Location = new System.Drawing.Point(1, 36);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(987, 525);
             this.panel1.TabIndex = 25;
             // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(877, 41);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(59, 17);
+            this.label31.TabIndex = 32;
+            this.label31.Text = "Hodnota";
+            // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(788, 40);
+            this.label24.Location = new System.Drawing.Point(794, 40);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(28, 17);
             this.label24.TabIndex = 31;
@@ -396,7 +407,7 @@ namespace KuponySlevomat {
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(688, 41);
+            this.label23.Location = new System.Drawing.Point(697, 41);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(40, 17);
             this.label23.TabIndex = 30;
@@ -405,7 +416,7 @@ namespace KuponySlevomat {
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(524, 40);
+            this.label22.Location = new System.Drawing.Point(530, 41);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(33, 17);
             this.label22.TabIndex = 29;
@@ -471,24 +482,24 @@ namespace KuponySlevomat {
             this.panel2.Controls.Add(this.dateTimePickerFrom);
             this.panel2.Location = new System.Drawing.Point(6, 43);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(967, 502);
+            this.panel2.Size = new System.Drawing.Size(982, 502);
             this.panel2.TabIndex = 26;
             // 
             // lblTotalValueFromDB
             // 
             this.lblTotalValueFromDB.AutoSize = true;
             this.lblTotalValueFromDB.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblTotalValueFromDB.Location = new System.Drawing.Point(797, 349);
+            this.lblTotalValueFromDB.Location = new System.Drawing.Point(855, 332);
             this.lblTotalValueFromDB.Name = "lblTotalValueFromDB";
-            this.lblTotalValueFromDB.Size = new System.Drawing.Size(19, 21);
+            this.lblTotalValueFromDB.Size = new System.Drawing.Size(40, 21);
             this.lblTotalValueFromDB.TabIndex = 18;
-            this.lblTotalValueFromDB.Text = "0";
+            this.lblTotalValueFromDB.Text = "0 Kč";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label29.Location = new System.Drawing.Point(745, 304);
+            this.label29.Location = new System.Drawing.Point(718, 332);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(131, 21);
             this.label29.TabIndex = 17;
@@ -498,7 +509,7 @@ namespace KuponySlevomat {
             // 
             this.lblTotalCountFromDB.AutoSize = true;
             this.lblTotalCountFromDB.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblTotalCountFromDB.Location = new System.Drawing.Point(797, 243);
+            this.lblTotalCountFromDB.Location = new System.Drawing.Point(830, 245);
             this.lblTotalCountFromDB.Name = "lblTotalCountFromDB";
             this.lblTotalCountFromDB.Size = new System.Drawing.Size(19, 21);
             this.lblTotalCountFromDB.TabIndex = 16;
@@ -508,7 +519,7 @@ namespace KuponySlevomat {
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label30.Location = new System.Drawing.Point(758, 198);
+            this.label30.Location = new System.Drawing.Point(720, 245);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(104, 21);
             this.label30.TabIndex = 15;
@@ -517,7 +528,7 @@ namespace KuponySlevomat {
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(573, 153);
+            this.label28.Location = new System.Drawing.Point(592, 153);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(83, 17);
             this.label28.TabIndex = 13;
@@ -565,12 +576,12 @@ namespace KuponySlevomat {
             this.listBoxShowSavedTickets.ItemHeight = 17;
             this.listBoxShowSavedTickets.Location = new System.Drawing.Point(31, 176);
             this.listBoxShowSavedTickets.Name = "listBoxShowSavedTickets";
-            this.listBoxShowSavedTickets.Size = new System.Drawing.Size(639, 259);
+            this.listBoxShowSavedTickets.Size = new System.Drawing.Size(658, 259);
             this.listBoxShowSavedTickets.TabIndex = 8;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(334, 109);
+            this.btnSearch.Location = new System.Drawing.Point(334, 114);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(97, 33);
             this.btnSearch.TabIndex = 7;
@@ -602,7 +613,7 @@ namespace KuponySlevomat {
             // 
             this.CBoxCompanySearch.DisplayMember = "0";
             this.CBoxCompanySearch.FormattingEnabled = true;
-            this.CBoxCompanySearch.Location = new System.Drawing.Point(31, 117);
+            this.CBoxCompanySearch.Location = new System.Drawing.Point(31, 119);
             this.CBoxCompanySearch.Name = "CBoxCompanySearch";
             this.CBoxCompanySearch.Size = new System.Drawing.Size(132, 25);
             this.CBoxCompanySearch.TabIndex = 4;
@@ -717,7 +728,7 @@ namespace KuponySlevomat {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 582);
+            this.ClientSize = new System.Drawing.Size(988, 573);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -805,6 +816,7 @@ namespace KuponySlevomat {
         private System.Windows.Forms.Label lblTotalCountFromDB;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label lblTotalValueFromDB;
+        private System.Windows.Forms.Label label31;
     }
 }
 
