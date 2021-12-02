@@ -126,19 +126,19 @@ namespace KuponySlevomat {
 
         private void AddTicket() {
             if (CBoxCompany.SelectedIndex == 0) {
-                if (!ticketController.AddSodexoTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) || txbEAN.Text.Trim().Length != 24) { 
+                if (!ticketController.AddSodexoTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) || txbEAN.Text.Trim().Length != 24) {
                     MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
                 }
             } else if (CBoxCompany.SelectedIndex == 1) {
-                if (!ticketController.AddUpTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) || txbEAN.Text.Trim().Length != 24) { 
+                if (!ticketController.AddUpTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) || txbEAN.Text.Trim().Length != 24) {
                     MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
                 }
             } else if (CBoxCompany.SelectedIndex == 2) {
-                if (!ticketController.AddEdenredTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) || txbEAN.Text.Trim().Length != 32) { 
+                if (!ticketController.AddEdenredTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) || txbEAN.Text.Trim().Length != 32) {
                     MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
@@ -188,7 +188,7 @@ namespace KuponySlevomat {
                 ticketController.Tickets.Clear();
                 ShowDataInListBox();
             } else {
-                MessageBox.Show("Něco se nepovedlo");
+                MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
             }
         }
 
@@ -229,18 +229,22 @@ namespace KuponySlevomat {
         }
 
         private void btnSearch_Click(object sender, EventArgs e) {
-            Ticket[] loadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
+            try {
+                Ticket[] loadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
 
-            listBoxShowSavedTickets.Items.Clear();
-            listBoxShowSavedTickets.Items.AddRange(loadedTickets);
+                listBoxShowSavedTickets.Items.Clear();
+                listBoxShowSavedTickets.Items.AddRange(loadedTickets);
 
-            lblTotalCountFromDB.Text = loadedTickets.Count().ToString();
+                lblTotalCountFromDB.Text = loadedTickets.Count().ToString();
 
-            int totalValue = 0;
-            foreach (Ticket tic in loadedTickets) {
-                totalValue += Int32.Parse(tic.Value);
+                int totalValue = 0;
+                foreach (Ticket tic in loadedTickets) {
+                    totalValue += Int32.Parse(tic.Value);
+                }
+                lblTotalValueFromDB.Text = totalValue.ToString() + " Kč";
+            } catch (Microsoft.Data.Sqlite.SqliteException) {
+                MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
             }
-            lblTotalValueFromDB.Text = totalValue.ToString() + " Kč";
         }
 
         private void menuAddTickets_Click(object sender, EventArgs e) {
