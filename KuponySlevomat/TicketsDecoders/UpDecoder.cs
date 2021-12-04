@@ -30,7 +30,7 @@ namespace KuponySlevomat.TicketsDecoders {
         }
 
         private string DecodeValidity() {
-            return "99";
+            return string.Empty;
         }
 
         private string DecodeType(string ean) {

@@ -317,6 +317,7 @@ namespace KuponySlevomat {
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.White;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAddTickets,
             this.menuShowInfo,
@@ -728,6 +729,7 @@ namespace KuponySlevomat {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(988, 573);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);

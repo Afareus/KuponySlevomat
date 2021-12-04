@@ -155,7 +155,7 @@ namespace KuponySlevomat {
                 lblType.Text = ticketController.Tickets[index].Type;
                 lblCompany.Text = ticketController.Tickets[index].Company;
                 lblValue.Text = ticketController.Tickets[index].Value;
-                if (int.Parse(ticketController.Tickets[index].Validity) == 99) {
+                if (ticketController.Tickets[index].Validity == string.Empty) {
                     lblValidity.Text = "Na šeku";
                 } else {
                     lblValidity.Text = "31.12.20" + ticketController.Tickets[index].Validity;

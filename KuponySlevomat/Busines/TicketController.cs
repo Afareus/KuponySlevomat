@@ -31,7 +31,7 @@ namespace KuponySlevomat.Busines {
 
         internal bool AddUpTicketToList(string ean, string date) {
             Ticket ticketToAdd = new UpDecoder().DecodeUpTicket(ean, date);
-            if (int.Parse(ticketToAdd.Validity) > 20 && int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    // podmínka pro uložení 
+            if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    // podmínka pro uložení 
                 Tickets.Add(ticketToAdd);
                 return true;
             } else {
