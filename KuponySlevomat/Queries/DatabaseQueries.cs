@@ -56,36 +56,80 @@ namespace KuponySlevomat.Queries {
             return tickets.ToArray();
         }
 
+        //internal bool SaveTickets(Ticket[] ticketsToSave) {                                          // POMALÝ ZPŮSOB UKLÁDÁNÍ
+        //    using (SqliteConnection conn = new SqliteConnection("data source =" + Path)) {
+        //        foreach (Ticket tic in ticketsToSave) {
+        //            string saveTicketQuery = "INSERT INTO Tickets(EAN,Company,Type,Value,Validity,Date) VALUES ('" + tic.Ean + "','" + tic.Company + "','" + tic.Type + "','" + tic.Value + "','" + tic.Validity + "','" + tic.Added + "')";
+        //            SqliteCommand cmd = new SqliteCommand(saveTicketQuery, conn);
+        //            conn.Open();
+        //            try {
+        //                cmd.ExecuteNonQuery();
+        //            } catch (SqliteException) {
+        //                return false;
+        //            } finally {
+        //                conn.Close();
+        //            }
+        //            conn.Close();
+        //        }
+        //    }
+        //    return true;
+        //}
+
+
+
         internal bool SaveTickets(Ticket[] ticketsToSave) {
             using (SqliteConnection conn = new SqliteConnection("data source =" + Path)) {
-                foreach (Ticket tic in ticketsToSave) {
-                    string saveTicketQuery = "INSERT INTO Tickets(EAN,Company,Type,Value,Validity,Date) VALUES ('" + tic.Ean + "','" + tic.Company + "','" + tic.Type + "','" + tic.Value + "','" + tic.Validity + "','" + tic.Added + "')";
-                    SqliteCommand cmd = new SqliteCommand(saveTicketQuery, conn);
-                    conn.Open();
-                    try {
-                        cmd.ExecuteNonQuery();
-                    } catch (SqliteException) {
-                        return false;
-                    } finally {
-                        conn.Close();
+                conn.Open();
+                using (var transaction = conn.BeginTransaction()) {
+                    var command = conn.CreateCommand();
+                    command.CommandText = @"INSERT INTO Tickets(EAN,Company,Type,Value,Validity,Date) VALUES ($ean, $company, $type, $value, $validity, $added)";
+
+                    var parameter1 = command.CreateParameter();
+                    parameter1.ParameterName = "$ean";
+                    command.Parameters.Add(parameter1);
+
+                    var parameter2 = command.CreateParameter();
+                    parameter2.ParameterName = "$company";
+                    command.Parameters.Add(parameter2);
+
+                    var parameter3 = command.CreateParameter();
+                    parameter3.ParameterName = "$type";
+                    command.Parameters.Add(parameter3);
+
+                    var parameter4 = command.CreateParameter();
+                    parameter4.ParameterName = "$value";
+                    command.Parameters.Add(parameter4);
+
+                    var parameter5 = command.CreateParameter();
+                    parameter5.ParameterName = "$validity";
+                    command.Parameters.Add(parameter5);
+
+                    var parameter6 = command.CreateParameter();
+                    parameter6.ParameterName = "$added";
+                    command.Parameters.Add(parameter6);
+
+                    foreach (Ticket tic in ticketsToSave) {
+                        parameter1.Value = tic.Ean;
+                        parameter2.Value = tic.Company;
+                        parameter3.Value = tic.Type;
+                        parameter4.Value = tic.Value;
+                        parameter5.Value = tic.Validity;
+                        parameter6.Value = tic.Added;
+
+                        command.ExecuteNonQuery();
                     }
-                    conn.Close();
+                    transaction.Commit();
                 }
+                conn.Close();
             }
             return true;
         }
 
+
+
         internal Ticket[] GetTickets(int selectedIndex, DateTimePicker dateTimePickerFrom, DateTimePicker dateTimePickerTo) {
-
-            string dayFrom = dateTimePickerFrom.Value.ToString().Substring(0, 2);
-            string monthFrom = dateTimePickerFrom.Value.ToString().Substring(3, 2);
-            string yearFrom = dateTimePickerFrom.Value.ToString().Substring(6, 4);
-            string dateFrom = $"{yearFrom}-{monthFrom}-{dayFrom}";
-
-            string dayTo = dateTimePickerTo.Value.ToString().Substring(0, 2);
-            string monthTo = dateTimePickerTo.Value.ToString().Substring(3, 2);
-            string yearTo = dateTimePickerTo.Value.ToString().Substring(6, 4);
-            string dateTo = $"{yearTo}-{monthTo}-{dayTo}";
+            string dateFrom = DateFormatCnvertor(dateTimePickerFrom);
+            string dateTo = DateFormatCnvertor(dateTimePickerTo);
 
             string selectAllQuery;
 
@@ -99,7 +143,7 @@ namespace KuponySlevomat.Queries {
                 selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "'";
             }
 
-    
+
             List<Ticket> tickets = new List<Ticket>();
 
             using (SqliteConnection conn = new SqliteConnection("data source =" + Path)) {
@@ -114,6 +158,14 @@ namespace KuponySlevomat.Queries {
                 conn.Close();
             }
             return tickets.ToArray();
+        }
+
+        private static string DateFormatCnvertor(DateTimePicker dateTime) {
+            string day = dateTime.Value.ToString().Substring(0, 2);
+            string month = dateTime.Value.ToString().Substring(3, 2);
+            string year = dateTime.Value.ToString().Substring(6, 4);
+            string date = $"{year}-{month}-{day}";
+            return date;
         }
     }
 }
