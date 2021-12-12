@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XpoLb+CKPzOHe11B5VOVYNPTr8LjXhxZO7E4ga6zjx+qn+Bft4LIaepiID8tn+4Qes/iVwQwwoIq+BKhTO5KTw==",
+  "dgSpecHash": "YfVW+SRvwBB7QqqcS2xiQlNV1OYQcgNPe2p+koWSTk2TFC6DcBXe4kkyxS7nEOIuxVTsb3wfD0UADV/BAoHL8A==",
   "success": true,
-  "projectFilePath": "F:\\Projekty\\KuponySlevomat\\KuponySlevomat\\KuponySlevomat.csproj",
+  "projectFilePath": "F:\\Projekty\\KuponySlevomat_\\KuponySlevomat\\KuponySlevomat.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Gabriel Kovács\\.nuget\\packages\\microsoft.data.sqlite\\6.0.0\\microsoft.data.sqlite.6.0.0.nupkg.sha512",
     "C:\\Users\\Gabriel Kovács\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.0\\microsoft.data.sqlite.core.6.0.0.nupkg.sha512",

@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using KuponySlevomat.Model;
 using KuponySlevomat.Queries;
 using KuponySlevomat.TicketsDecoders;
+using KuponySlevomat.TestData;
 
 namespace KuponySlevomat.Busines {
     class TicketController {
@@ -17,11 +18,13 @@ namespace KuponySlevomat.Busines {
         public TicketController(string path) {
             Tickets = new List<Ticket>();
             databaseQueries = new DatabaseQueries(path);
+
+            //Tickets = TestDataCreator.CreateTestTickets();                   // TESTOVACÍ DATA - zobrazí se po načtení první poukázky
         }
 
         internal bool AddSodexoTicketToList(string ean, string date) {
             Ticket ticketToAdd = new SodexoDecoder().DecodeSodexoTicket(ean, date);
-            if (int.Parse(ticketToAdd.Validity) > 20 && int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    // podmínka pro uložení 
+            if (int.Parse(ticketToAdd.Validity) > 20 && int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    
                 Tickets.Add(ticketToAdd);
                 return true;
             } else {
@@ -31,7 +34,7 @@ namespace KuponySlevomat.Busines {
 
         internal bool AddUpTicketToList(string ean, string date) {
             Ticket ticketToAdd = new UpDecoder().DecodeUpTicket(ean, date);
-            if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    // podmínka pro uložení 
+            if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    
                 Tickets.Add(ticketToAdd);
                 return true;
             } else {
@@ -41,7 +44,7 @@ namespace KuponySlevomat.Busines {
 
         internal bool AddEdenredTicketToList(string ean, string date) {
             Ticket ticketToAdd = new EdenredDecoder().DecodeEdenredTicket(ean, date);
-            if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    // podmínka pro uložení 
+            if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    
                 Tickets.Add(ticketToAdd);
                 return true;
             } else {
