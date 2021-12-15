@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace KuponySlevomat.TicketsDecoders {
     class EdenredDecoder {
 
-        public Ticket DecodeEdenredTicket(string ean, string date) {
+        public Ticket DecodeTicket(string ean, string date) {
             Ticket decodedTicket = new Ticket();
             decodedTicket.Ean = ean;
             decodedTicket.Company = "Edenred";
