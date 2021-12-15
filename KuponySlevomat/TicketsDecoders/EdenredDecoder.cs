@@ -6,34 +6,43 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace KuponySlevomat.TicketsDecoders {
-    class EdenredDecoder {
+    class EdenredDecoder: ITicketDecoder {
+
+        private string ean;
+        private string date;
 
         public Ticket DecodeTicket(string ean, string date) {
+            this.ean = ean;
+            this.date = date;
+
             Ticket decodedTicket = new Ticket();
             decodedTicket.Ean = ean;
             decodedTicket.Company = "Edenred";
-            decodedTicket.Type = DecodeType(ean);
-            decodedTicket.Value = DecodeValue(ean);
-            decodedTicket.Validity = DedoceValidity(ean);
-
-            string day = date.Substring(0, 2);
-            string month = date.Substring(3, 2);
-            string year = date.Substring(6, 4);
-            string formatDate = $"{year}-{month}-{day}";
-            decodedTicket.Added = formatDate;
+            decodedTicket.Added = FormateDate();
+            decodedTicket.Validity = DecodeValidity();
+            decodedTicket.Value = DecodeValue();
+            decodedTicket.Type = DecodeType();
 
             return decodedTicket;
         }
 
-        private string DedoceValidity(string ean) {
+        private string FormateDate() {
+            string day = date.Substring(0, 2);
+            string month = date.Substring(3, 2);
+            string year = date.Substring(6, 4);
+            string formatedDate = $"{year}-{month}-{day}";
+            return formatedDate;
+        }
+
+        private string DecodeValidity() {
             return ean.Substring(2, 2);
         }
 
-        private string DecodeValue(string ean) {
+        private string DecodeValue() {
             return ean.Substring(13, 6);
         }
 
-        private string DecodeType(string ean) {
+        private string DecodeType() {
             if (ean.Length == 32) {
                 string eanPartofType = ean.Substring(27, 3);
                 switch (eanPartofType) {
