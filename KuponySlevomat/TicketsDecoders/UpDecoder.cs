@@ -6,34 +6,43 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace KuponySlevomat.TicketsDecoders {
-    class UpDecoder {
+    class UpDecoder : ITicketDecoder {
+
+        private string ean;
+        private string date;
 
         public Ticket DecodeTicket(string ean, string date) {
+            this.ean = ean;
+            this.date = date;
+
             Ticket decodedTicket = new Ticket();
             decodedTicket.Ean = ean;
             decodedTicket.Company = "Up";
-            decodedTicket.Type = DecodeType(ean);
-            decodedTicket.Value = DecodeValue(ean);
+            decodedTicket.Added = FormateDate();
             decodedTicket.Validity = DecodeValidity();
-
-            string day = date.Substring(0, 2);
-            string month = date.Substring(3, 2);
-            string year = date.Substring(6, 4);
-            string formatDate = $"{year}-{month}-{day}";
-            decodedTicket.Added = formatDate;
+            decodedTicket.Value = DecodeValue();
+            decodedTicket.Type = DecodeType();
 
             return decodedTicket;
         }
 
-        private string DecodeValue(string ean) {
-            return ean.Substring(12, 5);
+        private string FormateDate() {
+            string day = date.Substring(0, 2);
+            string month = date.Substring(3, 2);
+            string year = date.Substring(6, 4);
+            string formatedDate = $"{year}-{month}-{day}";
+            return formatedDate;
         }
 
         private string DecodeValidity() {
             return string.Empty;
         }
 
-        private string DecodeType(string ean) {
+        private string DecodeValue() {
+            return ean.Substring(12, 5);
+        }
+
+        private string DecodeType() {
             string eanPartofType = ean.Substring(21, 1);
             switch (eanPartofType) {
                 case "1": return "Stravenka";
