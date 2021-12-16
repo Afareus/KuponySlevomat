@@ -52,6 +52,16 @@ namespace KuponySlevomat.Busines {
             }
         }
 
+        internal bool AddMojeStravenkaTicketToList(string ean, string date) {
+            Ticket ticketToAdd = new MojeStravenkaDecoder().DecodeTicket(ean, date);
+            if (int.Parse(ticketToAdd.Value) <= 5000 && int.Parse(ticketToAdd.Validity) > 20) {        // zkontrolovat
+                Tickets.Add(ticketToAdd);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         internal Ticket[] ReturnAllAddedTickets() {
             return Tickets.ToArray();
         }

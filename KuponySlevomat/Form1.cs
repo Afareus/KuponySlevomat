@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using KuponySlevomat.Busines;
@@ -28,6 +29,7 @@ namespace KuponySlevomat {
             CBoxCompanySearch.Items.Insert(1, "Sodexo");
             CBoxCompanySearch.Items.Insert(2, "UP");
             CBoxCompanySearch.Items.Insert(3, "Edenred");
+            CBoxCompanySearch.Items.Insert(4, "Moje Stravenka");
             CBoxCompanySearch.SelectedIndex = 0;
         }
 
@@ -126,19 +128,25 @@ namespace KuponySlevomat {
 
         private void AddTicket() {
             if (CBoxCompany.SelectedIndex == 0) {
-                if (!ticketController.AddSodexoTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) || txbEAN.Text.Trim().Length != 24) {
+                if (txbEAN.Text.Trim().Length != 24 || !ticketController.AddSodexoTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString())) {
                     MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
                 }
             } else if (CBoxCompany.SelectedIndex == 1) {
-                if (!ticketController.AddUpTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) || txbEAN.Text.Trim().Length != 24) {
+                if (txbEAN.Text.Trim().Length != 24 || !ticketController.AddUpTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString())) {
                     MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
                 }
             } else if (CBoxCompany.SelectedIndex == 2) {
-                if (!ticketController.AddEdenredTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString()) || txbEAN.Text.Trim().Length != 32) {
+                if (txbEAN.Text.Trim().Length != 32 || !ticketController.AddEdenredTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString())) {
+                    MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
+                } else {
+                    ShowInfo();
+                }
+            } else if (CBoxCompany.SelectedIndex == 3) {
+                if (txbEAN.Text.Trim().Length != 22 || !ticketController.AddMojeStravenkaTicketToList(txbEAN.Text.Trim(), dateTimePickerAcceptedDay.Value.ToString())) {
                     MessageBox.Show("Nelze načíst všechna data z kupónu. Zkontrolujte výběr firmy.");
                 } else {
                     ShowInfo();
