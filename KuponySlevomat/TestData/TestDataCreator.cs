@@ -18,20 +18,11 @@ namespace KuponySlevomat.TestData {
                 ticket.Type = "Bla bla bla";
                 ticket.Value = "1000";
                 ticket.Validity = "22";
-                ticket.Added = DateFormatCnvertor(DateTime.Now);
+                ticket.Added = DateTime.Now.ToString("yyyy-MM-dd");
 
                 tickets.Add(ticket);
             }
             return tickets;
-        }
-
-
-        private static string DateFormatCnvertor(DateTime dateTime) {
-            string day = dateTime.ToString().Substring(0, 2);
-            string month = dateTime.ToString().Substring(3, 2);
-            string year = dateTime.ToString().Substring(6, 4);
-            string date = $"{year}-{month}-{day}";
-            return date;
         }
 
     }

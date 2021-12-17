@@ -14,20 +14,12 @@ namespace KuponySlevomat.TicketsDecoders {
             Ticket decodedTicket = new Ticket();
             decodedTicket.Ean = ean;
             decodedTicket.Company = "Sodexo";
-            decodedTicket.Added = FormateDate();
+            decodedTicket.Added = date;
             decodedTicket.Validity = DecodeValidity();
             decodedTicket.Value = DecodeValue();
             decodedTicket.Type = DecodeType();
 
             return decodedTicket;
-        }
-
-        private string FormateDate() {
-            string day = date.Substring(0, 2);
-            string month = date.Substring(3, 2);
-            string year = date.Substring(6, 4);
-            string formatedDate = $"{year}-{month}-{day}";
-            return formatedDate;
         }
 
         private string DecodeValidity() {

@@ -129,8 +129,8 @@ namespace KuponySlevomat.Queries {
 
 
         internal Ticket[] GetTickets(int selectedIndex, DateTimePicker dateTimePickerFrom, DateTimePicker dateTimePickerTo) {
-            string dateFrom = DateFormatConvertor(dateTimePickerFrom);
-            string dateTo = DateFormatConvertor(dateTimePickerTo);
+            string dateFrom = dateTimePickerFrom.Value.ToString("yyyy-MM-dd");
+            string dateTo = dateTimePickerTo.Value.ToString("yyyy-MM-dd");
 
             string selectAllQuery;
 
@@ -161,14 +161,6 @@ namespace KuponySlevomat.Queries {
                 conn.Close();
             }
             return tickets.ToArray();
-        }
-
-        private static string DateFormatConvertor(DateTimePicker dateTime) {
-            string day = dateTime.Value.ToString().Substring(0, 2);
-            string month = dateTime.Value.ToString().Substring(3, 2);
-            string year = dateTime.Value.ToString().Substring(6, 4);
-            string date = $"{year}-{month}-{day}";
-            return date;
         }
     }
 }
