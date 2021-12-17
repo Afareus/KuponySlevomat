@@ -74,23 +74,23 @@ namespace KuponySlevomat {
             for (int i = 0; i < charEAN.Length; i++) {
                 if (charEAN[i] == '+') {
                     okEAN[i] = '1';
-                } else if (charEAN[i] == 'ě') {
+                } else if (charEAN[i] == 'ě' || charEAN[i] == 'Ě') {
                     okEAN[i] = '2';
-                } else if (charEAN[i] == 'š') {
+                } else if (charEAN[i] == 'š' || charEAN[i] == 'Š') {
                     okEAN[i] = '3';
-                } else if (charEAN[i] == 'č') {
+                } else if (charEAN[i] == 'č' || charEAN[i] == 'Č') {
                     okEAN[i] = '4';
-                } else if (charEAN[i] == 'ř') {
+                } else if (charEAN[i] == 'ř' || charEAN[i] == 'Ř') {
                     okEAN[i] = '5';
-                } else if (charEAN[i] == 'ž') {
+                } else if (charEAN[i] == 'ž' || charEAN[i] == 'Ž') {
                     okEAN[i] = '6';
-                } else if (charEAN[i] == 'ý') {
+                } else if (charEAN[i] == 'ý' || charEAN[i] == 'Ý') {
                     okEAN[i] = '7';
-                } else if (charEAN[i] == 'á') {
+                } else if (charEAN[i] == 'á' || charEAN[i] == 'Á') {
                     okEAN[i] = '8';
-                } else if (charEAN[i] == 'í') {
+                } else if (charEAN[i] == 'í' || charEAN[i] == 'Í') {
                     okEAN[i] = '9';
-                } else if (charEAN[i] == 'é') {
+                } else if (charEAN[i] == 'é' || charEAN[i] == 'É') {
                     okEAN[i] = '0';
                 } else if (charEAN[i] > 47 && charEAN[i] < 58) {
                     okEAN[i] = charEAN[i];
@@ -241,7 +241,7 @@ namespace KuponySlevomat {
                 Ticket[] loadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
 
                 listBoxShowSavedTickets.Items.Clear();
-                listBoxShowSavedTickets.Items.AddRange(loadedTickets);
+                listBoxShowSavedTickets.Items.AddRange(loadedTickets);                       // pro 100k stravenek trvá i 30s !!!
 
                 lblTotalCountFromDB.Text = loadedTickets.Count().ToString();
 

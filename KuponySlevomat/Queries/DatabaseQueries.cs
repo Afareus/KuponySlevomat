@@ -2,6 +2,7 @@
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -128,8 +129,8 @@ namespace KuponySlevomat.Queries {
 
 
         internal Ticket[] GetTickets(int selectedIndex, DateTimePicker dateTimePickerFrom, DateTimePicker dateTimePickerTo) {
-            string dateFrom = DateFormatCnvertor(dateTimePickerFrom);
-            string dateTo = DateFormatCnvertor(dateTimePickerTo);
+            string dateFrom = DateFormatConvertor(dateTimePickerFrom);
+            string dateTo = DateFormatConvertor(dateTimePickerTo);
 
             string selectAllQuery;
 
@@ -162,7 +163,7 @@ namespace KuponySlevomat.Queries {
             return tickets.ToArray();
         }
 
-        private static string DateFormatCnvertor(DateTimePicker dateTime) {
+        private static string DateFormatConvertor(DateTimePicker dateTime) {
             string day = dateTime.Value.ToString().Substring(0, 2);
             string month = dateTime.Value.ToString().Substring(3, 2);
             string year = dateTime.Value.ToString().Substring(6, 4);
