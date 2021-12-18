@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace KuponySlevomat.TicketsDecoders {
-    class UpDecoder : ITicketDecoder {
+    class MojeStravenkaDecoder : ITicketDecoder {
 
         private string ean;
         private string date;
@@ -17,7 +17,7 @@ namespace KuponySlevomat.TicketsDecoders {
 
             Ticket decodedTicket = new Ticket();
             decodedTicket.Ean = ean;
-            decodedTicket.Company = "Up";
+            decodedTicket.Company = "Moje Stravenka";
             decodedTicket.Added = date;
             decodedTicket.Validity = DecodeValidity();
             decodedTicket.Value = DecodeValue();
@@ -27,23 +27,15 @@ namespace KuponySlevomat.TicketsDecoders {
         }
 
         private string DecodeValidity() {
-            return string.Empty;
+            return ean.Substring(2, 2);          // asi hotovo
         }
 
         private string DecodeValue() {
-            return ean.Substring(12, 5);
+            return Int32.Parse(ean.Substring(7, 5)).ToString();      // asi hotovo
         }
 
-        private string DecodeType() {
-            string eanPartofType = ean.Substring(21, 1);
-            switch (eanPartofType) {
-                case "1": return "Stravenka";
-                case "2": return "Cadhoc";
-                case "3": return "Dovolená";
-                case "4": return "Unišek";
-                case "5": return "Unišek +";
-                default: return "NEZNÁMÝ TYP";    
-            }
+        private string DecodeType() {       // nemá typy
+            return string.Empty;
         }
     }
 }

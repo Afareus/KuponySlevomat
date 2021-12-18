@@ -23,7 +23,7 @@ namespace KuponySlevomat.Busines {
         }
 
         internal bool AddSodexoTicketToList(string ean, string date) {
-            Ticket ticketToAdd = new SodexoDecoder().DecodeSodexoTicket(ean, date);
+            Ticket ticketToAdd = new SodexoDecoder().DecodeTicket(ean, date);
             if (int.Parse(ticketToAdd.Validity) > 20 && int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    
                 Tickets.Add(ticketToAdd);
                 return true;
@@ -33,7 +33,7 @@ namespace KuponySlevomat.Busines {
         }
 
         internal bool AddUpTicketToList(string ean, string date) {
-            Ticket ticketToAdd = new UpDecoder().DecodeUpTicket(ean, date);
+            Ticket ticketToAdd = new UpDecoder().DecodeTicket(ean, date);
             if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    
                 Tickets.Add(ticketToAdd);
                 return true;
@@ -43,8 +43,18 @@ namespace KuponySlevomat.Busines {
         }
 
         internal bool AddEdenredTicketToList(string ean, string date) {
-            Ticket ticketToAdd = new EdenredDecoder().DecodeEdenredTicket(ean, date);
+            Ticket ticketToAdd = new EdenredDecoder().DecodeTicket(ean, date);
             if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    
+                Tickets.Add(ticketToAdd);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        internal bool AddMojeStravenkaTicketToList(string ean, string date) {
+            Ticket ticketToAdd = new MojeStravenkaDecoder().DecodeTicket(ean, date);
+            if (int.Parse(ticketToAdd.Value) <= 5000 && int.Parse(ticketToAdd.Validity) > 20) {        // zkontrolovat
                 Tickets.Add(ticketToAdd);
                 return true;
             } else {

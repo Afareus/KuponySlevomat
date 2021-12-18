@@ -177,7 +177,8 @@ namespace KuponySlevomat {
             this.CBoxCompany.Items.AddRange(new object[] {
             "Sodexo",
             "Up",
-            "Edenred"});
+            "Edenred",
+            "Moje Stravenka"});
             this.CBoxCompany.Location = new System.Drawing.Point(47, 138);
             this.CBoxCompany.Name = "CBoxCompany";
             this.CBoxCompany.Size = new System.Drawing.Size(144, 25);
