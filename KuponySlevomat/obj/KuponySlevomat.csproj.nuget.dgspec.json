@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Projekty\\KuponySlevomat_\\KuponySlevomat\\KuponySlevomat.csproj": {}
+    "F:\\Projekty\\KuponySlevomat\\KuponySlevomat\\KuponySlevomat.csproj": {}
   },
   "projects": {
-    "F:\\Projekty\\KuponySlevomat_\\KuponySlevomat\\KuponySlevomat.csproj": {
+    "F:\\Projekty\\KuponySlevomat\\KuponySlevomat\\KuponySlevomat.csproj": {
       "version": "1.1.0",
       "restore": {
-        "projectUniqueName": "F:\\Projekty\\KuponySlevomat_\\KuponySlevomat\\KuponySlevomat.csproj",
+        "projectUniqueName": "F:\\Projekty\\KuponySlevomat\\KuponySlevomat\\KuponySlevomat.csproj",
         "projectName": "KuponySken",
-        "projectPath": "F:\\Projekty\\KuponySlevomat_\\KuponySlevomat\\KuponySlevomat.csproj",
+        "projectPath": "F:\\Projekty\\KuponySlevomat\\KuponySlevomat\\KuponySlevomat.csproj",
         "packagesPath": "C:\\Users\\Gabriel Kovács\\.nuget\\packages\\",
-        "outputPath": "F:\\Projekty\\KuponySlevomat_\\KuponySlevomat\\obj\\",
+        "outputPath": "F:\\Projekty\\KuponySlevomat\\KuponySlevomat\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"

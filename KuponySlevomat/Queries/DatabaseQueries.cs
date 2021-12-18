@@ -57,26 +57,6 @@ namespace KuponySlevomat.Queries {
             return tickets.ToArray();
         }
 
-        //internal bool SaveTickets(Ticket[] ticketsToSave) {                                          // POMALÝ ZPŮSOB UKLÁDÁNÍ
-        //    using (SqliteConnection conn = new SqliteConnection("data source =" + Path)) {
-        //        foreach (Ticket tic in ticketsToSave) {
-        //            string saveTicketQuery = "INSERT INTO Tickets(EAN,Company,Type,Value,Validity,Date) VALUES ('" + tic.Ean + "','" + tic.Company + "','" + tic.Type + "','" + tic.Value + "','" + tic.Validity + "','" + tic.Added + "')";
-        //            SqliteCommand cmd = new SqliteCommand(saveTicketQuery, conn);
-        //            conn.Open();
-        //            try {
-        //                cmd.ExecuteNonQuery();
-        //            } catch (SqliteException) {
-        //                return false;
-        //            } finally {
-        //                conn.Close();
-        //            }
-        //            conn.Close();
-        //        }
-        //    }
-        //    return true;
-        //}
-
-
 
         internal bool SaveTickets(Ticket[] ticketsToSave) {
             using (SqliteConnection conn = new SqliteConnection("data source =" + Path)) {
