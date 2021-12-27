@@ -39,8 +39,8 @@ namespace KuponySlevomat.TicketsDecoders {
 
             switch (eanPartofType) {
                 case "10": return "Gastro Pass";
-                case "30": return "Dárkový Pas";
-                case "70": return "Holiday Pas";
+                case "30": return "Dárkový Pass";
+                case "70": return "Holiday Pass";
                 case "71": return "Relax Pass";
                 case "73": return "Vital Pass";
                 case "75": return "Flexi Pass";

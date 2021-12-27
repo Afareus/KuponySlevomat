@@ -26,23 +26,10 @@ namespace KuponySlevomat {
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.txbEAN = new System.Windows.Forms.TextBox();
-            this.lblEAN = new System.Windows.Forms.Label();
-            this.lblCompany = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
-            this.lblValue = new System.Windows.Forms.Label();
-            this.lblValidity = new System.Windows.Forms.Label();
-            this.lblAdded = new System.Windows.Forms.Label();
             this.lblCountTickets = new System.Windows.Forms.Label();
             this.CBoxCompany = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.listBoxAddedTickets = new System.Windows.Forms.ListBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -51,6 +38,8 @@ namespace KuponySlevomat {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuAddTickets = new System.Windows.Forms.ToolStripMenuItem();
             this.menuShowInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.vypsatSeznamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.jenSouhrnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label31 = new System.Windows.Forms.Label();
@@ -62,24 +51,15 @@ namespace KuponySlevomat {
             this.label20 = new System.Windows.Forms.Label();
             this.dateTimePickerAcceptedDay = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblTotalValueFromDB = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.lblTotalCountFromDB = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.txbSummaryInfo = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.listBoxShowSavedTickets = new System.Windows.Forms.ListBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.CBoxCompanySearch = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCreateDB = new System.Windows.Forms.Button();
             this.txbPath = new System.Windows.Forms.TextBox();
@@ -87,11 +67,25 @@ namespace KuponySlevomat {
             this.label18 = new System.Windows.Forms.Label();
             this.btnSetPath = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
+            this.lblTotalValueFromDB = new System.Windows.Forms.Label();
+            this.lblTotalCountFromDB = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.CBoxCompanySearch = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,60 +98,6 @@ namespace KuponySlevomat {
             this.txbEAN.Size = new System.Drawing.Size(314, 31);
             this.txbEAN.TabIndex = 0;
             this.txbEAN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbEAN_Enter);
-            // 
-            // lblEAN
-            // 
-            this.lblEAN.AutoSize = true;
-            this.lblEAN.Location = new System.Drawing.Point(150, 319);
-            this.lblEAN.Name = "lblEAN";
-            this.lblEAN.Size = new System.Drawing.Size(13, 17);
-            this.lblEAN.TabIndex = 1;
-            this.lblEAN.Text = "-";
-            // 
-            // lblCompany
-            // 
-            this.lblCompany.AutoSize = true;
-            this.lblCompany.Location = new System.Drawing.Point(150, 336);
-            this.lblCompany.Name = "lblCompany";
-            this.lblCompany.Size = new System.Drawing.Size(13, 17);
-            this.lblCompany.TabIndex = 2;
-            this.lblCompany.Text = "-";
-            // 
-            // lblType
-            // 
-            this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(150, 353);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(13, 17);
-            this.lblType.TabIndex = 3;
-            this.lblType.Text = "-";
-            // 
-            // lblValue
-            // 
-            this.lblValue.AutoSize = true;
-            this.lblValue.Location = new System.Drawing.Point(150, 370);
-            this.lblValue.Name = "lblValue";
-            this.lblValue.Size = new System.Drawing.Size(13, 17);
-            this.lblValue.TabIndex = 4;
-            this.lblValue.Text = "-";
-            // 
-            // lblValidity
-            // 
-            this.lblValidity.AutoSize = true;
-            this.lblValidity.Location = new System.Drawing.Point(150, 387);
-            this.lblValidity.Name = "lblValidity";
-            this.lblValidity.Size = new System.Drawing.Size(13, 17);
-            this.lblValidity.TabIndex = 5;
-            this.lblValidity.Text = "-";
-            // 
-            // lblAdded
-            // 
-            this.lblAdded.AutoSize = true;
-            this.lblAdded.Location = new System.Drawing.Point(150, 404);
-            this.lblAdded.Name = "lblAdded";
-            this.lblAdded.Size = new System.Drawing.Size(13, 17);
-            this.lblAdded.TabIndex = 6;
-            this.lblAdded.Text = "-";
             // 
             // lblCountTickets
             // 
@@ -204,70 +144,6 @@ namespace KuponySlevomat {
             this.label2.Size = new System.Drawing.Size(56, 21);
             this.label2.TabIndex = 10;
             this.label2.Text = "Firma:\r\n";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 319);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 17);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "EAN:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(47, 288);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(209, 21);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Poslední přidaná poukázka:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(47, 336);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 17);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Firma:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(47, 353);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 17);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Typ:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(47, 370);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 17);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Hodnota:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(47, 387);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 17);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Platnost do:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(47, 404);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 17);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "Přijato:";
             // 
             // label10
             // 
@@ -338,10 +214,26 @@ namespace KuponySlevomat {
             // 
             // menuShowInfo
             // 
+            this.menuShowInfo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.vypsatSeznamToolStripMenuItem,
+            this.jenSouhrnToolStripMenuItem});
             this.menuShowInfo.Name = "menuShowInfo";
             this.menuShowInfo.Size = new System.Drawing.Size(126, 21);
             this.menuShowInfo.Text = "Souhrny poukázek";
-            this.menuShowInfo.Click += new System.EventHandler(this.menuShowInfo_Click);
+            // 
+            // vypsatSeznamToolStripMenuItem
+            // 
+            this.vypsatSeznamToolStripMenuItem.Name = "vypsatSeznamToolStripMenuItem";
+            this.vypsatSeznamToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.vypsatSeznamToolStripMenuItem.Text = "Vypsat seznam";
+            this.vypsatSeznamToolStripMenuItem.Click += new System.EventHandler(this.vypsatSeznamToolStripMenuItem_Click);
+            // 
+            // jenSouhrnToolStripMenuItem
+            // 
+            this.jenSouhrnToolStripMenuItem.Name = "jenSouhrnToolStripMenuItem";
+            this.jenSouhrnToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.jenSouhrnToolStripMenuItem.Text = "Jen souhrn";
+            this.jenSouhrnToolStripMenuItem.Click += new System.EventHandler(this.jenSouhrnToolStripMenuItem_Click);
             // 
             // menuSettings
             // 
@@ -362,28 +254,15 @@ namespace KuponySlevomat {
             this.panel1.Controls.Add(this.dateTimePickerAcceptedDay);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txbEAN);
-            this.panel1.Controls.Add(this.lblAdded);
             this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Controls.Add(this.lblValidity);
             this.panel1.Controls.Add(this.btnOdebratTicket);
-            this.panel1.Controls.Add(this.lblValue);
             this.panel1.Controls.Add(this.lblCountTickets);
-            this.panel1.Controls.Add(this.lblType);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.lblCompany);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.lblEAN);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.CBoxCompany);
             this.panel1.Controls.Add(this.listBoxAddedTickets);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Location = new System.Drawing.Point(1, 36);
+            this.panel1.Location = new System.Drawing.Point(0, 36);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(987, 525);
             this.panel1.TabIndex = 25;
@@ -464,194 +343,108 @@ namespace KuponySlevomat {
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.lblTotalValueFromDB);
-            this.panel2.Controls.Add(this.label29);
             this.panel2.Controls.Add(this.lblTotalCountFromDB);
-            this.panel2.Controls.Add(this.label30);
-            this.panel2.Controls.Add(this.label28);
-            this.panel2.Controls.Add(this.label27);
-            this.panel2.Controls.Add(this.label26);
-            this.panel2.Controls.Add(this.label25);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.listBoxShowSavedTickets);
             this.panel2.Controls.Add(this.btnSearch);
+            this.panel2.Controls.Add(this.label29);
             this.panel2.Controls.Add(this.label16);
+            this.panel2.Controls.Add(this.label30);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.CBoxCompanySearch);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.dateTimePickerTo);
             this.panel2.Controls.Add(this.dateTimePickerFrom);
-            this.panel2.Location = new System.Drawing.Point(6, 43);
+            this.panel2.Location = new System.Drawing.Point(12, 28);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(982, 502);
+            this.panel2.Size = new System.Drawing.Size(965, 533);
             this.panel2.TabIndex = 26;
             // 
-            // lblTotalValueFromDB
+            // panel5
             // 
-            this.lblTotalValueFromDB.AutoSize = true;
-            this.lblTotalValueFromDB.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblTotalValueFromDB.Location = new System.Drawing.Point(855, 332);
-            this.lblTotalValueFromDB.Name = "lblTotalValueFromDB";
-            this.lblTotalValueFromDB.Size = new System.Drawing.Size(40, 21);
-            this.lblTotalValueFromDB.TabIndex = 18;
-            this.lblTotalValueFromDB.Text = "0 Kč";
+            this.panel5.Controls.Add(this.txbSummaryInfo);
+            this.panel5.Location = new System.Drawing.Point(4, 150);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(954, 338);
+            this.panel5.TabIndex = 28;
             // 
-            // label29
+            // txbSummaryInfo
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label29.Location = new System.Drawing.Point(718, 332);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(131, 21);
-            this.label29.TabIndex = 17;
-            this.label29.Text = "Celkem hodnota:";
+            this.txbSummaryInfo.Location = new System.Drawing.Point(27, 10);
+            this.txbSummaryInfo.Multiline = true;
+            this.txbSummaryInfo.Name = "txbSummaryInfo";
+            this.txbSummaryInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txbSummaryInfo.Size = new System.Drawing.Size(915, 325);
+            this.txbSummaryInfo.TabIndex = 0;
             // 
-            // lblTotalCountFromDB
+            // panel4
             // 
-            this.lblTotalCountFromDB.AutoSize = true;
-            this.lblTotalCountFromDB.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblTotalCountFromDB.Location = new System.Drawing.Point(830, 245);
-            this.lblTotalCountFromDB.Name = "lblTotalCountFromDB";
-            this.lblTotalCountFromDB.Size = new System.Drawing.Size(19, 21);
-            this.lblTotalCountFromDB.TabIndex = 16;
-            this.lblTotalCountFromDB.Text = "0";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label30.Location = new System.Drawing.Point(720, 245);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(104, 21);
-            this.label30.TabIndex = 15;
-            this.label30.Text = "Celkem kusů:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(592, 153);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(83, 17);
-            this.label28.TabIndex = 13;
-            this.label28.Text = "Datum přijetí";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(498, 153);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(59, 17);
-            this.label27.TabIndex = 12;
-            this.label27.Text = "Hodnota";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(424, 153);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(28, 17);
-            this.label26.TabIndex = 11;
-            this.label26.Text = "Typ";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(321, 153);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(40, 17);
-            this.label25.TabIndex = 10;
-            this.label25.Text = "Firma";
+            this.panel4.Controls.Add(this.label11);
+            this.panel4.Controls.Add(this.label25);
+            this.panel4.Controls.Add(this.label26);
+            this.panel4.Controls.Add(this.label27);
+            this.panel4.Controls.Add(this.label28);
+            this.panel4.Controls.Add(this.listBoxShowSavedTickets);
+            this.panel4.Location = new System.Drawing.Point(4, 156);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(957, 332);
+            this.panel4.TabIndex = 19;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(158, 153);
+            this.label11.Location = new System.Drawing.Point(229, 28);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(33, 17);
             this.label11.TabIndex = 9;
             this.label11.Text = "EAN";
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(414, 28);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(40, 17);
+            this.label25.TabIndex = 10;
+            this.label25.Text = "Firma";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(517, 28);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(28, 17);
+            this.label26.TabIndex = 11;
+            this.label26.Text = "Typ";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(581, 28);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(59, 17);
+            this.label27.TabIndex = 12;
+            this.label27.Text = "Hodnota";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(679, 28);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(83, 17);
+            this.label28.TabIndex = 13;
+            this.label28.Text = "Datum přijetí";
+            // 
             // listBoxShowSavedTickets
             // 
             this.listBoxShowSavedTickets.FormattingEnabled = true;
             this.listBoxShowSavedTickets.ItemHeight = 17;
-            this.listBoxShowSavedTickets.Location = new System.Drawing.Point(31, 176);
+            this.listBoxShowSavedTickets.Location = new System.Drawing.Point(122, 48);
             this.listBoxShowSavedTickets.Name = "listBoxShowSavedTickets";
-            this.listBoxShowSavedTickets.Size = new System.Drawing.Size(658, 259);
+            this.listBoxShowSavedTickets.Size = new System.Drawing.Size(692, 259);
             this.listBoxShowSavedTickets.TabIndex = 8;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(334, 114);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(97, 33);
-            this.btnSearch.TabIndex = 7;
-            this.btnSearch.Text = "Vyhledat";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(31, 37);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(106, 21);
-            this.label16.TabIndex = 6;
-            this.label16.Text = "Vyber datum:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(31, 95);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(98, 21);
-            this.label15.TabIndex = 5;
-            this.label15.Text = "Vyber firmu:";
-            // 
-            // CBoxCompanySearch
-            // 
-            this.CBoxCompanySearch.DisplayMember = "0";
-            this.CBoxCompanySearch.FormattingEnabled = true;
-            this.CBoxCompanySearch.Location = new System.Drawing.Point(31, 119);
-            this.CBoxCompanySearch.Name = "CBoxCompanySearch";
-            this.CBoxCompanySearch.Size = new System.Drawing.Size(132, 25);
-            this.CBoxCompanySearch.TabIndex = 4;
-            this.CBoxCompanySearch.Tag = "";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(287, 70);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(27, 17);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "do:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(31, 70);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(29, 17);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Od:";
-            // 
-            // dateTimePickerTo
-            // 
-            this.dateTimePickerTo.Location = new System.Drawing.Point(334, 64);
-            this.dateTimePickerTo.Name = "dateTimePickerTo";
-            this.dateTimePickerTo.Size = new System.Drawing.Size(195, 25);
-            this.dateTimePickerTo.TabIndex = 1;
-            // 
-            // dateTimePickerFrom
-            // 
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(66, 64);
-            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
-            this.dateTimePickerFrom.Size = new System.Drawing.Size(200, 25);
-            this.dateTimePickerFrom.TabIndex = 0;
             // 
             // panel3
             // 
@@ -661,9 +454,9 @@ namespace KuponySlevomat {
             this.panel3.Controls.Add(this.label18);
             this.panel3.Controls.Add(this.btnSetPath);
             this.panel3.Controls.Add(this.label17);
-            this.panel3.Location = new System.Drawing.Point(16, 56);
+            this.panel3.Location = new System.Drawing.Point(12, 42);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(957, 489);
+            this.panel3.Size = new System.Drawing.Size(971, 496);
             this.panel3.TabIndex = 27;
             // 
             // btnCreateDB
@@ -722,6 +515,118 @@ namespace KuponySlevomat {
             this.label17.TabIndex = 0;
             this.label17.Text = "Nastavení přístupu k databázi";
             // 
+            // lblTotalValueFromDB
+            // 
+            this.lblTotalValueFromDB.AutoSize = true;
+            this.lblTotalValueFromDB.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblTotalValueFromDB.Location = new System.Drawing.Point(827, 119);
+            this.lblTotalValueFromDB.Name = "lblTotalValueFromDB";
+            this.lblTotalValueFromDB.Size = new System.Drawing.Size(40, 21);
+            this.lblTotalValueFromDB.TabIndex = 18;
+            this.lblTotalValueFromDB.Text = "0 Kč";
+            // 
+            // lblTotalCountFromDB
+            // 
+            this.lblTotalCountFromDB.AutoSize = true;
+            this.lblTotalCountFromDB.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblTotalCountFromDB.Location = new System.Drawing.Point(827, 67);
+            this.lblTotalCountFromDB.Name = "lblTotalCountFromDB";
+            this.lblTotalCountFromDB.Size = new System.Drawing.Size(19, 21);
+            this.lblTotalCountFromDB.TabIndex = 16;
+            this.lblTotalCountFromDB.Text = "0";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(334, 114);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(97, 33);
+            this.btnSearch.TabIndex = 7;
+            this.btnSearch.Text = "Vyhledat";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label29.Location = new System.Drawing.Point(665, 119);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(131, 21);
+            this.label29.TabIndex = 17;
+            this.label29.Text = "Celkem hodnota:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(31, 37);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(106, 21);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "Vyber datum:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label30.Location = new System.Drawing.Point(665, 70);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(104, 21);
+            this.label30.TabIndex = 15;
+            this.label30.Text = "Celkem kusů:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(31, 95);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(98, 21);
+            this.label15.TabIndex = 5;
+            this.label15.Text = "Vyber firmu:";
+            // 
+            // CBoxCompanySearch
+            // 
+            this.CBoxCompanySearch.DisplayMember = "0";
+            this.CBoxCompanySearch.FormattingEnabled = true;
+            this.CBoxCompanySearch.Location = new System.Drawing.Point(31, 119);
+            this.CBoxCompanySearch.Name = "CBoxCompanySearch";
+            this.CBoxCompanySearch.Size = new System.Drawing.Size(132, 25);
+            this.CBoxCompanySearch.TabIndex = 4;
+            this.CBoxCompanySearch.Tag = "";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(287, 70);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(27, 17);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "do:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(31, 70);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(29, 17);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Od:";
+            // 
+            // dateTimePickerTo
+            // 
+            this.dateTimePickerTo.Location = new System.Drawing.Point(334, 64);
+            this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.Size = new System.Drawing.Size(195, 25);
+            this.dateTimePickerTo.TabIndex = 1;
+            // 
+            // dateTimePickerFrom
+            // 
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(66, 64);
+            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
+            this.dateTimePickerFrom.Size = new System.Drawing.Size(200, 25);
+            this.dateTimePickerFrom.TabIndex = 0;
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -751,6 +656,10 @@ namespace KuponySlevomat {
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -761,23 +670,10 @@ namespace KuponySlevomat {
         #endregion
 
         private System.Windows.Forms.TextBox txbEAN;
-        private System.Windows.Forms.Label lblEAN;
-        private System.Windows.Forms.Label lblCompany;
-        private System.Windows.Forms.Label lblType;
-        private System.Windows.Forms.Label lblValue;
-        private System.Windows.Forms.Label lblValidity;
-        private System.Windows.Forms.Label lblAdded;
         private System.Windows.Forms.Label lblCountTickets;
         private System.Windows.Forms.ComboBox CBoxCompany;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ListBox listBoxAddedTickets;
         private System.Windows.Forms.Button btnSave;
@@ -824,6 +720,11 @@ namespace KuponySlevomat {
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label lblTotalValueFromDB;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.ToolStripMenuItem vypsatSeznamToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jenSouhrnToolStripMenuItem;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox txbSummaryInfo;
     }
 }
 

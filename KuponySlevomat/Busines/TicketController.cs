@@ -24,7 +24,7 @@ namespace KuponySlevomat.Busines {
 
         internal bool AddSodexoTicketToList(string ean, string date) {
             Ticket ticketToAdd = new SodexoDecoder().DecodeTicket(ean, date);
-            if (int.Parse(ticketToAdd.Validity) > 20 && int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    
+            if (int.Parse(ticketToAdd.Validity) > 20 && int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {
                 Tickets.Add(ticketToAdd);
                 return true;
             } else {
@@ -34,7 +34,7 @@ namespace KuponySlevomat.Busines {
 
         internal bool AddUpTicketToList(string ean, string date) {
             Ticket ticketToAdd = new UpDecoder().DecodeTicket(ean, date);
-            if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    
+            if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {
                 Tickets.Add(ticketToAdd);
                 return true;
             } else {
@@ -44,7 +44,7 @@ namespace KuponySlevomat.Busines {
 
         internal bool AddEdenredTicketToList(string ean, string date) {
             Ticket ticketToAdd = new EdenredDecoder().DecodeTicket(ean, date);
-            if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {    
+            if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {
                 Tickets.Add(ticketToAdd);
                 return true;
             } else {
@@ -72,6 +72,81 @@ namespace KuponySlevomat.Busines {
             } else {
                 return false;
             }
+        }
+
+
+
+
+
+
+        internal string SummaryInfo(Ticket[] loadedTickets) {
+            string summaryInfoText = "";
+            Dictionary<int, int> summarySodexo = new Dictionary<int, int>();
+            Dictionary<int, int> summaryUp = new Dictionary<int, int>();
+            Dictionary<int, int> summaryEdenred = new Dictionary<int, int>();
+            Dictionary<int, int> summaryMojeStravenka = new Dictionary<int, int>();
+
+            foreach (Ticket tic in loadedTickets) {
+                if (tic.Company == "Sodexo") {
+                    if (!summarySodexo.ContainsKey(int.Parse(tic.Value))) {
+                        summarySodexo.Add(int.Parse(tic.Value), 1);
+                    } else {
+                        summarySodexo[int.Parse(tic.Value)] += 1;
+                    }
+                }
+                if (tic.Company == "Up") {
+                    if (!summaryUp.ContainsKey(int.Parse(tic.Value))) {
+                        summaryUp.Add(int.Parse(tic.Value), 1);
+                    } else {
+                        summaryUp[int.Parse(tic.Value)] += 1;
+                    }
+                }
+                if (tic.Company == "Edenred") {
+                    if (!summaryEdenred.ContainsKey(int.Parse(tic.Value))) {
+                        summaryEdenred.Add(int.Parse(tic.Value), 1);
+                    } else {
+                        summaryEdenred[int.Parse(tic.Value)] += 1;
+                    }
+                }
+                if (tic.Company == "MojeStravenka") {
+                    if (!summaryMojeStravenka.ContainsKey(int.Parse(tic.Value))) {
+                        summaryMojeStravenka.Add(int.Parse(tic.Value), 1);
+                    } else {
+                        summaryMojeStravenka[int.Parse(tic.Value)] += 1;
+                    }
+                }
+            }
+
+            summaryInfoText = "Sodexo: " + Environment.NewLine + Environment.NewLine;
+            foreach (var item in summarySodexo) {
+                int key = item.Key;
+                int value = item.Value;
+                summaryInfoText += key + " korunových " + value + " krát" + Environment.NewLine;
+            }
+
+            summaryInfoText += Environment.NewLine + Environment.NewLine + "Up: " + Environment.NewLine + Environment.NewLine;
+            foreach (var item in summaryUp) {
+                int key = item.Key;
+                int value = item.Value;
+                summaryInfoText += key + " korunových " + value + " krát" + Environment.NewLine;
+            }
+
+            summaryInfoText += Environment.NewLine + Environment.NewLine + "Edenred: " + Environment.NewLine + Environment.NewLine;
+            foreach (var item in summaryEdenred) {
+                int key = item.Key;
+                int value = item.Value;
+                summaryInfoText += key + " korunových " + value + " krát" + Environment.NewLine;
+            }
+
+            summaryInfoText += Environment.NewLine + Environment.NewLine + "Moje Stravenka: " + Environment.NewLine + Environment.NewLine;
+            foreach (var item in summaryMojeStravenka) {
+                int key = item.Key;
+                int value = item.Value;
+                summaryInfoText += key + " korunových " + value + " krát" + Environment.NewLine;
+            }
+
+
+            return summaryInfoText;
         }
     }
 }

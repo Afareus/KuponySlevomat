@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -46,6 +47,7 @@ namespace KuponySlevomat {
         private void dateTimePickerAcceptedDay_ValueChanged(object sender, EventArgs e) {
             txbEAN.Focus();
         }
+
 
         private void txbEAN_Enter(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == (char)Keys.Enter) {
@@ -105,7 +107,7 @@ namespace KuponySlevomat {
             bool ok = true;
             string ean = txbEAN.Text.Trim();
 
-            if (ean.Length != 24 && ean.Length != 32) {
+            if (ean.Length != 22 && ean.Length != 24 && ean.Length != 32) {
                 ok = false;
             }
 
@@ -155,25 +157,8 @@ namespace KuponySlevomat {
                 MessageBox.Show("Nevybral jsi Firmu");
             }
         }
+
         private void ShowInfo() {
-            if (ticketController.Tickets.Count != 0) {
-                int index = ticketController.Tickets.Count - 1;
-                lblEAN.Text = ticketController.Tickets[index].Ean;
-                lblAdded.Text = ticketController.Tickets[index].Added.ToString();
-                lblType.Text = ticketController.Tickets[index].Type;
-                lblCompany.Text = ticketController.Tickets[index].Company;
-                lblValue.Text = ticketController.Tickets[index].Value;
-                if (ticketController.Tickets[index].Validity == string.Empty) {
-                    lblValidity.Text = "Na šeku";
-                } else {
-                    lblValidity.Text = "31.12.20" + ticketController.Tickets[index].Validity;
-                }
-
-                ShowDataInListBox();
-            }
-        }
-
-        private void ShowDataInListBox() {
             listBoxAddedTickets.Items.Clear();
             listBoxAddedTickets.Items.AddRange(ReturnAllAddedTickets());
 
@@ -194,7 +179,7 @@ namespace KuponySlevomat {
             if (ticketController.SentAddedTicketToSave()) {
                 MessageBox.Show("Uloženo");
                 ticketController.Tickets.Clear();
-                ShowDataInListBox();
+                ShowInfo();
             } else {
                 MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
             }
@@ -204,7 +189,7 @@ namespace KuponySlevomat {
             int indexOfTicket = listBoxAddedTickets.SelectedIndex;
             if (indexOfTicket >= 0) {
                 ticketController.Tickets.RemoveAt(indexOfTicket);
-                ShowDataInListBox();
+                ShowInfo();
             }
         }
 
@@ -236,20 +221,29 @@ namespace KuponySlevomat {
             }
         }
 
+        bool showCompleteList = false;            // nastavuje se při zobrazení panelu 4. (true jen když je zobrazen panel pro kompletní výpis kupónů)
+
+
         private void btnSearch_Click(object sender, EventArgs e) {
+            listBoxShowSavedTickets.Items.Clear();
+
             try {
                 Ticket[] loadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
 
-                listBoxShowSavedTickets.Items.Clear();
-                listBoxShowSavedTickets.Items.AddRange(loadedTickets);                       // pro 100k stravenek trvá i 30s !!!
+                if (showCompleteList) {
+                    listBoxShowSavedTickets.Items.AddRange(loadedTickets);                       // pro 100k stravenek trvá cca 30s !!!
+                } else {
+                    txbSummaryInfo.Text = ticketController.SummaryInfo(loadedTickets);          // METODA PRO VÝPIS SOUHRNU
+                }
 
-                lblTotalCountFromDB.Text = loadedTickets.Count().ToString();
-
+                List<string> summaryText = new List<string>();
                 int totalValue = 0;
                 foreach (Ticket tic in loadedTickets) {
                     totalValue += Int32.Parse(tic.Value);
                 }
+
                 lblTotalValueFromDB.Text = totalValue.ToString() + " Kč";
+                lblTotalCountFromDB.Text = loadedTickets.Count().ToString();
             } catch (Microsoft.Data.Sqlite.SqliteException) {
                 MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
             }
@@ -259,12 +253,20 @@ namespace KuponySlevomat {
             panel1.BringToFront();
         }
 
-        private void menuShowInfo_Click(object sender, EventArgs e) {
-            panel2.BringToFront();
-        }
-
         private void menuSettings_Click(object sender, EventArgs e) {
             panel3.BringToFront();
+        }
+
+        private void vypsatSeznamToolStripMenuItem_Click(object sender, EventArgs e) {
+            panel2.BringToFront();
+            panel4.BringToFront();
+            showCompleteList = true;
+        }
+
+        private void jenSouhrnToolStripMenuItem_Click(object sender, EventArgs e) {
+            panel2.BringToFront();
+            panel5.BringToFront();
+            showCompleteList = false;
         }
     }
 }
