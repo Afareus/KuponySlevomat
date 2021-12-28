@@ -81,6 +81,7 @@ namespace KuponySlevomat.Busines {
 
         internal string SummaryInfo(Ticket[] loadedTickets) {
             string summaryInfoText = "";
+            int totalValue = 0;
             Dictionary<int, int> summarySodexo = new Dictionary<int, int>();
             Dictionary<int, int> summaryUp = new Dictionary<int, int>();
             Dictionary<int, int> summaryEdenred = new Dictionary<int, int>();
@@ -115,36 +116,84 @@ namespace KuponySlevomat.Busines {
                         summaryMojeStravenka[int.Parse(tic.Value)] += 1;
                     }
                 }
+                totalValue += int.Parse(tic.Value);
             }
 
-            summaryInfoText = "Sodexo: " + Environment.NewLine + Environment.NewLine;
-            foreach (var item in summarySodexo) {
-                int key = item.Key;
-                int value = item.Value;
-                summaryInfoText += key + " korunových " + value + " krát" + Environment.NewLine;
+            if (summarySodexo.Count > 0) {
+                summaryInfoText = "\t Sodexo: " + Environment.NewLine + Environment.NewLine;
+
+                int countSum = 0;
+                int valueSum = 0;
+
+                foreach (var item in summarySodexo) {
+                    int key = item.Key;
+                    int value = item.Value;
+                    countSum += value;
+                    valueSum += (value * key);
+                    summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", key, value, key * value) + Environment.NewLine;
+
+                }
+                summaryInfoText += "----------------------------------------------------------------------------------" + Environment.NewLine;
+                summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem", countSum, valueSum) + Environment.NewLine;
+                summaryInfoText += "__________________________________________________________________________________" + Environment.NewLine;
             }
 
-            summaryInfoText += Environment.NewLine + Environment.NewLine + "Up: " + Environment.NewLine + Environment.NewLine;
-            foreach (var item in summaryUp) {
-                int key = item.Key;
-                int value = item.Value;
-                summaryInfoText += key + " korunových " + value + " krát" + Environment.NewLine;
+            if (summaryUp.Count > 0) {
+                summaryInfoText += Environment.NewLine + Environment.NewLine + "\t Up: " + Environment.NewLine + Environment.NewLine;
+
+                int countSum = 0;
+                int valueSum = 0;
+
+                foreach (var item in summaryUp) {
+                    int key = item.Key;
+                    int value = item.Value;
+                    countSum += value;
+                    valueSum += (value * key);
+                    summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", key, value, key * value) + Environment.NewLine;
+                }
+                summaryInfoText += "----------------------------------------------------------------------------------" + Environment.NewLine;
+                summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem", countSum, valueSum) + Environment.NewLine;
+                summaryInfoText += "__________________________________________________________________________________" + Environment.NewLine;
             }
 
-            summaryInfoText += Environment.NewLine + Environment.NewLine + "Edenred: " + Environment.NewLine + Environment.NewLine;
-            foreach (var item in summaryEdenred) {
-                int key = item.Key;
-                int value = item.Value;
-                summaryInfoText += key + " korunových " + value + " krát" + Environment.NewLine;
+            if (summaryEdenred.Count > 0) {
+                summaryInfoText += Environment.NewLine + Environment.NewLine + "\t Edenred: " + Environment.NewLine + Environment.NewLine;
+
+                int countSum = 0;
+                int valueSum = 0;
+
+                foreach (var item in summaryEdenred) {
+                    int key = item.Key;
+                    int value = item.Value;
+                    countSum += value;
+                    valueSum += (value * key);
+                    summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", key, value, key * value) + Environment.NewLine;
+                }
+                summaryInfoText += "----------------------------------------------------------------------------------" + Environment.NewLine;
+                summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem", countSum, valueSum) + Environment.NewLine;
+                summaryInfoText += "__________________________________________________________________________________" + Environment.NewLine;
             }
 
-            summaryInfoText += Environment.NewLine + Environment.NewLine + "Moje Stravenka: " + Environment.NewLine + Environment.NewLine;
-            foreach (var item in summaryMojeStravenka) {
-                int key = item.Key;
-                int value = item.Value;
-                summaryInfoText += key + " korunových " + value + " krát" + Environment.NewLine;
+            if (summaryMojeStravenka.Count > 0) {
+                summaryInfoText += Environment.NewLine + Environment.NewLine + "\t Moje Stravenka: " + Environment.NewLine + Environment.NewLine;
+
+                int countSum = 0;
+                int valueSum = 0;
+
+                foreach (var item in summaryMojeStravenka) {
+                    int key = item.Key;
+                    int value = item.Value;
+                    countSum += value;
+                    valueSum += (value * key);
+                    summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", key, value, key * value) + Environment.NewLine;
+                }
+                summaryInfoText += "----------------------------------------------------------------------------------" + Environment.NewLine;
+                summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem", countSum, valueSum) + Environment.NewLine;
+                summaryInfoText += "__________________________________________________________________________________" + Environment.NewLine;
             }
 
+            summaryInfoText += Environment.NewLine + Environment.NewLine;
+            summaryInfoText += "\t     Celkem " + loadedTickets.Count() + " kusů v celkové hodnotě " + totalValue + " Kč.";
 
             return summaryInfoText;
         }

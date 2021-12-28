@@ -204,6 +204,7 @@ namespace KuponySlevomat {
                 writeReaderTxt.WriteText(openFileDialog1.FileName);
                 txbPath.Text = writeReaderTxt.ReadText();
                 ticketController.databaseQueries.Path = txbPath.Text;
+                MessageBox.Show("Cesta k databázi byla uložena");
             }
         }
 
@@ -231,9 +232,11 @@ namespace KuponySlevomat {
                 Ticket[] loadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
 
                 if (showCompleteList) {
-                    listBoxShowSavedTickets.Items.AddRange(loadedTickets);                       // pro 100k stravenek trvá cca 30s !!!
+                    listBoxShowSavedTickets.Items.AddRange(loadedTickets);                      // pro 100k stravenek trvá cca 30s !!!
                 } else {
-                    txbSummaryInfo.Text = ticketController.SummaryInfo(loadedTickets);          // METODA PRO VÝPIS SOUHRNU
+                    txbSummaryInfo.Text = Environment.NewLine + "\t     Poukázky přijaté za období od " + dateTimePickerFrom.Value.ToString("dd.MM.yyyy") + " do " + dateTimePickerTo.Value.ToString("dd.MM.yyyy") + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += ticketController.SummaryInfo(loadedTickets);          // METODA PRO VÝPIS SOUHRNU
                 }
 
                 List<string> summaryText = new List<string>();
@@ -268,5 +271,7 @@ namespace KuponySlevomat {
             panel5.BringToFront();
             showCompleteList = false;
         }
+
+
     }
 }
