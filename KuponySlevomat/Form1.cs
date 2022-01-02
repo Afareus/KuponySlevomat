@@ -44,10 +44,6 @@ namespace KuponySlevomat {
             txbEAN.Focus();
         }
 
-        private void dateTimePickerAcceptedDay_ValueChanged(object sender, EventArgs e) {
-            txbEAN.Focus();
-        }
-
 
         private void txbEAN_Enter(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == (char)Keys.Enter) {
@@ -254,21 +250,25 @@ namespace KuponySlevomat {
 
         private void menuAddTickets_Click(object sender, EventArgs e) {
             panel1.BringToFront();
+            lblVarovani.Visible = false;
         }
 
         private void menuSettings_Click(object sender, EventArgs e) {
             panel3.BringToFront();
+            lblVarovani.Visible = false;
         }
 
-        private void vypsatSeznamToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void detailniVypisToolStripMenuItem_Click(object sender, EventArgs e) {
             panel2.BringToFront();
             panel4.BringToFront();
+            lblVarovani.Visible = true;
             showCompleteList = true;
         }
 
-        private void jenSouhrnToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void SouhrnToolStripMenuItem_Click(object sender, EventArgs e) {
             panel2.BringToFront();
             panel5.BringToFront();
+            lblVarovani.Visible = false;
             showCompleteList = false;
         }
 
