@@ -51,6 +51,7 @@ namespace KuponySlevomat {
             this.label20 = new System.Windows.Forms.Label();
             this.dateTimePickerAcceptedDay = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblVarovani = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.txbSummaryInfo = new System.Windows.Forms.TextBox();
@@ -225,16 +226,16 @@ namespace KuponySlevomat {
             // vypsatSeznamToolStripMenuItem
             // 
             this.vypsatSeznamToolStripMenuItem.Name = "vypsatSeznamToolStripMenuItem";
-            this.vypsatSeznamToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.vypsatSeznamToolStripMenuItem.Text = "Vypsat seznam";
-            this.vypsatSeznamToolStripMenuItem.Click += new System.EventHandler(this.vypsatSeznamToolStripMenuItem_Click);
+            this.vypsatSeznamToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.vypsatSeznamToolStripMenuItem.Text = "Detailní výpis";
+            this.vypsatSeznamToolStripMenuItem.Click += new System.EventHandler(this.detailniVypisToolStripMenuItem_Click);
             // 
             // jenSouhrnToolStripMenuItem
             // 
             this.jenSouhrnToolStripMenuItem.Name = "jenSouhrnToolStripMenuItem";
-            this.jenSouhrnToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.jenSouhrnToolStripMenuItem.Text = "Jen souhrn";
-            this.jenSouhrnToolStripMenuItem.Click += new System.EventHandler(this.jenSouhrnToolStripMenuItem_Click);
+            this.jenSouhrnToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.jenSouhrnToolStripMenuItem.Text = "Souhrn";
+            this.jenSouhrnToolStripMenuItem.Click += new System.EventHandler(this.SouhrnToolStripMenuItem_Click);
             // 
             // menuSettings
             // 
@@ -263,7 +264,7 @@ namespace KuponySlevomat {
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.CBoxCompany);
             this.panel1.Controls.Add(this.listBoxAddedTickets);
-            this.panel1.Location = new System.Drawing.Point(1, 36);
+            this.panel1.Location = new System.Drawing.Point(1, 33);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(987, 525);
             this.panel1.TabIndex = 25;
@@ -340,10 +341,10 @@ namespace KuponySlevomat {
             this.dateTimePickerAcceptedDay.Name = "dateTimePickerAcceptedDay";
             this.dateTimePickerAcceptedDay.Size = new System.Drawing.Size(200, 25);
             this.dateTimePickerAcceptedDay.TabIndex = 24;
-            this.dateTimePickerAcceptedDay.ValueChanged += new System.EventHandler(this.dateTimePickerAcceptedDay_ValueChanged);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblVarovani);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.lblTotalValueFromDB);
@@ -362,6 +363,16 @@ namespace KuponySlevomat {
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(965, 533);
             this.panel2.TabIndex = 26;
+            // 
+            // lblVarovani
+            // 
+            this.lblVarovani.AutoSize = true;
+            this.lblVarovani.ForeColor = System.Drawing.Color.Red;
+            this.lblVarovani.Location = new System.Drawing.Point(186, 110);
+            this.lblVarovani.Name = "lblVarovani";
+            this.lblVarovani.Size = new System.Drawing.Size(215, 17);
+            this.lblVarovani.TabIndex = 29;
+            this.lblVarovani.Text = "Detailní výpis může trvat delší dobu";
             // 
             // panel5
             // 
@@ -737,6 +748,7 @@ namespace KuponySlevomat {
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox txbSummaryInfo;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblVarovani;
     }
 }
 
