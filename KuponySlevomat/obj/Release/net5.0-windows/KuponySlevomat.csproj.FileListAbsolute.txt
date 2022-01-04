@@ -35,3 +35,4 @@ F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevo
 F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\ref\KuponySlevomat.dll
 F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.pdb
 F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.genruntimeconfig.cache
+F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.AssemblyReference.cache

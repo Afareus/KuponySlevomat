@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using KuponySlevomat.Busines;
 using KuponySlevomat.Model;
 using KuponySlevomat.Queries;
+using KuponySlevomat.TicketsData;
 
 namespace KuponySlevomat {
     public partial class Form1 : Form {
@@ -41,6 +42,10 @@ namespace KuponySlevomat {
             txbEAN.Focus();
         }
         private void CBoxCompany_SelectedIndexChanged(object sender, EventArgs e) {
+            txbEAN.Focus();
+        }
+
+        private void dateTimePickerAcceptedDay_CloseUp(object sender, EventArgs e) {
             txbEAN.Focus();
         }
 
@@ -220,7 +225,6 @@ namespace KuponySlevomat {
 
         bool showCompleteList = false;            // nastavuje se při zobrazení panelu 4. (true jen když je zobrazen panel pro kompletní výpis kupónů)
 
-
         private void btnSearch_Click(object sender, EventArgs e) {
             listBoxShowSavedTickets.Items.Clear();
 
@@ -231,7 +235,8 @@ namespace KuponySlevomat {
                     listBoxShowSavedTickets.Items.AddRange(loadedTickets);                      // pro 100k stravenek trvá cca 30s !!!
                 } else {
                     txbSummaryInfo.Text = Environment.NewLine + "\t     Poukázky přijaté za období od " + dateTimePickerFrom.Value.ToString("dd.MM.yyyy") + " do " + dateTimePickerTo.Value.ToString("dd.MM.yyyy") + Environment.NewLine + Environment.NewLine + Environment.NewLine;
-                    txbSummaryInfo.Text += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine;
+                    txbSummaryInfo.Text += "__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                     txbSummaryInfo.Text += ticketController.SummaryInfo(loadedTickets);          // METODA PRO VÝPIS SOUHRNU
                 }
 
@@ -272,6 +277,26 @@ namespace KuponySlevomat {
             showCompleteList = false;
         }
 
-
+        private void CBoxCompanySearch_SelectedIndexChanged(object sender, EventArgs e) {
+            if (((ComboBox)sender).SelectedIndex == 1) {
+                cBoxTypes.Items.Clear();
+                cBoxTypes.Items.Add("Vše");
+                cBoxTypes.Items.AddRange(TicketsTypes.SodexoTypes.ToArray());
+                cBoxTypes.SelectedIndex = 0;
+            } else if (((ComboBox)sender).SelectedIndex == 2) {
+                cBoxTypes.Items.Clear();
+                cBoxTypes.Items.Add("Vše");
+                cBoxTypes.Items.AddRange(TicketsTypes.UpTypes.ToArray());
+                cBoxTypes.SelectedIndex = 0;
+            } else if (((ComboBox)sender).SelectedIndex == 3) {
+                cBoxTypes.Items.Clear();
+                cBoxTypes.Items.Add("Vše");
+                cBoxTypes.Items.AddRange(TicketsTypes.EdenredTypes.ToArray());
+                cBoxTypes.SelectedIndex = 0;
+            } else {
+                cBoxTypes.Items.Clear();
+                cBoxTypes.Text = string.Empty;
+            }
+        }
     }
 }
