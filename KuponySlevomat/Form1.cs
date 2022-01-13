@@ -66,7 +66,8 @@ namespace KuponySlevomat {
                     if (!DuplicateTicket()) {
                         AddTicket();
                     } else {
-                        MessageBox.Show("Tento kupón jste již vložili!");
+                        System.Media.SystemSounds.Beep.Play()
+; MessageBox.Show("Tento kupón jste již vložili!");
                     }
                 } else {
                     MessageBox.Show("Neplatné zadání");
@@ -184,12 +185,14 @@ namespace KuponySlevomat {
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
-            if (ticketController.SentAddedTicketToSave()) {
-                MessageBox.Show("Uloženo");
-                ticketController.Tickets.Clear();
-                ShowInfo();
-            } else {
-                MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
+            if (ticketController.Tickets.Count > 0) {
+                if (ticketController.SentAddedTicketToSave()) {
+                    MessageBox.Show("Uloženo");
+                    ticketController.Tickets.Clear();
+                    ShowInfo();
+                } else {
+                    MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
+                }
             }
         }
 
@@ -199,6 +202,11 @@ namespace KuponySlevomat {
                 ticketController.Tickets.RemoveAt(indexOfTicket);
                 ShowInfo();
             }
+        }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e) {
+            ticketController.Tickets.Clear();
+            ShowInfo();
         }
 
 
@@ -379,7 +387,7 @@ namespace KuponySlevomat {
                 }
 
                 if (emptySelect) {
-                    txbSummaryInfo.Text += "\t\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
                     txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 } else {
                     txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;

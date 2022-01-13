@@ -42,6 +42,8 @@ namespace KuponySlevomat {
             this.jenSouhrnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDeleteAll = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -169,9 +171,9 @@ namespace KuponySlevomat {
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(638, 470);
+            this.btnSave.Location = new System.Drawing.Point(621, 466);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(107, 31);
+            this.btnSave.Size = new System.Drawing.Size(121, 39);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Uložit";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -228,14 +230,14 @@ namespace KuponySlevomat {
             // vypsatSeznamToolStripMenuItem
             // 
             this.vypsatSeznamToolStripMenuItem.Name = "vypsatSeznamToolStripMenuItem";
-            this.vypsatSeznamToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.vypsatSeznamToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.vypsatSeznamToolStripMenuItem.Text = "Detailní výpis";
             this.vypsatSeznamToolStripMenuItem.Click += new System.EventHandler(this.detailniVypisToolStripMenuItem_Click);
             // 
             // jenSouhrnToolStripMenuItem
             // 
             this.jenSouhrnToolStripMenuItem.Name = "jenSouhrnToolStripMenuItem";
-            this.jenSouhrnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jenSouhrnToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.jenSouhrnToolStripMenuItem.Text = "Souhrn";
             this.jenSouhrnToolStripMenuItem.Click += new System.EventHandler(this.SouhrnToolStripMenuItem_Click);
             // 
@@ -248,6 +250,8 @@ namespace KuponySlevomat {
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDeleteAll);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label31);
             this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.label23);
@@ -270,6 +274,25 @@ namespace KuponySlevomat {
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(987, 525);
             this.panel1.TabIndex = 25;
+            // 
+            // btnDeleteAll
+            // 
+            this.btnDeleteAll.Location = new System.Drawing.Point(795, 405);
+            this.btnDeleteAll.Name = "btnDeleteAll";
+            this.btnDeleteAll.Size = new System.Drawing.Size(85, 28);
+            this.btnDeleteAll.TabIndex = 34;
+            this.btnDeleteAll.Text = "Odstranit";
+            this.btnDeleteAll.UseVisualStyleBackColor = true;
+            this.btnDeleteAll.Click += new System.EventHandler(this.btnDeleteAll_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(687, 411);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(102, 17);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Odstranit vše   -";
             // 
             // label31
             // 
@@ -775,6 +798,8 @@ namespace KuponySlevomat {
         private System.Windows.Forms.Label lblVarovani;
         private System.Windows.Forms.Label labTypes;
         private System.Windows.Forms.ComboBox cBoxTypes;
+        private System.Windows.Forms.Button btnDeleteAll;
+        private System.Windows.Forms.Label label4;
     }
 }
 
