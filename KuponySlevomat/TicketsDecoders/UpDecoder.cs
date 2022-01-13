@@ -31,7 +31,7 @@ namespace KuponySlevomat.TicketsDecoders {
         }
 
         private string DecodeValue() {
-            return ean.Substring(12, 5);
+            return int.Parse(ean.Substring(12, 5)).ToString();
         }
 
         private string DecodeType() {

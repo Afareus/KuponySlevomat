@@ -27,11 +27,11 @@ namespace KuponySlevomat.TicketsDecoders {
         }
 
         private string DecodeValidity() {
-            return ean.Substring(2, 2);          // asi hotovo
+            return ean.Substring(2, 2);
         }
 
         private string DecodeValue() {
-            return Int32.Parse(ean.Substring(7, 5)).ToString();      // asi hotovo
+            return Int32.Parse(ean.Substring(15, 5)).ToString();
         }
 
         private string DecodeType() {       // nemá typy
