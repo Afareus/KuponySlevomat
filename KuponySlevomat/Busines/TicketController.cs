@@ -19,7 +19,7 @@ namespace KuponySlevomat.Busines {
             Tickets = new List<Ticket>();
             databaseQueries = new DatabaseQueries(path);
 
-            //Tickets = TestDataCreator.CreateTestTickets();                   // TESTOVACÍ DATA - zobrazí se po načtení první poukázky
+            Tickets = TestDataCreator.CreateTestTickets();                   // TESTOVACÍ DATA - zobrazí se po načtení první poukázky
         }
 
         internal bool AddSodexoTicketToList(string ean, string date) {

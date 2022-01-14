@@ -66,13 +66,13 @@ namespace KuponySlevomat {
                     if (!DuplicateTicket()) {
                         AddTicket();
                     } else {
-                        System.Media.SystemSounds.Beep.Play()
-; MessageBox.Show("Tento kupón jste již vložili!");
+                        System.Media.SystemSounds.Hand.Play(); 
+                        MessageBox.Show("Tento kupón jste již vložili!");
                     }
                 } else {
+                    System.Media.SystemSounds.Beep.Play();
                     MessageBox.Show("Neplatné zadání");
                 }
-
 
                 txbEAN.Text = "";
             }
@@ -276,7 +276,9 @@ namespace KuponySlevomat {
             listBoxShowSavedTickets.Items.Clear();
 
             try {
-                Ticket[] loadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
+                Ticket[] unsortedloadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
+                Ticket[] loadedTickets = unsortedloadedTickets.OrderBy(x => int.Parse(x.Value)).ToArray();
+
 
                 if (showCompleteList) {
                     listBoxShowSavedTickets.Items.AddRange(loadedTickets);                                  // pro 100k stravenek trvá cca 30s !!!

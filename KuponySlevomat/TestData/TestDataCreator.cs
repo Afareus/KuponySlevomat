@@ -11,7 +11,7 @@ namespace KuponySlevomat.TestData {
         public static List<Ticket> CreateTestTickets() {
             List<Ticket> tickets = new List<Ticket>();
 
-            for (int i = 0; i < 50000; i++) {
+            for (int i = 50000; i > 0; i--) {
                 Ticket ticket = new Ticket();
                 ticket.Ean = "15210011247620000500020523554455";
                 ticket.Company = "Edenred";
@@ -24,7 +24,7 @@ namespace KuponySlevomat.TestData {
                 tickets.Add(ticket);
             }
 
-            for (int i = 0; i < 50000; i++) {
+            for (int i = 50000; i > 0; i--) {
                 Ticket ticket = new Ticket();
                 ticket.Ean = "152100112476200005000205";
                 ticket.Company = "Sodexo";
@@ -37,7 +37,7 @@ namespace KuponySlevomat.TestData {
                 tickets.Add(ticket);
             }
 
-            for (int i = 0; i < 50000; i++) {
+            for (int i = 50000; i > 0; i--) {
                 Ticket ticket = new Ticket();
                 ticket.Ean = "152100112476200005000205";
                 ticket.Company = "Up";
@@ -50,7 +50,7 @@ namespace KuponySlevomat.TestData {
                 tickets.Add(ticket);
             }
 
-            for (int i = 0; i < 50000; i++) {
+            for (int i = 50000; i > 0; i--) {
                 Ticket ticket = new Ticket();
                 ticket.Ean = "1521001124762000050002";
                 ticket.Company = "Moje Stravenka";
