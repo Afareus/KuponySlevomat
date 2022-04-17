@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KuponySlevomat.TicketsData;
 
 namespace KuponySlevomat.TicketsDecoders {
     class EdenredDecoder: ITicketDecoder {
@@ -38,16 +39,16 @@ namespace KuponySlevomat.TicketsDecoders {
             if (ean.Length == 32) {
                 string eanPartofType = ean.Substring(27, 3);
                 switch (eanPartofType) {
-                    case "001": return "Ticket Restaurant";
-                    case "002": return "Edenred Čistý";
-                    case "003": return "Kids";
-                    case "004": return "Compliments Dárkový";
-                    case "005": return "Sport&Kultura";
-                    case "006": return "Holiday";
-                    case "007": return "Academica";
-                    case "008": return "Medica";
-                    case "009": return "Multi";
-                    case "010": return "Service";
+                    case "001": return TicketsTypes.EdenredTypes[0];
+                    case "002": return TicketsTypes.EdenredTypes[1];
+                    case "003": return TicketsTypes.EdenredTypes[2];
+                    case "004": return TicketsTypes.EdenredTypes[3];
+                    case "005": return TicketsTypes.EdenredTypes[4];
+                    case "006": return TicketsTypes.EdenredTypes[5];
+                    case "007": return TicketsTypes.EdenredTypes[6];
+                    case "008": return TicketsTypes.EdenredTypes[7];
+                    case "009": return TicketsTypes.EdenredTypes[8];
+                    case "010": return TicketsTypes.EdenredTypes[9];
                     default: return "NEZNÁMÝ TYP";
                 }
             }

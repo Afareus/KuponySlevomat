@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KuponySlevomat.TicketsData;
 
 namespace KuponySlevomat.TicketsDecoders {
     class UpDecoder : ITicketDecoder {
@@ -37,11 +38,11 @@ namespace KuponySlevomat.TicketsDecoders {
         private string DecodeType() {
             string eanPartofType = ean.Substring(21, 1);
             switch (eanPartofType) {
-                case "1": return "Stravenka";
-                case "2": return "Cadhoc";
-                case "3": return "Dovolená";
-                case "4": return "Unišek";
-                case "5": return "Unišek +";
+                case "1": return TicketsTypes.UpTypes[0];
+                case "2": return TicketsTypes.UpTypes[1];
+                case "3": return TicketsTypes.UpTypes[2];
+                case "4": return TicketsTypes.UpTypes[3];
+                case "5": return TicketsTypes.UpTypes[4];
                 default: return "NEZNÁMÝ TYP";    
             }
         }

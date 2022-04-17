@@ -1,5 +1,6 @@
 ﻿using KuponySlevomat.Model;
 using System;
+using KuponySlevomat.TicketsData;
 
 namespace KuponySlevomat.TicketsDecoders {
     class SodexoDecoder : ITicketDecoder {
@@ -38,16 +39,16 @@ namespace KuponySlevomat.TicketsDecoders {
             string eanPartofType = ean.Substring(0, 2);
 
             switch (eanPartofType) {
-                case "10": return "Gastro Pass";
-                case "30": return "Dárkový Pass";
-                case "70": return "Holiday Pass";
-                case "71": return "Relax Pass";
-                case "73": return "Vital Pass";
-                case "75": return "Flexi Pass";
-                case "79": return "Asistence";
-                case "81": return "Fokus Pass";
-                case "82": return "Flexi Pass Individual";
-                case "83": return "Bonus Pass";
+                case "10": return TicketsTypes.SodexoTypes[0];
+                case "30": return TicketsTypes.SodexoTypes[1];
+                case "70": return TicketsTypes.SodexoTypes[2];
+                case "71": return TicketsTypes.SodexoTypes[3];
+                case "73": return TicketsTypes.SodexoTypes[4];
+                case "75": return TicketsTypes.SodexoTypes[5];
+                case "79": return TicketsTypes.SodexoTypes[6];
+                case "81": return TicketsTypes.SodexoTypes[7];
+                case "82": return TicketsTypes.SodexoTypes[8];
+                case "83": return TicketsTypes.SodexoTypes[9];
 
                 default: return "NEZNÁMÝ TYP";
 

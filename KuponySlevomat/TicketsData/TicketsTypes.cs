@@ -21,7 +21,7 @@ namespace KuponySlevomat.TicketsData {
         };
 
         public static List<string> UpTypes = new List<string>() {
-            "Stravenka",
+            "Chèque Déjeuner", // "Chèque Déjeuner"   "Stravenka"
             "Cadhoc",
             "Dovolená",
             "Unišek",

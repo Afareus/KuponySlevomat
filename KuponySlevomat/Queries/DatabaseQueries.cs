@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KuponySlevomat.Queries {
-    class DatabaseQueries {
+    class DatabaseQueries {                         
 
         public string Path { get; set; }
 
         public DatabaseQueries(string path) {
             Path = path;
         }
+
+        // TODO: kód od otevření komunikace do zavření by mohl být v TRY bloku - incident na SQLite Error 14: "Unable to open database file" - zatím jednou u uživatele
 
         public bool CreateNewDB(string NewPath) {
             string createQuery = @"CREATE TABLE IF NOT EXISTS

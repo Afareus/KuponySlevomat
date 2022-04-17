@@ -71,7 +71,7 @@ namespace KuponySlevomat {
                     }
                 } else {
                     System.Media.SystemSounds.Beep.Play();
-                    MessageBox.Show("Neplatné zadání");
+                    MessageBox.Show("Neznámý EAN kód");
                 }
 
                 txbEAN.Text = "";
@@ -298,6 +298,7 @@ namespace KuponySlevomat {
                         ShowUpInfo(loadedTickets);
                         ShowEdenredInfo(loadedTickets);
                         ShowMojeStravenkaInfo(loadedTickets);
+                        ShowGeneralInfo(loadedTickets);
                     }
                 }
 
@@ -344,8 +345,10 @@ namespace KuponySlevomat {
                 txbSummaryInfo.Text += "\t    ---------------------------------------------------------------------------    " + Environment.NewLine;
 
                 txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetPoukazekProTyp + " kusů v celkové hodnotě " + soucetHodnotProTyp + " Kč." + Environment.NewLine;
+                txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             } else {
                 txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
+                txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             }
         }
 
@@ -393,7 +396,7 @@ namespace KuponySlevomat {
                     txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 } else {
                     txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
-                    txbSummaryInfo.Text += "\t\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 }
 
             } else {
@@ -562,6 +565,11 @@ namespace KuponySlevomat {
                     txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům.";
                 }
             }
+        }
+
+        private void ShowGeneralInfo(Ticket[] loadedTickets) {
+            txbSummaryInfo.Text += Environment.NewLine;
+            txbSummaryInfo.Text += "\t POČET VŠECH STRAVENEK VE VÝPISU JE " + loadedTickets.Count() + " KUSŮ V CELKOVÉ HODNOTĚ " + loadedTickets.Sum(x => long.Parse(x.Value)) + " KČ.";
         }
 
         //______________________________________________________________________________________________________________________________________
