@@ -75,127 +75,123 @@ namespace KuponySlevomat.Busines {
         }
 
 
+        //internal string SummaryInfo(Ticket[] loadedTickets) {
+        //    string summaryInfoText = "";
+        //    int totalValue = 0;
+        //    Dictionary<int, int> summarySodexo = new Dictionary<int, int>();
+        //    Dictionary<int, int> summaryUp = new Dictionary<int, int>();
+        //    Dictionary<int, int> summaryEdenred = new Dictionary<int, int>();
+        //    Dictionary<int, int> summaryMojeStravenka = new Dictionary<int, int>();
 
+        //    foreach (Ticket tic in loadedTickets) {
+        //        if (tic.Company == "Sodexo") {
+        //            if (!summarySodexo.ContainsKey(int.Parse(tic.Value))) {
+        //                summarySodexo.Add(int.Parse(tic.Value), 1);
+        //            } else {
+        //                summarySodexo[int.Parse(tic.Value)] += 1;
+        //            }
+        //        }
+        //        if (tic.Company == "Up") {
+        //            if (!summaryUp.ContainsKey(int.Parse(tic.Value))) {
+        //                summaryUp.Add(int.Parse(tic.Value), 1);
+        //            } else {
+        //                summaryUp[int.Parse(tic.Value)] += 1;
+        //            }
+        //        }
+        //        if (tic.Company == "Edenred") {
+        //            if (!summaryEdenred.ContainsKey(int.Parse(tic.Value))) {
+        //                summaryEdenred.Add(int.Parse(tic.Value), 1);
+        //            } else {
+        //                summaryEdenred[int.Parse(tic.Value)] += 1;
+        //            }
+        //        }
+        //        if (tic.Company == "MojeStravenka") {
+        //            if (!summaryMojeStravenka.ContainsKey(int.Parse(tic.Value))) {
+        //                summaryMojeStravenka.Add(int.Parse(tic.Value), 1);
+        //            } else {
+        //                summaryMojeStravenka[int.Parse(tic.Value)] += 1;
+        //            }
+        //        }
+        //        totalValue += int.Parse(tic.Value);
+        //    }
 
+        //    if (summarySodexo.Count > 0) {
+        //        summaryInfoText = " Sodexo: " + Environment.NewLine + Environment.NewLine;
 
+        //        int countSum = 0;
+        //        int valueSum = 0;
 
-        internal string SummaryInfo(Ticket[] loadedTickets) {
-            string summaryInfoText = "";
-            int totalValue = 0;
-            Dictionary<int, int> summarySodexo = new Dictionary<int, int>();
-            Dictionary<int, int> summaryUp = new Dictionary<int, int>();
-            Dictionary<int, int> summaryEdenred = new Dictionary<int, int>();
-            Dictionary<int, int> summaryMojeStravenka = new Dictionary<int, int>();
+        //        foreach (var item in summarySodexo) {
+        //            int key = item.Key;
+        //            int value = item.Value;
+        //            countSum += value;
+        //            valueSum += (value * key);
+        //            summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", key, value, key * value) + Environment.NewLine;
 
-            foreach (Ticket tic in loadedTickets) {
-                if (tic.Company == "Sodexo") {
-                    if (!summarySodexo.ContainsKey(int.Parse(tic.Value))) {
-                        summarySodexo.Add(int.Parse(tic.Value), 1);
-                    } else {
-                        summarySodexo[int.Parse(tic.Value)] += 1;
-                    }
-                }
-                if (tic.Company == "Up") {
-                    if (!summaryUp.ContainsKey(int.Parse(tic.Value))) {
-                        summaryUp.Add(int.Parse(tic.Value), 1);
-                    } else {
-                        summaryUp[int.Parse(tic.Value)] += 1;
-                    }
-                }
-                if (tic.Company == "Edenred") {
-                    if (!summaryEdenred.ContainsKey(int.Parse(tic.Value))) {
-                        summaryEdenred.Add(int.Parse(tic.Value), 1);
-                    } else {
-                        summaryEdenred[int.Parse(tic.Value)] += 1;
-                    }
-                }
-                if (tic.Company == "MojeStravenka") {
-                    if (!summaryMojeStravenka.ContainsKey(int.Parse(tic.Value))) {
-                        summaryMojeStravenka.Add(int.Parse(tic.Value), 1);
-                    } else {
-                        summaryMojeStravenka[int.Parse(tic.Value)] += 1;
-                    }
-                }
-                totalValue += int.Parse(tic.Value);
-            }
+        //        }
+        //        summaryInfoText += "----------------------------------------------------------------------------------" + Environment.NewLine;
+        //        summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem", countSum, valueSum) + Environment.NewLine;
+        //        summaryInfoText += "__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+        //    }
 
-            if (summarySodexo.Count > 0) {
-                summaryInfoText = "\t Sodexo: " + Environment.NewLine + Environment.NewLine;
+        //    if (summaryUp.Count > 0) {
+        //        summaryInfoText += " Up: " + Environment.NewLine + Environment.NewLine;
 
-                int countSum = 0;
-                int valueSum = 0;
+        //        int countSum = 0;
+        //        int valueSum = 0;
 
-                foreach (var item in summarySodexo) {
-                    int key = item.Key;
-                    int value = item.Value;
-                    countSum += value;
-                    valueSum += (value * key);
-                    summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", key, value, key * value) + Environment.NewLine;
+        //        foreach (var item in summaryUp) {
+        //            int key = item.Key;
+        //            int value = item.Value;
+        //            countSum += value;
+        //            valueSum += (value * key);
+        //            summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", key, value, key * value) + Environment.NewLine;
+        //        }
+        //        summaryInfoText += "----------------------------------------------------------------------------------" + Environment.NewLine;
+        //        summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem", countSum, valueSum) + Environment.NewLine;
+        //        summaryInfoText += "__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+        //    }
 
-                }
-                summaryInfoText += "----------------------------------------------------------------------------------" + Environment.NewLine;
-                summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem", countSum, valueSum) + Environment.NewLine;
-                summaryInfoText += "__________________________________________________________________________________" + Environment.NewLine;
-            }
+        //    if (summaryEdenred.Count > 0) {
+        //        summaryInfoText += " Edenred: " + Environment.NewLine + Environment.NewLine;
 
-            if (summaryUp.Count > 0) {
-                summaryInfoText += Environment.NewLine + Environment.NewLine + "\t Up: " + Environment.NewLine + Environment.NewLine;
+        //        int countSum = 0;
+        //        int valueSum = 0;
 
-                int countSum = 0;
-                int valueSum = 0;
+        //        foreach (var item in summaryEdenred) {
+        //            int key = item.Key;
+        //            int value = item.Value;
+        //            countSum += value;
+        //            valueSum += (value * key);
+        //            summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", key, value, key * value) + Environment.NewLine;
+        //        }
+        //        summaryInfoText += "----------------------------------------------------------------------------------" + Environment.NewLine;
+        //        summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem", countSum, valueSum) + Environment.NewLine;
+        //        summaryInfoText += "__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+        //    }
 
-                foreach (var item in summaryUp) {
-                    int key = item.Key;
-                    int value = item.Value;
-                    countSum += value;
-                    valueSum += (value * key);
-                    summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", key, value, key * value) + Environment.NewLine;
-                }
-                summaryInfoText += "----------------------------------------------------------------------------------" + Environment.NewLine;
-                summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem", countSum, valueSum) + Environment.NewLine;
-                summaryInfoText += "__________________________________________________________________________________" + Environment.NewLine;
-            }
+        //    if (summaryMojeStravenka.Count > 0) {
+        //        summaryInfoText +=  " Moje Stravenka: " + Environment.NewLine + Environment.NewLine;
 
-            if (summaryEdenred.Count > 0) {
-                summaryInfoText += Environment.NewLine + Environment.NewLine + "\t Edenred: " + Environment.NewLine + Environment.NewLine;
+        //        int countSum = 0;
+        //        int valueSum = 0;
 
-                int countSum = 0;
-                int valueSum = 0;
+        //        foreach (var item in summaryMojeStravenka) {
+        //            int key = item.Key;
+        //            int value = item.Value;
+        //            countSum += value;
+        //            valueSum += (value * key);
+        //            summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", key, value, key * value) + Environment.NewLine;
+        //        }
+        //        summaryInfoText += "----------------------------------------------------------------------------------" + Environment.NewLine;
+        //        summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem", countSum, valueSum) + Environment.NewLine;
+        //        summaryInfoText += "__________________________________________________________________________________" + Environment.NewLine;
+        //    }
 
-                foreach (var item in summaryEdenred) {
-                    int key = item.Key;
-                    int value = item.Value;
-                    countSum += value;
-                    valueSum += (value * key);
-                    summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", key, value, key * value) + Environment.NewLine;
-                }
-                summaryInfoText += "----------------------------------------------------------------------------------" + Environment.NewLine;
-                summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem", countSum, valueSum) + Environment.NewLine;
-                summaryInfoText += "__________________________________________________________________________________" + Environment.NewLine;
-            }
+        //    summaryInfoText += Environment.NewLine + Environment.NewLine;
+        //    summaryInfoText += "\t     Celkem " + loadedTickets.Count() + " kusů v celkové hodnotě " + totalValue + " Kč.";
 
-            if (summaryMojeStravenka.Count > 0) {
-                summaryInfoText += Environment.NewLine + Environment.NewLine + "\t Moje Stravenka: " + Environment.NewLine + Environment.NewLine;
-
-                int countSum = 0;
-                int valueSum = 0;
-
-                foreach (var item in summaryMojeStravenka) {
-                    int key = item.Key;
-                    int value = item.Value;
-                    countSum += value;
-                    valueSum += (value * key);
-                    summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", key, value, key * value) + Environment.NewLine;
-                }
-                summaryInfoText += "----------------------------------------------------------------------------------" + Environment.NewLine;
-                summaryInfoText += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem", countSum, valueSum) + Environment.NewLine;
-                summaryInfoText += "__________________________________________________________________________________" + Environment.NewLine;
-            }
-
-            summaryInfoText += Environment.NewLine + Environment.NewLine;
-            summaryInfoText += "\t     Celkem " + loadedTickets.Count() + " kusů v celkové hodnotě " + totalValue + " Kč.";
-
-            return summaryInfoText;
-        }
+        //    return summaryInfoText;
+        //}
     }
 }

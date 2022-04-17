@@ -33,11 +33,8 @@ namespace KuponySlevomat.Model {
             string year = Added.Substring(0, 4);
             string AddedCzFormat = $"{day}.{month}.{year}";
 
-            //if (Ean.Length == 32) {
-                return string.Format("{0,32} {1,14} {2,21} {3, 15} {4,20}", Ean, Company, Type, int.Parse(Value), AddedCzFormat);
-            //} else {
-            //    return string.Format("{0,38} {1,20} {2,20} {3, 15} {4,25}", Ean, Company, Type, int.Parse(Value), AddedCzFormat);
-            //}
+            return string.Format("{0,32} {1,14} {2,21} {3, 15} {4,20}", Ean, Company, Type, int.Parse(Value), AddedCzFormat);
+
         }
 
     }

@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using KuponySlevomat.Busines;
 using KuponySlevomat.Model;
 using KuponySlevomat.Queries;
+using KuponySlevomat.TicketsData;
 
 namespace KuponySlevomat {
     public partial class Form1 : Form {
@@ -28,7 +29,7 @@ namespace KuponySlevomat {
         private void InitializeData() {
             CBoxCompanySearch.Items.Insert(0, "Vše");
             CBoxCompanySearch.Items.Insert(1, "Sodexo");
-            CBoxCompanySearch.Items.Insert(2, "UP");
+            CBoxCompanySearch.Items.Insert(2, "Up");
             CBoxCompanySearch.Items.Insert(3, "Edenred");
             CBoxCompanySearch.Items.Insert(4, "Moje Stravenka");
             CBoxCompanySearch.SelectedIndex = 0;
@@ -40,7 +41,18 @@ namespace KuponySlevomat {
             txbPath.Text = writeReaderTxt.ReadText();
             txbEAN.Focus();
         }
+
+
+        //______________________________________________________________________________________________________________________________________
+        //_______________________________________________________ PANEL PŘIDAT POUKÁZKY ________________________________________________________
+        //______________________________________________________________________________________________________________________________________
+
+
         private void CBoxCompany_SelectedIndexChanged(object sender, EventArgs e) {
+            txbEAN.Focus();
+        }
+
+        private void dateTimePickerAcceptedDay_CloseUp(object sender, EventArgs e) {
             txbEAN.Focus();
         }
 
@@ -54,12 +66,13 @@ namespace KuponySlevomat {
                     if (!DuplicateTicket()) {
                         AddTicket();
                     } else {
+                        System.Media.SystemSounds.Hand.Play(); 
                         MessageBox.Show("Tento kupón jste již vložili!");
                     }
                 } else {
-                    MessageBox.Show("Neplatné zadání");
+                    System.Media.SystemSounds.Beep.Play();
+                    MessageBox.Show("Neznámý EAN kód");
                 }
-
 
                 txbEAN.Text = "";
             }
@@ -172,12 +185,14 @@ namespace KuponySlevomat {
         }
 
         private void btnSave_Click(object sender, EventArgs e) {
-            if (ticketController.SentAddedTicketToSave()) {
-                MessageBox.Show("Uloženo");
-                ticketController.Tickets.Clear();
-                ShowInfo();
-            } else {
-                MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
+            if (ticketController.Tickets.Count > 0) {
+                if (ticketController.SentAddedTicketToSave()) {
+                    MessageBox.Show("Uloženo");
+                    ticketController.Tickets.Clear();
+                    ShowInfo();
+                } else {
+                    MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
+                }
             }
         }
 
@@ -188,6 +203,17 @@ namespace KuponySlevomat {
                 ShowInfo();
             }
         }
+
+        private void btnDeleteAll_Click(object sender, EventArgs e) {
+            ticketController.Tickets.Clear();
+            ShowInfo();
+        }
+
+
+        //______________________________________________________________________________________________________________________________________
+        //________________________________________________________ PANEL NASTAVENÍ _____________________________________________________________
+        //______________________________________________________________________________________________________________________________________
+
 
         private void btnSetPath_Click(object sender, EventArgs e) {
             openFileDialog1.Title = "Zvolte soubor";
@@ -218,21 +244,62 @@ namespace KuponySlevomat {
             }
         }
 
-        bool showCompleteList = false;            // nastavuje se při zobrazení panelu 4. (true jen když je zobrazen panel pro kompletní výpis kupónů)
+        //______________________________________________________________________________________________________________________________________
+        //_______________________________________________________ PANEL SOUHRNŮ POUKÁZEK _______________________________________________________
+        //______________________________________________________________________________________________________________________________________
 
+        private void CBoxCompanySearch_SelectedIndexChanged(object sender, EventArgs e) {
+            if (((ComboBox)sender).SelectedIndex == 1) {
+                cBoxTypes.Items.Clear();
+                cBoxTypes.Items.Add("Vše");
+                cBoxTypes.Items.AddRange(TicketsTypes.SodexoTypes.ToArray());
+                cBoxTypes.SelectedIndex = 0;
+            } else if (((ComboBox)sender).SelectedIndex == 2) {
+                cBoxTypes.Items.Clear();
+                cBoxTypes.Items.Add("Vše");
+                cBoxTypes.Items.AddRange(TicketsTypes.UpTypes.ToArray());
+                cBoxTypes.SelectedIndex = 0;
+            } else if (((ComboBox)sender).SelectedIndex == 3) {
+                cBoxTypes.Items.Clear();
+                cBoxTypes.Items.Add("Vše");
+                cBoxTypes.Items.AddRange(TicketsTypes.EdenredTypes.ToArray());
+                cBoxTypes.SelectedIndex = 0;
+            } else {
+                cBoxTypes.Items.Clear();
+                cBoxTypes.Text = string.Empty;
+            }
+        }
+
+        bool showCompleteList = false;            // nastavuje se při zobrazení panelu 4. (true jen když je zobrazen panel pro kompletní výpis kupónů)
 
         private void btnSearch_Click(object sender, EventArgs e) {
             listBoxShowSavedTickets.Items.Clear();
 
             try {
-                Ticket[] loadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
+                Ticket[] unsortedloadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
+                Ticket[] loadedTickets = unsortedloadedTickets.OrderBy(x => int.Parse(x.Value)).ToArray();
+
 
                 if (showCompleteList) {
-                    listBoxShowSavedTickets.Items.AddRange(loadedTickets);                      // pro 100k stravenek trvá cca 30s !!!
+                    listBoxShowSavedTickets.Items.AddRange(loadedTickets);                                  // pro 100k stravenek trvá cca 30s !!!
                 } else {
-                    txbSummaryInfo.Text = Environment.NewLine + "\t     Poukázky přijaté za období od " + dateTimePickerFrom.Value.ToString("dd.MM.yyyy") + " do " + dateTimePickerTo.Value.ToString("dd.MM.yyyy") + Environment.NewLine + Environment.NewLine + Environment.NewLine;
-                    txbSummaryInfo.Text += string.Format("\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine + Environment.NewLine + Environment.NewLine;
-                    txbSummaryInfo.Text += ticketController.SummaryInfo(loadedTickets);          // METODA PRO VÝPIS SOUHRNU
+                    ShowInfoHeader();
+
+                    if (CBoxCompanySearch.Text == TicketsCompanies.Companies[0]) {                          // pokud je vybrána firma SODEXO 
+                        ShowSodexoInfo(loadedTickets);
+                    } else if (CBoxCompanySearch.Text == TicketsCompanies.Companies[1]) {                   // nebo Up
+                        ShowUpInfo(loadedTickets);
+                    } else if (CBoxCompanySearch.Text == TicketsCompanies.Companies[2]) {
+                        ShowEdenredInfo(loadedTickets);
+                    } else if (CBoxCompanySearch.Text == TicketsCompanies.Companies[3]) {
+                        ShowMojeStravenkaInfo(loadedTickets);
+                    } else {
+                        ShowSodexoInfo(loadedTickets);
+                        ShowUpInfo(loadedTickets);
+                        ShowEdenredInfo(loadedTickets);
+                        ShowMojeStravenkaInfo(loadedTickets);
+                        ShowGeneralInfo(loadedTickets);
+                    }
                 }
 
                 List<string> summaryText = new List<string>();
@@ -247,6 +314,267 @@ namespace KuponySlevomat {
                 MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
             }
         }
+
+        private void ShowInfoHeader() {
+            txbSummaryInfo.Text = Environment.NewLine + "\t\t     Poukázky přijaté za období od " + dateTimePickerFrom.Value.ToString("dd.MM.yyyy") + " do " + dateTimePickerTo.Value.ToString("dd.MM.yyyy") + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+            txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine;
+            txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+        }
+
+        private void ShowMojeStravenkaInfo(Ticket[] loadedTickets) {
+            txbSummaryInfo.Text += "\t " + TicketsCompanies.Companies[3] + Environment.NewLine + Environment.NewLine;               // vypíše Moje Stravenka
+
+            List<Array> TickestByTypes = new List<Array>();                                     // stravenky uložené podle typů  (vždy pro jednu firmu)
+
+            TickestByTypes.Add(loadedTickets.Where(t => t.Company == TicketsCompanies.Companies[3]).ToArray());
+
+            string typPoukazky = "";
+            string pocetPoukazekProTyp = TickestByTypes[0].Length.ToString();
+            string soucetHodnotProTyp = ((Ticket[])TickestByTypes[0]).Sum(t => int.Parse(t.Value)).ToString();
+            var SeskupenoPodleHodot = ((Ticket[])TickestByTypes[0]).GroupBy(t => t.Value);
+
+            if (TickestByTypes[0].Length != 0) {
+                txbSummaryInfo.Text += string.Format("\t\t") + typPoukazky + Environment.NewLine;
+
+                foreach (var group in SeskupenoPodleHodot) {
+                    txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", int.Parse(group.Key), group.Count(), int.Parse(group.Key) * group.Count()) + Environment.NewLine;
+                }
+
+                txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "-------", "--------", "-----------") + Environment.NewLine;
+                txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem:", pocetPoukazekProTyp, soucetHodnotProTyp) + Environment.NewLine;
+                txbSummaryInfo.Text += "\t    ---------------------------------------------------------------------------    " + Environment.NewLine;
+
+                txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetPoukazekProTyp + " kusů v celkové hodnotě " + soucetHodnotProTyp + " Kč." + Environment.NewLine;
+                txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+            } else {
+                txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
+                txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+            }
+        }
+
+        private void ShowEdenredInfo(Ticket[] loadedTickets) {
+            txbSummaryInfo.Text += "\t " + TicketsCompanies.Companies[2] + Environment.NewLine + Environment.NewLine;               // vypíše Edenred
+
+            List<Array> TickestByTypes = new List<Array>();                                     // stravenky uložené podle typů  (vždy pro jednu firmu)
+
+            if (cBoxTypes.SelectedIndex == 0 || CBoxCompanySearch.SelectedIndex == 0) {               // když josu vybrány všechny typy , nebo všechny společnosti
+
+                for (int i = 0; i < TicketsTypes.EdenredTypes.Count; i++) {                     // projede všechny typy Up stravanek
+                    TickestByTypes.Add(loadedTickets.Where(t => t.Company == TicketsCompanies.Companies[2] && t.Type == TicketsTypes.EdenredTypes[i]).ToArray());
+                }
+
+                bool emptySelect = true;
+                int pocetCelkem = 0;
+                int soucetCelkem = 0;
+
+                for (int i = 0; i < TickestByTypes.Count; i++) {
+                    string typPoukazky = TicketsTypes.EdenredTypes[i];
+                    int pocetPoukazekProTyp = TickestByTypes[i].Length;
+                    int soucetHodnotProTyp = ((Ticket[])TickestByTypes[i]).Sum(t => int.Parse(t.Value));
+                    var SeskupenoPodleHodot = ((Ticket[])TickestByTypes[i]).GroupBy(t => t.Value);
+
+                    pocetCelkem += pocetPoukazekProTyp;
+                    soucetCelkem += soucetHodnotProTyp;
+
+                    if (TickestByTypes[i].Length != 0) {
+                        txbSummaryInfo.Text += string.Format("\t\t") + typPoukazky + Environment.NewLine;
+                        emptySelect = false;
+
+                        foreach (var group in SeskupenoPodleHodot) {
+                            txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", int.Parse(group.Key), group.Count(), int.Parse(group.Key) * group.Count()) + Environment.NewLine;
+                        }
+
+                        txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "-------", "--------", "-----------") + Environment.NewLine;
+                        txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem:", pocetPoukazekProTyp, soucetHodnotProTyp) + Environment.NewLine;
+                        txbSummaryInfo.Text += "\t    ---------------------------------------------------------------------------    " + Environment.NewLine;
+                    }
+
+                }
+
+                if (emptySelect) {
+                    txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                } else {
+                    txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                }
+
+            } else {
+                TickestByTypes.Add(loadedTickets.Where(t => t.Company == TicketsCompanies.Companies[2] && t.Type == TicketsTypes.EdenredTypes[cBoxTypes.SelectedIndex - 1]).ToArray());
+
+                string typPoukazky = TicketsTypes.EdenredTypes[cBoxTypes.SelectedIndex - 1];
+                string pocetPoukazekProTyp = TickestByTypes[0].Length.ToString();
+                string soucetHodnotProTyp = ((Ticket[])TickestByTypes[0]).Sum(t => int.Parse(t.Value)).ToString();
+                var SeskupenoPodleHodot = ((Ticket[])TickestByTypes[0]).GroupBy(t => t.Value);
+
+                if (TickestByTypes[0].Length != 0) {
+                    txbSummaryInfo.Text += string.Format("\t\t") + typPoukazky + Environment.NewLine;
+
+                    foreach (var group in SeskupenoPodleHodot) {
+                        txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", int.Parse(group.Key), group.Count(), int.Parse(group.Key) * group.Count()) + Environment.NewLine;
+                    }
+
+                    txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "-------", "--------", "-----------") + Environment.NewLine;
+                    txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem:", pocetPoukazekProTyp, soucetHodnotProTyp) + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t    ---------------------------------------------------------------------------    " + Environment.NewLine;
+                } else {
+                    txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům.";
+                }
+            }
+        }
+
+        private void ShowUpInfo(Ticket[] loadedTickets) {
+            txbSummaryInfo.Text += "\t " + TicketsCompanies.Companies[1] + Environment.NewLine + Environment.NewLine;               // vypíše Up
+
+            List<Array> TickestByTypes = new List<Array>();                                     // stravenky uložené podle typů  (vždy pro jednu firmu)
+
+            if (cBoxTypes.SelectedIndex == 0 || CBoxCompanySearch.SelectedIndex == 0) {               // když josu vybrány všechny typy , nebo všechny společnosti
+
+                for (int i = 0; i < TicketsTypes.UpTypes.Count; i++) {                      // projede všechny typy Up stravanek
+                    TickestByTypes.Add(loadedTickets.Where(t => t.Company == TicketsCompanies.Companies[1] && t.Type == TicketsTypes.UpTypes[i]).ToArray());
+                }
+
+                bool emptySelect = true;
+                int pocetCelkem = 0;
+                int soucetCelkem = 0;
+
+                for (int i = 0; i < TickestByTypes.Count; i++) {
+                    string typPoukazky = TicketsTypes.UpTypes[i];
+                    int pocetPoukazekProTyp = TickestByTypes[i].Length;
+                    int soucetHodnotProTyp = ((Ticket[])TickestByTypes[i]).Sum(t => int.Parse(t.Value));
+                    var SeskupenoPodleHodot = ((Ticket[])TickestByTypes[i]).GroupBy(t => t.Value);
+
+                    pocetCelkem += pocetPoukazekProTyp;
+                    soucetCelkem += soucetHodnotProTyp;
+
+                    if (TickestByTypes[i].Length != 0) {
+                        txbSummaryInfo.Text += string.Format("\t\t") + typPoukazky + Environment.NewLine;
+                        emptySelect = false;
+
+                        foreach (var group in SeskupenoPodleHodot) {
+                            txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", int.Parse(group.Key), group.Count(), int.Parse(group.Key) * group.Count()) + Environment.NewLine;
+                        }
+
+                        txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "-------", "--------", "-----------") + Environment.NewLine;
+                        txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem:", pocetPoukazekProTyp, soucetHodnotProTyp) + Environment.NewLine;
+                        txbSummaryInfo.Text += "\t    ---------------------------------------------------------------------------    " + Environment.NewLine;
+                    }
+
+                }
+
+                if (emptySelect) {
+                    txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                } else {
+                    txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                }
+
+
+            } else {
+                TickestByTypes.Add(loadedTickets.Where(t => t.Company == TicketsCompanies.Companies[1] && t.Type == TicketsTypes.UpTypes[cBoxTypes.SelectedIndex - 1]).ToArray());
+
+                string typPoukazky = TicketsTypes.UpTypes[cBoxTypes.SelectedIndex - 1];
+                string pocetPoukazekProTyp = TickestByTypes[0].Length.ToString();
+                string soucetHodnotProTyp = ((Ticket[])TickestByTypes[0]).Sum(t => int.Parse(t.Value)).ToString();
+                var SeskupenoPodleHodot = ((Ticket[])TickestByTypes[0]).GroupBy(t => t.Value);
+
+                if (TickestByTypes[0].Length != 0) {
+                    txbSummaryInfo.Text += string.Format("\t\t") + typPoukazky + Environment.NewLine;
+
+                    foreach (var group in SeskupenoPodleHodot) {
+                        txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", int.Parse(group.Key), group.Count(), int.Parse(group.Key) * group.Count()) + Environment.NewLine;
+                    }
+
+                    txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "-------", "--------", "-----------") + Environment.NewLine;
+                    txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem:", pocetPoukazekProTyp, soucetHodnotProTyp) + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t    ---------------------------------------------------------------------------    " + Environment.NewLine;
+                } else {
+                    txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům.";
+                }
+            }
+        }
+
+        private void ShowSodexoInfo(Ticket[] loadedTickets) {
+            txbSummaryInfo.Text += "\t " + TicketsCompanies.Companies[0] + Environment.NewLine + Environment.NewLine;               // vypíše Sodexo 
+
+            List<Array> TickestByTypes = new List<Array>();                                     // stravenky uložené podle typů  (vždy pro jednu firmu)
+
+            if (cBoxTypes.SelectedIndex == 0 || CBoxCompanySearch.SelectedIndex == 0) {         // když josu vybrány všechny typy , nebo všechny společnosti
+
+                for (int i = 0; i < TicketsTypes.SodexoTypes.Count; i++) {                      // projede všechny typy Sodexo stravanek
+                    TickestByTypes.Add(loadedTickets.Where(t => t.Company == TicketsCompanies.Companies[0] && t.Type == TicketsTypes.SodexoTypes[i]).ToArray());
+                }
+
+                bool emptySelect = true;
+                int pocetCelkem = 0;
+                int soucetCelkem = 0;
+
+                for (int i = 0; i < TickestByTypes.Count; i++) {
+                    string typPoukazky = TicketsTypes.SodexoTypes[i];
+                    int pocetPoukazekProTyp = TickestByTypes[i].Length;
+                    int soucetHodnotProTyp = ((Ticket[])TickestByTypes[i]).Sum(t => int.Parse(t.Value));
+                    var SeskupenoPodleHodot = ((Ticket[])TickestByTypes[i]).GroupBy(t => t.Value);
+
+                    pocetCelkem += pocetPoukazekProTyp;
+                    soucetCelkem += soucetHodnotProTyp;
+
+                    if (TickestByTypes[i].Length != 0) {
+                        txbSummaryInfo.Text += string.Format("\t\t") + typPoukazky + Environment.NewLine;
+                        emptySelect = false;
+
+                        foreach (var group in SeskupenoPodleHodot) {
+                            txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", int.Parse(group.Key), group.Count(), int.Parse(group.Key) * group.Count()) + Environment.NewLine;
+                        }
+
+                        txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "-------", "--------", "-----------") + Environment.NewLine;
+                        txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem:", pocetPoukazekProTyp, soucetHodnotProTyp) + Environment.NewLine;
+                        txbSummaryInfo.Text += "\t    ---------------------------------------------------------------------------    " + Environment.NewLine;
+                    }
+
+                }
+
+                if (emptySelect) {
+                    txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                } else {
+                    txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                }
+
+
+            } else {
+                TickestByTypes.Add(loadedTickets.Where(t => t.Company == TicketsCompanies.Companies[0] && t.Type == TicketsTypes.SodexoTypes[cBoxTypes.SelectedIndex - 1]).ToArray());
+
+                string typPoukazky = TicketsTypes.SodexoTypes[cBoxTypes.SelectedIndex - 1];
+                string pocetPoukazekProTyp = TickestByTypes[0].Length.ToString();
+                string soucetHodnotProTyp = ((Ticket[])TickestByTypes[0]).Sum(t => int.Parse(t.Value)).ToString();
+                var SeskupenoPodleHodot = ((Ticket[])TickestByTypes[0]).GroupBy(t => t.Value);
+
+                if (TickestByTypes[0].Length != 0) {
+                    txbSummaryInfo.Text += string.Format("\t\t") + typPoukazky + Environment.NewLine;
+
+                    foreach (var group in SeskupenoPodleHodot) {
+                        txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", int.Parse(group.Key), group.Count(), int.Parse(group.Key) * group.Count()) + Environment.NewLine;
+                    }
+
+                    txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "-------", "--------", "-----------") + Environment.NewLine;
+                    txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Celkem:", pocetPoukazekProTyp, soucetHodnotProTyp) + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t    ---------------------------------------------------------------------------    " + Environment.NewLine;
+                } else {
+                    txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům.";
+                }
+            }
+        }
+
+        private void ShowGeneralInfo(Ticket[] loadedTickets) {
+            txbSummaryInfo.Text += Environment.NewLine;
+            txbSummaryInfo.Text += "\t POČET VŠECH STRAVENEK VE VÝPISU JE " + loadedTickets.Count() + " KUSŮ V CELKOVÉ HODNOTĚ " + loadedTickets.Sum(x => long.Parse(x.Value)) + " KČ.";
+        }
+
+        //______________________________________________________________________________________________________________________________________
+        //___________________________________________________ PŘEPÍNÁNÍ MEZI POHLEDY (PANELY) __________________________________________________
+        //______________________________________________________________________________________________________________________________________
 
         private void menuAddTickets_Click(object sender, EventArgs e) {
             panel1.BringToFront();
@@ -263,6 +591,11 @@ namespace KuponySlevomat {
             panel4.BringToFront();
             lblVarovani.Visible = true;
             showCompleteList = true;
+            cBoxTypes.Visible = false;
+            labTypes.Visible = false;
+            lblTotalCountFromDB.Text = "0";
+            lblTotalValueFromDB.Text = "0";
+            listBoxShowSavedTickets.Items.Clear();
         }
 
         private void SouhrnToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -270,8 +603,9 @@ namespace KuponySlevomat {
             panel5.BringToFront();
             lblVarovani.Visible = false;
             showCompleteList = false;
+            cBoxTypes.Visible = true;
+            labTypes.Visible = true;
         }
-
 
     }
 }

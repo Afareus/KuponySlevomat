@@ -5,7 +5,7 @@
   },
   "projects": {
     "F:\\Projekty\\KuponySlevomat\\KuponySlevomat\\KuponySlevomat.csproj": {
-      "version": "1.1.0",
+      "version": "1.2.0",
       "restore": {
         "projectUniqueName": "F:\\Projekty\\KuponySlevomat\\KuponySlevomat\\KuponySlevomat.csproj",
         "projectName": "KuponySken",
@@ -71,7 +71,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.407\\RuntimeIdentifierGraph.json"
         }
       }
     }
