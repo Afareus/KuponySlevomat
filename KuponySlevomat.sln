@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KuponySlevomat", "KuponySlevomat\KuponySlevomat.csproj", "{634B324D-B392-49F0-8B30-F94932BE9F61}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{76DDDF56-DC79-418C-8727-1450D1EAC19B}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{C50F7534-7AF4-456E-86B9-E00ECF107269}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{634B324D-B392-49F0-8B30-F94932BE9F61}.Release|Any CPU.Build.0 = Release|Any CPU
 		{634B324D-B392-49F0-8B30-F94932BE9F61}.Release|x86.ActiveCfg = Release|Any CPU
 		{634B324D-B392-49F0-8B30-F94932BE9F61}.Release|x86.Build.0 = Release|Any CPU
-		{76DDDF56-DC79-418C-8727-1450D1EAC19B}.Debug|Any CPU.ActiveCfg = Debug
-		{76DDDF56-DC79-418C-8727-1450D1EAC19B}.Debug|x86.ActiveCfg = Debug
-		{76DDDF56-DC79-418C-8727-1450D1EAC19B}.Release|Any CPU.ActiveCfg = Release
-		{76DDDF56-DC79-418C-8727-1450D1EAC19B}.Release|x86.ActiveCfg = Release
+		{C50F7534-7AF4-456E-86B9-E00ECF107269}.Debug|Any CPU.ActiveCfg = Debug
+		{C50F7534-7AF4-456E-86B9-E00ECF107269}.Debug|x86.ActiveCfg = Debug
+		{C50F7534-7AF4-456E-86B9-E00ECF107269}.Release|Any CPU.ActiveCfg = Release
+		{C50F7534-7AF4-456E-86B9-E00ECF107269}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

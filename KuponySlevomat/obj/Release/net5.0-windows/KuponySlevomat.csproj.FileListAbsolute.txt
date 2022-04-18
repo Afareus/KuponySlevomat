@@ -35,7 +35,6 @@ F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevo
 F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\ref\KuponySlevomat.dll
 F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.pdb
 F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.genruntimeconfig.cache
-F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.AssemblyReference.cache
 F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.exe
 F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.deps.json
 F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.runtimeconfig.json
