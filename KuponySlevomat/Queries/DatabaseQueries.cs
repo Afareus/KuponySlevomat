@@ -41,9 +41,11 @@ namespace KuponySlevomat.Queries {
         }
 
 
-        internal Ticket[] GetAllTickets() {
+        internal Dictionary<string,Ticket> GetAllTickets() {
+            Stopwatch stop = new Stopwatch();
+            stop.Start();
             string selectAllQuery = "SELECT * FROM Tickets";
-            List<Ticket> tickets = new List<Ticket>();
+            Dictionary<string, Ticket> tickets = new Dictionary<string, Ticket>();
 
             using (SqliteConnection conn = new SqliteConnection("data source =" + Path)) {
                 SqliteCommand cmd = new SqliteCommand(selectAllQuery, conn);
@@ -51,12 +53,14 @@ namespace KuponySlevomat.Queries {
                 using (SqliteDataReader reader = cmd.ExecuteReader()) {
                     while (reader.Read()) {
                         Ticket ticket = new Ticket((string)reader["EAN"], (string)reader["Company"], (string)reader["Type"], (string)reader["Value"], (string)reader["Validity"], (string)reader["Date"]);
-                        tickets.Add(ticket);
+                        tickets.Add(ticket.Ean, ticket);
                     }
                 }
                 conn.Close();
             }
-            return tickets.ToArray();
+            stop.Stop();
+            var elapsed = stop.Elapsed; // zmerit !!!
+            return tickets;
         }
 
 
@@ -110,19 +114,19 @@ namespace KuponySlevomat.Queries {
 
 
 
-        internal Ticket[] GetTickets(int selectedIndex, DateTimePicker dateTimePickerFrom, DateTimePicker dateTimePickerTo) {
+        internal Ticket[] GetTickets(int selectedCompany, DateTimePicker dateTimePickerFrom, DateTimePicker dateTimePickerTo) {
             string dateFrom = dateTimePickerFrom.Value.ToString("yyyy-MM-dd");
             string dateTo = dateTimePickerTo.Value.ToString("yyyy-MM-dd");
 
             string selectAllQuery;
 
-            if (selectedIndex == 1) {
+            if (selectedCompany == 1) {
                 selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "' AND Company = 'Sodexo'";
-            } else if (selectedIndex == 2) {
+            } else if (selectedCompany == 2) {
                 selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "' AND Company = 'Up'";
-            } else if (selectedIndex == 3) {
+            } else if (selectedCompany == 3) {
                 selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "' AND Company = 'Edenred'";
-            } else if (selectedIndex == 4) {
+            } else if (selectedCompany == 4) {
                 selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "' AND Company = 'Moje Stravenka'";
             } else {
                 selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "'";

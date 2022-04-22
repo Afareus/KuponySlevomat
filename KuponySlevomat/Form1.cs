@@ -186,10 +186,12 @@ namespace KuponySlevomat {
 
         private void btnSave_Click(object sender, EventArgs e) {
             if (ticketController.Tickets.Count > 0) {
-                if (ticketController.SentAddedTicketToSave()) {
+                if (ticketController.SentAddedTicketToSave() == 1) {
                     MessageBox.Show("Uloženo");
                     ticketController.Tickets.Clear();
                     ShowInfo();
+                } else if (ticketController.SentAddedTicketToSave() == 0) {
+                    MessageBox.Show(" Minimálně jeden z ukládaných kupónů již je v databázi uložen! \n Nelze uložit více stejných kupónů");
                 } else {
                     MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
                 }

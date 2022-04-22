@@ -11,9 +11,9 @@ namespace KuponySlevomat.TestData {
         public static List<Ticket> CreateTestTickets() {
             List<Ticket> tickets = new List<Ticket>();
 
-            for (int i = 50000; i > 0; i--) {
+            for (int i = 40000; i > 20000; i--) {
                 Ticket ticket = new Ticket();
-                ticket.Ean = "15210011247620000500020523554455";
+                ticket.Ean = "152100112476200005000205235" + String.Format("{0:00000}", i.ToString());
                 ticket.Company = "Edenred";
                 ticket.Type = TicketsData.TicketsTypes.EdenredTypes[i % 10];
                 int val = (int)(Math.Round((Double)((i % 5000) / 500),2)*500) + 500;
@@ -24,9 +24,9 @@ namespace KuponySlevomat.TestData {
                 tickets.Add(ticket);
             }
 
-            for (int i = 50000; i > 0; i--) {
+            for (int i = 40000; i > 20000; i--) {
                 Ticket ticket = new Ticket();
-                ticket.Ean = "152100112476200005000205";
+                ticket.Ean = "2521001124762000050" + String.Format("{0:00000}", i.ToString());
                 ticket.Company = "Sodexo";
                 ticket.Type = TicketsData.TicketsTypes.SodexoTypes[i % 10];
                 int val = (int)(Math.Round((Double)((i % 5000) / 500), 2) * 500) + 500;
@@ -37,9 +37,9 @@ namespace KuponySlevomat.TestData {
                 tickets.Add(ticket);
             }
 
-            for (int i = 50000; i > 0; i--) {
+            for (int i = 40000; i > 20000; i--) {
                 Ticket ticket = new Ticket();
-                ticket.Ean = "152100112476200005000205";
+                ticket.Ean = "3521001124762000050" + String.Format("{0:00000}", i.ToString());
                 ticket.Company = "Up";
                 ticket.Type = TicketsData.TicketsTypes.UpTypes[i % 5];
                 int val = (int)(Math.Round((Double)((i % 5000) / 500), 2) * 500) + 500;
@@ -50,9 +50,9 @@ namespace KuponySlevomat.TestData {
                 tickets.Add(ticket);
             }
 
-            for (int i = 50000; i > 0; i--) {
+            for (int i = 40000; i > 20000; i--) {
                 Ticket ticket = new Ticket();
-                ticket.Ean = "1521001124762000050002";
+                ticket.Ean = "45210011247620000" + String.Format("{0:00000}", i.ToString());
                 ticket.Company = "Moje Stravenka";
                 ticket.Type = string.Empty;
                 int val = (int)(Math.Round((Double)((i % 5000) / 500), 2) * 500) + 500;
