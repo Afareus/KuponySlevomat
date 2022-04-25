@@ -42,8 +42,6 @@ namespace KuponySlevomat.Queries {
 
 
         internal Dictionary<string,Ticket> GetAllTickets() {
-            Stopwatch stop = new Stopwatch();
-            stop.Start();
             string selectAllQuery = "SELECT * FROM Tickets";
             Dictionary<string, Ticket> tickets = new Dictionary<string, Ticket>();
 
@@ -58,8 +56,6 @@ namespace KuponySlevomat.Queries {
                 }
                 conn.Close();
             }
-            stop.Stop();
-            var elapsed = stop.Elapsed; // zmerit !!!
             return tickets;
         }
 

@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KuponySlevomat.Busines {
-    class WriterReaderTxt {
+namespace KuponySlevomat.Business {
+    class ConfigOperator {
 
         private string filePath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\KuponySlevomatConfig.txt";
 
-        public WriterReaderTxt() {
+        public ConfigOperator() {
             if (!File.Exists(filePath)) {
                 var myFile = File.Create(filePath);
                 myFile.Close();

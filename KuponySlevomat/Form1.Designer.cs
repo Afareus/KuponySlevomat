@@ -53,6 +53,7 @@ namespace KuponySlevomat {
             this.label20 = new System.Windows.Forms.Label();
             this.dateTimePickerAcceptedDay = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.labTypes = new System.Windows.Forms.Label();
             this.cBoxTypes = new System.Windows.Forms.ComboBox();
             this.lblVarovani = new System.Windows.Forms.Label();
@@ -270,7 +271,7 @@ namespace KuponySlevomat {
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.CBoxCompany);
             this.panel1.Controls.Add(this.listBoxAddedTickets);
-            this.panel1.Location = new System.Drawing.Point(1, 36);
+            this.panel1.Location = new System.Drawing.Point(1, 31);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(987, 525);
             this.panel1.TabIndex = 25;
@@ -370,6 +371,7 @@ namespace KuponySlevomat {
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnPrint);
             this.panel2.Controls.Add(this.labTypes);
             this.panel2.Controls.Add(this.cBoxTypes);
             this.panel2.Controls.Add(this.lblVarovani);
@@ -387,6 +389,16 @@ namespace KuponySlevomat {
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(965, 533);
             this.panel2.TabIndex = 26;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(819, 110);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(49, 33);
+            this.btnPrint.TabIndex = 32;
+            this.btnPrint.Text = "PDF";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // labTypes
             // 
@@ -800,6 +812,7 @@ namespace KuponySlevomat {
         private System.Windows.Forms.ComboBox cBoxTypes;
         private System.Windows.Forms.Button btnDeleteAll;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnPrint;
     }
 }
 

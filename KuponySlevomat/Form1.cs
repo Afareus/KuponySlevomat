@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using KuponySlevomat.Busines;
+using KuponySlevomat.Business;
 using KuponySlevomat.Model;
 using KuponySlevomat.Queries;
 using KuponySlevomat.TicketsData;
@@ -19,7 +19,7 @@ namespace KuponySlevomat {
     public partial class Form1 : Form {
 
         private TicketController ticketController;
-        private WriterReaderTxt writeReaderTxt;
+        private ConfigOperator writeReaderTxt;
 
         public Form1() {
             InitializeComponent();
@@ -36,7 +36,7 @@ namespace KuponySlevomat {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            writeReaderTxt = new WriterReaderTxt();
+            writeReaderTxt = new ConfigOperator();
             ticketController = new TicketController(writeReaderTxt.ReadText());
             txbPath.Text = writeReaderTxt.ReadText();
             txbEAN.Focus();
@@ -186,11 +186,12 @@ namespace KuponySlevomat {
 
         private void btnSave_Click(object sender, EventArgs e) {
             if (ticketController.Tickets.Count > 0) {
-                if (ticketController.SentAddedTicketToSave() == 1) {
+                int storageStatus = ticketController.SentAddedTicketToSave();
+                if (storageStatus == 1) {
                     MessageBox.Show("Uloženo");
                     ticketController.Tickets.Clear();
                     ShowInfo();
-                } else if (ticketController.SentAddedTicketToSave() == 0) {
+                } else if (storageStatus == 0) {
                     MessageBox.Show(" Minimálně jeden z ukládaných kupónů již je v databázi uložen! \n Nelze uložit více stejných kupónů");
                 } else {
                     MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
@@ -276,7 +277,6 @@ namespace KuponySlevomat {
 
         private void btnSearch_Click(object sender, EventArgs e) {
             listBoxShowSavedTickets.Items.Clear();
-
             try {
                 Ticket[] unsortedloadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
                 Ticket[] loadedTickets = unsortedloadedTickets.OrderBy(x => int.Parse(x.Value)).ToArray();
@@ -318,7 +318,7 @@ namespace KuponySlevomat {
         }
 
         private void ShowInfoHeader() {
-            txbSummaryInfo.Text = Environment.NewLine + "\t\t     Poukázky přijaté za období od " + dateTimePickerFrom.Value.ToString("dd.MM.yyyy") + " do " + dateTimePickerTo.Value.ToString("dd.MM.yyyy") + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+            txbSummaryInfo.Text = Environment.NewLine + "\t\t       Poukázky přijaté za období od " + dateTimePickerFrom.Value.ToString("dd.MM.yyyy") + " do " + dateTimePickerTo.Value.ToString("dd.MM.yyyy") + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine;
             txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
         }
@@ -347,7 +347,7 @@ namespace KuponySlevomat {
                 txbSummaryInfo.Text += "\t    ---------------------------------------------------------------------------    " + Environment.NewLine;
 
                 txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetPoukazekProTyp + " kusů v celkové hodnotě " + soucetHodnotProTyp + " Kč." + Environment.NewLine;
-                txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             } else {
                 txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
                 txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
@@ -398,7 +398,7 @@ namespace KuponySlevomat {
                     txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 } else {
                     txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
-                    txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 }
 
             } else {
@@ -469,7 +469,7 @@ namespace KuponySlevomat {
                     txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 } else {
                     txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
-                    txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 }
 
 
@@ -541,7 +541,7 @@ namespace KuponySlevomat {
                     txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 } else {
                     txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
-                    txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 }
 
                 
@@ -572,6 +572,11 @@ namespace KuponySlevomat {
         private void ShowGeneralInfo(Ticket[] loadedTickets) {
             txbSummaryInfo.Text += Environment.NewLine;
             txbSummaryInfo.Text += "\t POČET VŠECH STRAVENEK VE VÝPISU JE " + loadedTickets.Count() + " KUSŮ V CELKOVÉ HODNOTĚ " + loadedTickets.Sum(x => long.Parse(x.Value)) + " KČ.";
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e) {
+            PrintOperator printOperator = new PrintOperator(txbSummaryInfo.Text, "F:\\slevomatVYPIS.pdf");
+            printOperator.SaveTextToDocument();
         }
 
         //______________________________________________________________________________________________________________________________________
@@ -608,6 +613,7 @@ namespace KuponySlevomat {
             cBoxTypes.Visible = true;
             labTypes.Visible = true;
         }
+
 
     }
 }
