@@ -285,7 +285,7 @@ namespace KuponySlevomat {
                 if (showCompleteList) {
                     listBoxShowSavedTickets.Items.AddRange(loadedTickets);                                  // pro 100k stravenek trvá cca 30s !!!
                 } else {
-                    ShowInfoHeader();
+                    ShowPeriodInfo();
 
                     if (CBoxCompanySearch.Text == TicketsCompanies.Companies[0]) {                          // pokud je vybrána firma SODEXO 
                         ShowSodexoInfo(loadedTickets);
@@ -317,14 +317,15 @@ namespace KuponySlevomat {
             }
         }
 
-        private void ShowInfoHeader() {
+        private void ShowPeriodInfo() {
             txbSummaryInfo.Text = Environment.NewLine + "\t\t       Poukázky přijaté za období od " + dateTimePickerFrom.Value.ToString("dd.MM.yyyy") + " do " + dateTimePickerTo.Value.ToString("dd.MM.yyyy") + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
-            txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine;
-            txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
         }
 
         private void ShowMojeStravenkaInfo(Ticket[] loadedTickets) {
-            txbSummaryInfo.Text += "\t " + TicketsCompanies.Companies[3] + Environment.NewLine + Environment.NewLine;               // vypíše Moje Stravenka
+            txbSummaryInfo.Text += "\t" + TicketsCompanies.Companies[3] + Environment.NewLine + Environment.NewLine;               // vypíše Moje Stravenka
+
+            txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine;
+            txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
 
             List<Array> TickestByTypes = new List<Array>();                                     // stravenky uložené podle typů  (vždy pro jednu firmu)
 
@@ -347,15 +348,18 @@ namespace KuponySlevomat {
                 txbSummaryInfo.Text += "\t    ---------------------------------------------------------------------------    " + Environment.NewLine;
 
                 txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetPoukazekProTyp + " kusů v celkové hodnotě " + soucetHodnotProTyp + " Kč." + Environment.NewLine;
-                txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             } else {
                 txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
-                txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             }
         }
 
         private void ShowEdenredInfo(Ticket[] loadedTickets) {
-            txbSummaryInfo.Text += "\t " + TicketsCompanies.Companies[2] + Environment.NewLine + Environment.NewLine;               // vypíše Edenred
+            txbSummaryInfo.Text += "\t" + TicketsCompanies.Companies[2] + Environment.NewLine + Environment.NewLine;               // vypíše Edenred
+
+            txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine;
+            txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
 
             List<Array> TickestByTypes = new List<Array>();                                     // stravenky uložené podle typů  (vždy pro jednu firmu)
 
@@ -395,10 +399,10 @@ namespace KuponySlevomat {
 
                 if (emptySelect) {
                     txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
-                    txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 } else {
                     txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
-                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 }
 
             } else {
@@ -426,7 +430,10 @@ namespace KuponySlevomat {
         }
 
         private void ShowUpInfo(Ticket[] loadedTickets) {
-            txbSummaryInfo.Text += "\t " + TicketsCompanies.Companies[1] + Environment.NewLine + Environment.NewLine;               // jen vypíše Up
+            txbSummaryInfo.Text += "\t" + TicketsCompanies.Companies[1] + Environment.NewLine + Environment.NewLine;               // jen vypíše Up
+
+            txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine;
+            txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
 
             List<Array> TickestByTypes = new List<Array>();                                     // stravenky uložené podle typů  (vždy pro jednu firmu)
 
@@ -466,10 +473,10 @@ namespace KuponySlevomat {
 
                 if (emptySelect) {
                     txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
-                    txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 } else {
                     txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
-                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 }
 
 
@@ -498,7 +505,10 @@ namespace KuponySlevomat {
         }
 
         private void ShowSodexoInfo(Ticket[] loadedTickets) {
-            txbSummaryInfo.Text += "\t " + TicketsCompanies.Companies[0] + Environment.NewLine + Environment.NewLine;               // vypíše Sodexo 
+            txbSummaryInfo.Text += "\t" + TicketsCompanies.Companies[0] + Environment.NewLine + Environment.NewLine;               // vypíše Sodexo 
+
+            txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine;
+            txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
 
             List<Array> TickestByTypes = new List<Array>();                                     // stravenky uložené podle typů  (vždy pro jednu firmu)
 
@@ -538,10 +548,10 @@ namespace KuponySlevomat {
 
                 if (emptySelect) {
                     txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
-                    txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 } else {
                     txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
-                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 }
 
                 
@@ -570,7 +580,6 @@ namespace KuponySlevomat {
         }
 
         private void ShowGeneralInfo(Ticket[] loadedTickets) {
-            txbSummaryInfo.Text += Environment.NewLine;
             txbSummaryInfo.Text += "\t POČET VŠECH STRAVENEK VE VÝPISU JE " + loadedTickets.Count() + " KUSŮ V CELKOVÉ HODNOTĚ " + loadedTickets.Sum(x => long.Parse(x.Value)) + " KČ.";
         }
 
