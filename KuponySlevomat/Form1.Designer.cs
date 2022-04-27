@@ -398,6 +398,7 @@ namespace KuponySlevomat {
             this.btnPrint.TabIndex = 32;
             this.btnPrint.Text = "PDF";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Visible = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // labTypes

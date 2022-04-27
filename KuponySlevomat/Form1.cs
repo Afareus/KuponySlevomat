@@ -302,6 +302,7 @@ namespace KuponySlevomat {
                         ShowMojeStravenkaInfo(loadedTickets);
                         ShowGeneralInfo(loadedTickets);
                     }
+                    btnPrint.Visible = true;
                 }
 
                 List<string> summaryText = new List<string>();
@@ -318,10 +319,11 @@ namespace KuponySlevomat {
         }
 
         private void ShowPeriodInfo() {
-            txbSummaryInfo.Text = Environment.NewLine + "\t\t       Poukázky přijaté za období od " + dateTimePickerFrom.Value.ToString("dd.MM.yyyy") + " do " + dateTimePickerTo.Value.ToString("dd.MM.yyyy") + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+            txbSummaryInfo.Text = Environment.NewLine + Environment.NewLine + "\t\t       Poukázky přijaté za období od " + dateTimePickerFrom.Value.ToString("dd.MM.yyyy") + " do " + dateTimePickerTo.Value.ToString("dd.MM.yyyy");
         }
 
         private void ShowMojeStravenkaInfo(Ticket[] loadedTickets) {
+            txbSummaryInfo.Text += Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             txbSummaryInfo.Text += "\t" + TicketsCompanies.Companies[3] + Environment.NewLine + Environment.NewLine;               // vypíše Moje Stravenka
 
             txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine;
@@ -348,7 +350,7 @@ namespace KuponySlevomat {
                 txbSummaryInfo.Text += "\t    ---------------------------------------------------------------------------    " + Environment.NewLine;
 
                 txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetPoukazekProTyp + " kusů v celkové hodnotě " + soucetHodnotProTyp + " Kč." + Environment.NewLine;
-                txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                txbSummaryInfo.Text += "\t__________________________________________________________________________________";
             } else {
                 txbSummaryInfo.Text += "\t\t Nenalezeny žádné stravenky odpovídající vloženým parametrům." + Environment.NewLine;
                 txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
@@ -356,6 +358,7 @@ namespace KuponySlevomat {
         }
 
         private void ShowEdenredInfo(Ticket[] loadedTickets) {
+            txbSummaryInfo.Text += Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             txbSummaryInfo.Text += "\t" + TicketsCompanies.Companies[2] + Environment.NewLine + Environment.NewLine;               // vypíše Edenred
 
             txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine;
@@ -402,7 +405,7 @@ namespace KuponySlevomat {
                     txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 } else {
                     txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
-                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________";
                 }
 
             } else {
@@ -430,6 +433,7 @@ namespace KuponySlevomat {
         }
 
         private void ShowUpInfo(Ticket[] loadedTickets) {
+            txbSummaryInfo.Text += Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             txbSummaryInfo.Text += "\t" + TicketsCompanies.Companies[1] + Environment.NewLine + Environment.NewLine;               // jen vypíše Up
 
             txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine;
@@ -476,7 +480,7 @@ namespace KuponySlevomat {
                     txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 } else {
                     txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
-                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________";
                 }
 
 
@@ -505,6 +509,7 @@ namespace KuponySlevomat {
         }
 
         private void ShowSodexoInfo(Ticket[] loadedTickets) {
+            txbSummaryInfo.Text += Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             txbSummaryInfo.Text += "\t" + TicketsCompanies.Companies[0] + Environment.NewLine + Environment.NewLine;               // vypíše Sodexo 
 
             txbSummaryInfo.Text += string.Format("\t\t\t\t {0,7} \t {1,8} \t {2,11}", "Hodnota", "Kusy", "Celkem") + Environment.NewLine;
@@ -551,7 +556,7 @@ namespace KuponySlevomat {
                     txbSummaryInfo.Text += "     ________________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
                 } else {
                     txbSummaryInfo.Text += Environment.NewLine + "\t\t     Celkem " + pocetCelkem + " kusů v celkové hodnotě " + soucetCelkem + " Kč." + Environment.NewLine;
-                    txbSummaryInfo.Text += "\t__________________________________________________________________________________" + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
+                    txbSummaryInfo.Text += "\t__________________________________________________________________________________";
                 }
 
                 
@@ -580,12 +585,28 @@ namespace KuponySlevomat {
         }
 
         private void ShowGeneralInfo(Ticket[] loadedTickets) {
+            txbSummaryInfo.Text += Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine;
             txbSummaryInfo.Text += "\t POČET VŠECH STRAVENEK VE VÝPISU JE " + loadedTickets.Count() + " KUSŮ V CELKOVÉ HODNOTĚ " + loadedTickets.Sum(x => long.Parse(x.Value)) + " KČ.";
         }
 
         private void btnPrint_Click(object sender, EventArgs e) {
-            PrintOperator printOperator = new PrintOperator(txbSummaryInfo.Text, "F:\\slevomatVYPIS.pdf");
-            printOperator.SaveTextToDocument();
+            saveFileDialog1.Title = "Zadejte umístění a název výpisu";
+            saveFileDialog1.Filter = "PDF (*.pdf) | *.pdf";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            DialogResult dr = saveFileDialog1.ShowDialog();
+
+            if (dr == DialogResult.OK) {
+                PrintOperator printOperator = new PrintOperator(txbSummaryInfo.Text, saveFileDialog1.FileName);
+                printOperator.SaveTextToDocument();
+                MessageBox.Show("Uloženo");
+            }
+
+
+
+            //PrintOperator printOperator = new PrintOperator(txbSummaryInfo.Text, "F:\\slevomatVYPIS.pdf");
+            //printOperator.SaveTextToDocument();
+            
         }
 
         //______________________________________________________________________________________________________________________________________
