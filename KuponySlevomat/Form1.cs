@@ -600,12 +600,10 @@ namespace KuponySlevomat {
                 PrintOperator printOperator = new PrintOperator(txbSummaryInfo.Text, saveFileDialog1.FileName);
                 printOperator.SaveTextToDocument();
                 MessageBox.Show("Uloženo");
+            } else {
+                MessageBox.Show("Neuloženo \n Existuje zadaná cesta?");
             }
-
-
-
-            //PrintOperator printOperator = new PrintOperator(txbSummaryInfo.Text, "F:\\slevomatVYPIS.pdf");
-            //printOperator.SaveTextToDocument();
+            
             
         }
 
@@ -616,11 +614,13 @@ namespace KuponySlevomat {
         private void menuAddTickets_Click(object sender, EventArgs e) {
             panel1.BringToFront();
             lblVarovani.Visible = false;
+            btnPrint.Visible = false;
         }
 
         private void menuSettings_Click(object sender, EventArgs e) {
             panel3.BringToFront();
             lblVarovani.Visible = false;
+            btnPrint.Visible = false;
         }
 
         private void detailniVypisToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -633,6 +633,7 @@ namespace KuponySlevomat {
             lblTotalCountFromDB.Text = "0";
             lblTotalValueFromDB.Text = "0";
             listBoxShowSavedTickets.Items.Clear();
+            btnPrint.Visible = false;
         }
 
         private void SouhrnToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -642,6 +643,12 @@ namespace KuponySlevomat {
             showCompleteList = false;
             cBoxTypes.Visible = true;
             labTypes.Visible = true;
+            if (txbSummaryInfo.Text == "") {
+                btnPrint.Visible = false;
+            } else {
+                btnPrint.Visible = true;
+            }
+            
         }
 
 
