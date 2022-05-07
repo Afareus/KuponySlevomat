@@ -593,6 +593,7 @@ namespace KuponySlevomat {
             saveFileDialog1.Title = "Zadejte umístění a název výpisu";
             saveFileDialog1.Filter = "PDF (*.pdf) | *.pdf";
             saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.FileName = "Výpis - Kupony Slevomat " + DateTime.Now.Date.ToShortDateString();
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             DialogResult dr = saveFileDialog1.ShowDialog();
 
@@ -600,8 +601,6 @@ namespace KuponySlevomat {
                 PrintOperator printOperator = new PrintOperator(txbSummaryInfo.Text, saveFileDialog1.FileName);
                 printOperator.SaveTextToDocument();
                 MessageBox.Show("Uloženo");
-            } else {
-                MessageBox.Show("Neuloženo \n Existuje zadaná cesta?");
             }
             
             
