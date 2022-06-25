@@ -33,7 +33,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\Setup.msi"
+        "OutputFilename" = "8:Debug\\Setup-Oxana.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -49,7 +49,15 @@
             "PromptEnabled" = "11:TRUE"
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
-            "ComponentsUrl" = "8:"
+            "ComponentsUrl" = "8:C:\\Users\\Gabriel\\Downloads"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.5.0.x64"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 5.0.17 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.5.0.x64"
+                    }
+                }
             }
         }
         "Release"
@@ -116,8 +124,8 @@
         {
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5DDAFC3756CC49F3B949BB58F5994536"
             {
-            "SourcePath" = "8:..\\KuponySlevomat\\icone.ico"
-            "TargetName" = "8:icone.ico"
+            "SourcePath" = "8:..\\KuponySlevomat\\icon.ico"
+            "TargetName" = "8:icon.ico"
             "Tag" = "8:"
             "Folder" = "8:_6F30FBF04F26421A951D25AEDE938EAC"
             "Condition" = "8:"
@@ -200,16 +208,16 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:KuponySlevomat"
+        "ProductName" = "8:Oxana - Sken poukázek"
         "ProductCode" = "8:{BA88A743-E452-4D35-8837-78F856FE81B2}"
-        "PackageCode" = "8:{2E44E023-EF0A-4792-84EF-12C7204EC092}"
+        "PackageCode" = "8:{989983EC-2EA4-494D-AC43-72E53850F598}"
         "UpgradeCode" = "8:{E392CCEA-B42D-48F5-8C28-15F7606D196F}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.2.0"
+        "ProductVersion" = "8:1.2.2"
         "Manufacturer" = "8:Slevomat"
         "ARPHELPTELEPHONE" = "8:+420605373222"
         "ARPHELPLINK" = "8:afareus89@gmail.com"
@@ -324,7 +332,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FA921E912D834ABE969FFF34F0F8A4F6"
             {
-            "Name" = "8:KuponySlevomat"
+            "Name" = "8:Oxana - Sken poukázek"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -338,7 +346,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FE90A06BE8FD482EA56C91E329C111D5"
             {
-            "Name" = "8:KuponySlevomat"
+            "Name" = "8:Oxana - Sken poukázek"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -751,7 +759,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_6618014319F8400B9BF614695E6B4523"
             {
-            "SourcePath" = "8:..\\KuponySlevomat\\obj\\Release\\net5.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\KuponySlevomat\\obj\\Debug\\net5.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_6F30FBF04F26421A951D25AEDE938EAC"

@@ -6,15 +6,17 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <StartupObject />
-    <Authors>Afareus</Authors>
-    <Product>KuponySken</Product>
-    <PackageId>KuponySken</PackageId>
-    <PackageIcon>icon.png</PackageIcon>
+    <Authors>Afareus89</Authors>
+    <Product>Sken Poukázek</Product>
+    <PackageId>Sken Poukázek</PackageId>
+    <PackageIcon>icon.ico</PackageIcon>
     <PackageIconUrl />
-    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <AssemblyVersion>1.2.2.0</AssemblyVersion>
     <NeutralLanguage></NeutralLanguage>
-    <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.2.0</Version>
+    <FileVersion>1.2.2.0</FileVersion>
+    <Version>1.2.2</Version>
+    <Company>Afareus89</Company>
+    <Description />
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="bin\Debug\net5.0-windows\icon.png">
+    <None Include="icon.ico">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
