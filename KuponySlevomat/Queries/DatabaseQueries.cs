@@ -17,6 +17,9 @@ namespace KuponySlevomat.Queries {
             Path = path;
         }
 
+        public DatabaseQueries() {
+        }
+
         // TODO: kód od otevření komunikace do zavření by mohl být v TRY bloku - incident na SQLite Error 14: "Unable to open database file" - zatím jednou u uživatele
 
         public bool CreateNewDB(string NewPath) {
@@ -144,5 +147,27 @@ namespace KuponySlevomat.Queries {
             }
             return tickets.ToArray();
         }
+
+
+        // Funkce IsDbReadAble funguje jen pro databázi kde už něco je... jak to napsat všeobecnějí???
+        internal bool IsDbReadAble(string pathToDb)
+        {
+            try
+            {
+                using (SqliteConnection conn = new SqliteConnection("data source =" + pathToDb))
+                {
+                    SqliteCommand cmd = new SqliteCommand("SELECT * FROM Tickets WHERE Tickets.Id = 1", conn);
+                    conn.Open();
+                    using (SqliteDataReader reader = cmd.ExecuteReader()) {}
+                    conn.Close();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
     }
 }
