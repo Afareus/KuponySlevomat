@@ -39,17 +39,6 @@ namespace KuponySlevomat {
             writeReaderTxt = new ConfigOperator();
             ticketController = new TicketController(writeReaderTxt.ReadText());
             txbPath.Text = writeReaderTxt.ReadText();
-            // zaloha databaze po každém spuštění
-            try
-            {
-                //TODO: ProgressBar nebo animace při BackUpu s hláškou: "Probíhá záloha databáze. Pokud záloha trvá příliš dlouho, vytvořte prosím v Natavení novou databázi!"
-                new DatababseBackUp(txbPath.Text).BackupDatabase();
-                MessageBox.Show("Byla provedena záloha databáze.");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Soubor s databází buď neexistuje, nebo aplikace k němu nemá přístup! \nZáloha databáze proto nemohla být provedena. \n\nZkontrolujte v nastavení cestu k databázi, nebo dostupnost databáze.");
-            }
             txbEAN.Focus();
         }
 

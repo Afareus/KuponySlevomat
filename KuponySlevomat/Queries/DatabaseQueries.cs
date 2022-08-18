@@ -149,14 +149,13 @@ namespace KuponySlevomat.Queries {
         }
 
 
-        // Funkce IsDbReadAble funguje jen pro databázi kde už něco je... jak to napsat všeobecnějí???
         internal bool IsDbReadAble(string pathToDb)
         {
             try
             {
                 using (SqliteConnection conn = new SqliteConnection("data source =" + pathToDb))
                 {
-                    SqliteCommand cmd = new SqliteCommand("SELECT * FROM Tickets WHERE Tickets.Id = 1", conn);
+                    SqliteCommand cmd = new SqliteCommand("SELECT * FROM Tickets WHERE Tickets.Id < 2", conn);
                     conn.Open();
                     using (SqliteDataReader reader = cmd.ExecuteReader()) {}
                     conn.Close();

@@ -14,6 +14,7 @@ namespace KuponySlevomat {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new BackUpProgressForm());
             Application.Run(new Form1());
         }
     }

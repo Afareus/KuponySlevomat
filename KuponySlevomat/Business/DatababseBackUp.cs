@@ -19,14 +19,21 @@ namespace KuponySlevomat.Business
 
         public void BackupDatabase()
         {
-            if (PathToActuaDB != "" && IsDbReadAble())
+            if (!String.IsNullOrEmpty(PathToActuaDB))
             {
-                System.IO.File.Copy(PathToActuaDB, PathToLocalBackUp, true);
+
+                if (IsDbReadAble())
+                {
+                    System.IO.File.Copy(PathToActuaDB, PathToLocalBackUp, true);
+                }
+                else
+                {
+                    throw new Exception("Databáze v daném umístění nebyla nalezena nebo databáze není čitelná");
+                }
             }
             else
             {
-                // TODO: upřesnit exceptionu
-                throw new Exception();
+                throw new Exception("Není nastavena cesta k databázi.");
             }
         }
 
