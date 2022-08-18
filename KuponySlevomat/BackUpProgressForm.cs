@@ -1,4 +1,5 @@
 ﻿using KuponySlevomat.Business;
+using KuponySlevomat.Queries;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,8 +26,7 @@ namespace KuponySlevomat
         {
             InitializeComponent();
             InitializeData();
-            //BackUpDatabase();
-            Copy();
+            BackupDatabase();
         }
 
         private void InitializeData()
@@ -35,7 +35,30 @@ namespace KuponySlevomat
             PathToBackUp = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\OxanaBackUp.db3";
         }
 
-        public void Copy()
+        public void BackupDatabase()
+        {
+            if (!String.IsNullOrEmpty(PathToDB))
+            {
+                // nějak se to tady hádá s query třídou :/
+                if (IsDbReadAble())
+                {
+                    DoBackUp();
+                    label1.Text = "Databáze byla úspěšně zálohována.";
+                    button1.Visible = true;
+                }
+                else
+                {
+                    // toto asi předělat na MessageBox oznámení
+                    throw new Exception("Databáze v daném umístění nebyla nalezena nebo databáze není čitelná");
+                }
+            }
+            else
+            {
+                throw new Exception("Není nastavena cesta k databázi.");
+            }
+        }
+
+        public void DoBackUp()
         {
             byte[] buffer = new byte[1024 * 1024]; // 1MB buffer
             bool cancelFlag = false;
@@ -68,10 +91,18 @@ namespace KuponySlevomat
             }
         }
 
+        private bool IsDbReadAble()
+        {
+            var _dbQueries = new DatabaseQueries();
+            if (_dbQueries.IsDbReadAble(PathToDB))
+            {
+                return true;
+            }
+            return false;
+        }
 
 
-
-
+        // STARÝ ZPŮSOB - NEPOVEDL SE MI S NÍM PROGRESS BAR
 
         //private void BackUpDatabase()
         //{

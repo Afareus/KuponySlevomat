@@ -83,7 +83,6 @@ C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Debug\net5.0-windows\KuponySlevoma
 C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Debug\net5.0-windows\KuponySlevomat.runtimeconfig.json
 C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Debug\net5.0-windows\KuponySlevomat.runtimeconfig.dev.json
 C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Debug\net5.0-windows\KuponySlevomat.dll
-C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Debug\net5.0-windows\ref\KuponySlevomat.dll
 C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Debug\net5.0-windows\KuponySlevomat.pdb
 C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Debug\net5.0-windows\Microsoft.Data.Sqlite.dll
 C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Debug\net5.0-windows\PdfSharpCore.dll
@@ -121,3 +120,4 @@ C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Debug\net5.0-windows\ref\KuponySle
 C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.pdb
 C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.genruntimeconfig.cache
 C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.BackUpProgressForm.resources
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Debug\net5.0-windows\refint\KuponySlevomat.dll
