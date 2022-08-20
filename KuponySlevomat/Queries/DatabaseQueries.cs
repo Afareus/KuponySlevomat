@@ -149,16 +149,15 @@ namespace KuponySlevomat.Queries {
         }
 
 
-        internal bool IsDbReadAble(string pathToDb)
+        internal bool IsDbReadAble()
         {
             try
             {
-                using (SqliteConnection conn = new SqliteConnection("data source =" + pathToDb))
+                using (SqliteConnection conn = new SqliteConnection("data source =" + Path))
                 {
                     SqliteCommand cmd = new SqliteCommand("SELECT * FROM Tickets WHERE Tickets.Id < 2", conn);
                     conn.Open();
-                    using (SqliteDataReader reader = cmd.ExecuteReader()) {}
-                    conn.Close();
+                    using (SqliteDataReader reader = cmd.ExecuteReader()) { }
                 }
                 return true;
             }
@@ -166,7 +165,13 @@ namespace KuponySlevomat.Queries {
             {
                 return false;
             }
+            finally
+            {
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
         }
+
 
     }
 }

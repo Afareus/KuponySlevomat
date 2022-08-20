@@ -21,40 +21,45 @@ namespace KuponySlevomat
     {
         private string PathToDB;
         private string PathToBackUp;
+        private DatabaseQueries _queries;
+        private bool isEnd;     // nějaký delegát z jiného vlákna?
+        private string text;    // nějaký delegát z jiného vlákna?
 
         public BackUpProgressForm()
         {
             InitializeComponent();
-            InitializeData();
-            BackupDatabase();
-        }
 
-        private void InitializeData()
-        {
+            isEnd = true;              // toto by mělo být nastavené v jiném vlákně při startu a konci metody DoBackUp()
+            text = "Záloha databáze";  // toto by mělo být nastavené v jiném vlákně při startu a konci metody DoBackUp()
+            label1.Text = text;
+
             PathToDB = new ConfigOperator().ReadText();
             PathToBackUp = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\OxanaBackUp.db3";
+            _queries = new DatabaseQueries(PathToDB);
+
+            BackupDatabase();
         }
 
         public void BackupDatabase()
         {
             if (!String.IsNullOrEmpty(PathToDB))
             {
-                // nějak se to tady hádá s query třídou :/
-                if (IsDbReadAble())
+                if (_queries.IsDbReadAble())
                 {
                     DoBackUp();
-                    label1.Text = "Databáze byla úspěšně zálohována.";
+                    
                     button1.Visible = true;
                 }
                 else
                 {
-                    // toto asi předělat na MessageBox oznámení
-                    throw new Exception("Databáze v daném umístění nebyla nalezena nebo databáze není čitelná");
+                    MessageBox.Show("Databáze v daném umístění nebyla nalezena nebo databáze není čitelná");
+                    //throw new Exception("Databáze v daném umístění nebyla nalezena nebo databáze není čitelná");
                 }
             }
             else
             {
-                throw new Exception("Není nastavena cesta k databázi.");
+                MessageBox.Show("Není nastavena cesta k databázi");
+                //throw new Exception("Není nastavena cesta k databázi");
             }
         }
 
@@ -63,7 +68,7 @@ namespace KuponySlevomat
             byte[] buffer = new byte[1024 * 1024]; // 1MB buffer
             bool cancelFlag = false;
 
-            using (FileStream source = new FileStream(PathToDB, FileMode.Open, FileAccess.Read))
+            using (FileStream source = new FileStream(PathToDB, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
                 long fileLength = source.Length;
                 using (FileStream dest = new FileStream(PathToBackUp, FileMode.Create, FileAccess.Write))
@@ -73,6 +78,7 @@ namespace KuponySlevomat
 
                     while ((currentBlockSize = source.Read(buffer, 0, buffer.Length)) > 0)
                     {
+                        Thread.Sleep(100);
                         totalBytes += currentBlockSize;
                         double percentage = (double)totalBytes * 100.0 / fileLength;
                         pgBackUpDB.Value = (int)percentage;
@@ -91,42 +97,18 @@ namespace KuponySlevomat
             }
         }
 
-        private bool IsDbReadAble()
+        private void button1_Click(object sender, EventArgs e)
         {
-            var _dbQueries = new DatabaseQueries();
-            if (_dbQueries.IsDbReadAble(PathToDB))
+            if (isEnd)
             {
-                return true;
+                this.Close();
             }
-            return false;
+            else
+            {
+                MessageBox.Show("Vydržte dokud záloha databáze nebude dokončena");
+            }
         }
-
-
-        // STARÝ ZPŮSOB - NEPOVEDL SE MI S NÍM PROGRESS BAR
-
-        //private void BackUpDatabase()
-        //{
-        //    OnProgressChanged += delegate { };
-        //    OnComplete += delegate { };
-
-        //    for (int i = 0; i < 100; i++)
-        //    {
-        //        pgBackUpDB.Value = i;
-        //        Thread.Sleep(150);
-        //    }
-
-        //    // zaloha databaze po každém spuštění
-        //    try
-        //    {
-        //        //TODO: ProgressBar nebo animace při BackUpu s hláškou: "Probíhá záloha databáze. Pokud záloha trvá příliš dlouho, vytvořte prosím v Natavení novou databázi!"
-        //        new DatababseBackUp(PathToDB).BackupDatabase();
-        //        //MessageBox.Show("Byla provedena záloha databáze.");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //MessageBox.Show("Soubor s databází buď neexistuje, nebo aplikace k němu nemá přístup! \nZáloha databáze proto nemohla být provedena. \n\nZkontrolujte v nastavení cestu k databázi, nebo dostupnost databáze v zadaném umístění.");
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}    
+    
+    
     }
 }

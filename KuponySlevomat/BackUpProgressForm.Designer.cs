@@ -60,7 +60,7 @@ namespace KuponySlevomat
             this.button1.TabIndex = 2;
             this.button1.Text = "Ok";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // BackUpProgressForm
             // 
@@ -71,7 +71,8 @@ namespace KuponySlevomat
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pgBackUpDB);
             this.Name = "BackUpProgressForm";
-            this.Text = "BackUpProgressForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Oxana - Sken poukázek";
             this.ResumeLayout(false);
             this.PerformLayout();
 

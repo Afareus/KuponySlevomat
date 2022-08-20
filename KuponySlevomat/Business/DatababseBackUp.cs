@@ -39,7 +39,7 @@ namespace KuponySlevomat.Business
 
         private bool IsDbReadAble()
         {
-            if (new DatabaseQueries().IsDbReadAble(PathToActuaDB))
+            if (new DatabaseQueries(PathToActuaDB).IsDbReadAble())
             {
                 return true;
             }
