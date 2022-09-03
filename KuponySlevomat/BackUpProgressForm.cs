@@ -22,16 +22,10 @@ namespace KuponySlevomat
         private string PathToDB;
         private string PathToBackUp;
         private DatabaseQueries _queries;
-        private bool isEnd;     // nějaký delegát z jiného vlákna?
-        private string text;    // nějaký delegát z jiného vlákna?
 
         public BackUpProgressForm()
         {
             InitializeComponent();
-
-            isEnd = true;              // toto by mělo být nastavené v jiném vlákně při startu a konci metody DoBackUp()
-            text = "Záloha databáze";  // toto by mělo být nastavené v jiném vlákně při startu a konci metody DoBackUp()
-            label1.Text = text;
 
             PathToDB = new ConfigOperator().ReadText();
             PathToBackUp = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\OxanaBackUp.db3";
@@ -46,24 +40,39 @@ namespace KuponySlevomat
             {
                 if (_queries.IsDbReadAble())
                 {
-                    DoBackUp();
-                    
-                    button1.Visible = true;
+                    backgroundWorker.RunWorkerAsync();
                 }
                 else
                 {
                     MessageBox.Show("Databáze v daném umístění nebyla nalezena nebo databáze není čitelná");
-                    //throw new Exception("Databáze v daném umístění nebyla nalezena nebo databáze není čitelná");
                 }
             }
             else
             {
                 MessageBox.Show("Není nastavena cesta k databázi");
-                //throw new Exception("Není nastavena cesta k databázi");
+            }
+        }
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (progressBar.Value >= 100)
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Vydržte dokud záloha databáze nebude dokončena");
             }
         }
 
-        public void DoBackUp()
+        private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar.Value = e.ProgressPercentage;
+            lblBackUp.Text = string.Format("Záloha databáze {0}%", e.ProgressPercentage);
+            progressBar.Update();
+        }
+
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             byte[] buffer = new byte[1024 * 1024]; // 1MB buffer
             bool cancelFlag = false;
@@ -78,10 +87,10 @@ namespace KuponySlevomat
 
                     while ((currentBlockSize = source.Read(buffer, 0, buffer.Length)) > 0)
                     {
-                        Thread.Sleep(100);
+                        Thread.Sleep(500);
                         totalBytes += currentBlockSize;
                         double percentage = (double)totalBytes * 100.0 / fileLength;
-                        pgBackUpDB.Value = (int)percentage;
+                        backgroundWorker.ReportProgress((int)percentage);
 
                         dest.Write(buffer, 0, currentBlockSize);
 
@@ -96,19 +105,5 @@ namespace KuponySlevomat
                 }
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (isEnd)
-            {
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Vydržte dokud záloha databáze nebude dokončena");
-            }
-        }
-    
-    
     }
 }

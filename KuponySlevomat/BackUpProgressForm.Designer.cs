@@ -29,28 +29,29 @@ namespace KuponySlevomat
         /// </summary>
         private void InitializeComponent()
         {
-            this.pgBackUpDB = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.lblBackUp = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
-            // pgBackUpDB
+            // progressBar
             // 
-            this.pgBackUpDB.Location = new System.Drawing.Point(46, 66);
-            this.pgBackUpDB.Name = "pgBackUpDB";
-            this.pgBackUpDB.Size = new System.Drawing.Size(557, 29);
-            this.pgBackUpDB.Step = 1;
-            this.pgBackUpDB.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.pgBackUpDB.TabIndex = 0;
+            this.progressBar.Location = new System.Drawing.Point(46, 66);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(557, 29);
+            this.progressBar.Step = 1;
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar.TabIndex = 0;
             // 
-            // label1
+            // lblBackUp
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(259, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Záloha Databáze";
+            this.lblBackUp.AutoSize = true;
+            this.lblBackUp.Location = new System.Drawing.Point(259, 24);
+            this.lblBackUp.Name = "lblBackUp";
+            this.lblBackUp.Size = new System.Drawing.Size(123, 20);
+            this.lblBackUp.TabIndex = 1;
+            this.lblBackUp.Text = "Záloha Databáze";
             // 
             // button1
             // 
@@ -62,14 +63,21 @@ namespace KuponySlevomat
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // backgroundWorker
+            // 
+            this.backgroundWorker.WorkerReportsProgress = true;
+            this.backgroundWorker.WorkerSupportsCancellation = true;
+            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+            // 
             // BackUpProgressForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(647, 171);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pgBackUpDB);
+            this.Controls.Add(this.lblBackUp);
+            this.Controls.Add(this.progressBar);
             this.Name = "BackUpProgressForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Oxana - Sken poukázek";
@@ -80,8 +88,9 @@ namespace KuponySlevomat
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar pgBackUpDB;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label lblBackUp;
         private System.Windows.Forms.Button button1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }
