@@ -37,7 +37,7 @@ namespace KuponySlevomat
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(46, 66);
+            this.progressBar.Location = new System.Drawing.Point(17, 67);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(557, 29);
             this.progressBar.Step = 1;
@@ -47,7 +47,7 @@ namespace KuponySlevomat
             // lblBackUp
             // 
             this.lblBackUp.AutoSize = true;
-            this.lblBackUp.Location = new System.Drawing.Point(259, 24);
+            this.lblBackUp.Location = new System.Drawing.Point(207, 24);
             this.lblBackUp.Name = "lblBackUp";
             this.lblBackUp.Size = new System.Drawing.Size(123, 20);
             this.lblBackUp.TabIndex = 1;
@@ -55,7 +55,7 @@ namespace KuponySlevomat
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(275, 117);
+            this.button1.Location = new System.Drawing.Point(251, 117);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 2;
@@ -74,7 +74,7 @@ namespace KuponySlevomat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 171);
+            this.ClientSize = new System.Drawing.Size(589, 171);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblBackUp);
             this.Controls.Add(this.progressBar);

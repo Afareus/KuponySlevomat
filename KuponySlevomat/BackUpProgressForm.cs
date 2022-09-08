@@ -28,8 +28,9 @@ namespace KuponySlevomat
             InitializeComponent();
 
             PathToDB = new ConfigOperator().ReadText();
-            PathToBackUp = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\OxanaBackUp.db3";
+            PathToBackUp = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + @"\Oxana_Database_BackUp.db3";
             _queries = new DatabaseQueries(PathToDB);
+            button1.Visible = false;
 
             BackupDatabase();
         }
@@ -69,6 +70,11 @@ namespace KuponySlevomat
         {
             progressBar.Value = e.ProgressPercentage;
             lblBackUp.Text = string.Format("Záloha databáze {0}%", e.ProgressPercentage);
+            if (e.ProgressPercentage >= 100)
+            {
+                lblBackUp.Text = "Databáze byla zálohována";
+                button1.Visible = true;
+            }
             progressBar.Update();
         }
 
@@ -87,7 +93,7 @@ namespace KuponySlevomat
 
                     while ((currentBlockSize = source.Read(buffer, 0, buffer.Length)) > 0)
                     {
-                        Thread.Sleep(500);
+                        //Thread.Sleep(200);
                         totalBytes += currentBlockSize;
                         double percentage = (double)totalBytes * 100.0 / fileLength;
                         backgroundWorker.ReportProgress((int)percentage);
@@ -104,6 +110,7 @@ namespace KuponySlevomat
                     }
                 }
             }
+
         }
     }
 }

@@ -121,3 +121,6 @@ C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevoma
 C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.genruntimeconfig.cache
 C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.BackUpProgressForm.resources
 C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Debug\net5.0-windows\ref\KuponySlevomat.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.InfoForm1.resources
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.InfoForm2.resources
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.InfoForm3.resources
