@@ -14,9 +14,6 @@ using System.Windows.Forms;
 
 namespace KuponySlevomat
 {
-    public delegate void ProgressChangeDelegate(double Percentage, ref bool Cancel);
-    public delegate void Completedelegate();
-
     public partial class BackUpProgressForm : Form
     {
         private string PathToDB;
@@ -53,7 +50,7 @@ namespace KuponySlevomat
                 MessageBox.Show("Není nastavena cesta k databázi");
             }
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (progressBar.Value >= 100)
@@ -93,7 +90,7 @@ namespace KuponySlevomat
 
                     while ((currentBlockSize = source.Read(buffer, 0, buffer.Length)) > 0)
                     {
-                        //Thread.Sleep(200);
+                        //Thread.Sleep(500);
                         totalBytes += currentBlockSize;
                         double percentage = (double)totalBytes * 100.0 / fileLength;
                         backgroundWorker.ReportProgress((int)percentage);
@@ -111,6 +108,14 @@ namespace KuponySlevomat
                 }
             }
 
+        }
+
+        private void BackUpProgressForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (progressBar.Value < 100)
+            {
+                MessageBox.Show("Záloha nebyla dokončena! \n V případě, že záloha trvá příliš dlouho, \n zvažte založení nového souboru s databází.", "Warning",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

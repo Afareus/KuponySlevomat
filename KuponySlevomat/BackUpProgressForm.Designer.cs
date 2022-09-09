@@ -81,6 +81,7 @@ namespace KuponySlevomat
             this.Name = "BackUpProgressForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Oxana - Sken poukázek";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BackUpProgressForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
