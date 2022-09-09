@@ -33,6 +33,7 @@ namespace KuponySlevomat
             this.lblBackUp = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.lblDone = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // progressBar
@@ -70,11 +71,21 @@ namespace KuponySlevomat
             this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             // 
+            // lblDone
+            // 
+            this.lblDone.AutoSize = true;
+            this.lblDone.Location = new System.Drawing.Point(35, 24);
+            this.lblDone.Name = "lblDone";
+            this.lblDone.Size = new System.Drawing.Size(524, 20);
+            this.lblDone.TabIndex = 3;
+            this.lblDone.Text = "Dababáze byla zálohována do C:\\ProgramData\\Oxana_Database_BackUp.db3";
+            // 
             // BackUpProgressForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 171);
+            this.Controls.Add(this.lblDone);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblBackUp);
             this.Controls.Add(this.progressBar);
@@ -93,5 +104,6 @@ namespace KuponySlevomat
         private System.Windows.Forms.Label lblBackUp;
         private System.Windows.Forms.Button button1;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
+        private System.Windows.Forms.Label lblDone;
     }
 }

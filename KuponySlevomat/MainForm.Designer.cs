@@ -80,6 +80,7 @@ namespace KuponySlevomat {
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnCreateDB = new System.Windows.Forms.Button();
             this.txbPath = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -279,7 +280,7 @@ namespace KuponySlevomat {
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.CBoxCompany);
             this.panel1.Controls.Add(this.listBoxAddedTickets);
-            this.panel1.Location = new System.Drawing.Point(1, 36);
+            this.panel1.Location = new System.Drawing.Point(0, 37);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1128, 618);
@@ -665,17 +666,27 @@ namespace KuponySlevomat {
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.btnCreateDB);
             this.panel3.Controls.Add(this.txbPath);
             this.panel3.Controls.Add(this.label19);
             this.panel3.Controls.Add(this.label18);
             this.panel3.Controls.Add(this.btnSetPath);
             this.panel3.Controls.Add(this.label17);
-            this.panel3.Location = new System.Drawing.Point(14, 49);
+            this.panel3.Location = new System.Drawing.Point(7, 42);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1110, 584);
+            this.panel3.Size = new System.Drawing.Size(1110, 604);
             this.panel3.TabIndex = 27;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(831, 577);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(256, 20);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Developed by Afareus89@gmail.com";
             // 
             // btnCreateDB
             // 
@@ -842,6 +853,7 @@ namespace KuponySlevomat {
         private System.Windows.Forms.Button btnDeleteAll;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Label label5;
     }
 }
 
