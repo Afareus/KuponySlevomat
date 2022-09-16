@@ -1,3 +1,41 @@
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.exe
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.deps.json
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.runtimeconfig.json
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.runtimeconfig.dev.json
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.dll
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\ref\KuponySlevomat.dll
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.pdb
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\Microsoft.Data.Sqlite.dll
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\SQLitePCLRaw.batteries_v2.dll
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\SQLitePCLRaw.core.dll
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\SQLitePCLRaw.provider.e_sqlite3.dll
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\alpine-x64\native\libe_sqlite3.so
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-arm\native\libe_sqlite3.so
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-arm64\native\libe_sqlite3.so
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-armel\native\libe_sqlite3.so
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-mips64\native\libe_sqlite3.so
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-musl-x64\native\libe_sqlite3.so
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-s390x\native\libe_sqlite3.so
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-x64\native\libe_sqlite3.so
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-x86\native\libe_sqlite3.so
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\osx-arm64\native\libe_sqlite3.dylib
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\osx-x64\native\libe_sqlite3.dylib
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\win-arm\native\e_sqlite3.dll
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\win-arm64\native\e_sqlite3.dll
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\win-x64\native\e_sqlite3.dll
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\bin\Release\net5.0-windows\runtimes\win-x86\native\e_sqlite3.dll
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.AssemblyReference.cache
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.Form1.resources
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.GenerateResource.cache
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.GeneratedMSBuildEditorConfig.editorconfig
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.AssemblyInfoInputs.cache
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.AssemblyInfo.cs
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.CoreCompileInputs.cache
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.CopyComplete
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.dll
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\obj\Release\net5.0-windows\ref\KuponySlevomat.dll
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.pdb
+F:\Projekty\KuponySlevomat s PR\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.genruntimeconfig.cache
 F:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.exe
 F:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.deps.json
 F:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.runtimeconfig.json
@@ -24,6 +62,7 @@ F:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\wi
 F:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\win-arm64\native\e_sqlite3.dll
 F:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 F:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\win-x86\native\e_sqlite3.dll
+F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.AssemblyReference.cache
 F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.Form1.resources
 F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.GenerateResource.cache
 F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.GeneratedMSBuildEditorConfig.editorconfig
@@ -35,4 +74,49 @@ F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevo
 F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\ref\KuponySlevomat.dll
 F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.pdb
 F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.genruntimeconfig.cache
-F:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.AssemblyReference.cache
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.exe
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.deps.json
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.runtimeconfig.json
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.runtimeconfig.dev.json
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\ref\KuponySlevomat.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\KuponySlevomat.pdb
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\Microsoft.Data.Sqlite.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\PdfSharpCore.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\SixLabors.Fonts.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\SixLabors.ImageSharp.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\SQLitePCLRaw.batteries_v2.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\SQLitePCLRaw.core.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\de\PdfSharpCore.resources.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\alpine-x64\native\libe_sqlite3.so
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-arm\native\libe_sqlite3.so
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-arm64\native\libe_sqlite3.so
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-armel\native\libe_sqlite3.so
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-mips64\native\libe_sqlite3.so
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-musl-x64\native\libe_sqlite3.so
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-s390x\native\libe_sqlite3.so
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-x64\native\libe_sqlite3.so
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\linux-x86\native\libe_sqlite3.so
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\osx-arm64\native\libe_sqlite3.dylib
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\osx-x64\native\libe_sqlite3.dylib
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\win-arm\native\e_sqlite3.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\win-arm64\native\e_sqlite3.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\win-x64\native\e_sqlite3.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\bin\Release\net5.0-windows\runtimes\win-x86\native\e_sqlite3.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.BackUpProgressForm.resources
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.InfoForm1.resources
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.InfoForm2.resources
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.InfoForm3.resources
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.Form1.resources
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.GenerateResource.cache
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.AssemblyInfoInputs.cache
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.AssemblyInfo.cs
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.CoreCompileInputs.cache
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.CopyComplete
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\ref\KuponySlevomat.dll
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.pdb
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.genruntimeconfig.cache
+C:\Projekty\KuponySlevomat\KuponySlevomat\obj\Release\net5.0-windows\KuponySlevomat.csproj.AssemblyReference.cache
