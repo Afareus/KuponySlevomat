@@ -50,10 +50,10 @@ namespace KuponySlevomat
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(18, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(604, 20);
+            this.label2.Size = new System.Drawing.Size(607, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Pokud chcete aplikaci začít využívat, v sekci Natavení zadejte cestu k již existu" +
-    "jící databázi ";
+    "jící databázi, ";
             // 
             // label3
             // 
