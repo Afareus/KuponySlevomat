@@ -42,6 +42,7 @@ namespace KuponySlevomat {
             this.jenSouhrnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBackToShowAllTickets = new System.Windows.Forms.Button();
             this.btnDeleteAll = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -89,6 +90,7 @@ namespace KuponySlevomat {
             this.label17 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.lblViewInfo = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -260,6 +262,8 @@ namespace KuponySlevomat {
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblViewInfo);
+            this.panel1.Controls.Add(this.btnBackToShowAllTickets);
             this.panel1.Controls.Add(this.btnDeleteAll);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label31);
@@ -285,6 +289,19 @@ namespace KuponySlevomat {
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1128, 618);
             this.panel1.TabIndex = 25;
+            // 
+            // btnBackToShowAllTickets
+            // 
+            this.btnBackToShowAllTickets.BackColor = System.Drawing.Color.LightGray;
+            this.btnBackToShowAllTickets.ForeColor = System.Drawing.Color.Red;
+            this.btnBackToShowAllTickets.Location = new System.Drawing.Point(467, 473);
+            this.btnBackToShowAllTickets.Name = "btnBackToShowAllTickets";
+            this.btnBackToShowAllTickets.Size = new System.Drawing.Size(234, 36);
+            this.btnBackToShowAllTickets.TabIndex = 35;
+            this.btnBackToShowAllTickets.Text = "Zpět zobrazit všechny přidané";
+            this.btnBackToShowAllTickets.UseVisualStyleBackColor = false;
+            this.btnBackToShowAllTickets.Visible = false;
+            this.btnBackToShowAllTickets.Click += new System.EventHandler(this.btnBackToShowAllTickets_Click);
             // 
             // btnDeleteAll
             // 
@@ -751,6 +768,18 @@ namespace KuponySlevomat {
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // lblViewInfo
+            // 
+            this.lblViewInfo.AutoSize = true;
+            this.lblViewInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblViewInfo.ForeColor = System.Drawing.Color.Red;
+            this.lblViewInfo.Location = new System.Drawing.Point(126, 479);
+            this.lblViewInfo.Name = "lblViewInfo";
+            this.lblViewInfo.Size = new System.Drawing.Size(96, 23);
+            this.lblViewInfo.TabIndex = 36;
+            this.lblViewInfo.Text = "lblViewInfo";
+            this.lblViewInfo.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -854,6 +883,8 @@ namespace KuponySlevomat {
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnBackToShowAllTickets;
+        private System.Windows.Forms.Label lblViewInfo;
     }
 }
 

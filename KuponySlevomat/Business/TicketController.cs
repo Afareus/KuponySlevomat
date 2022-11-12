@@ -22,7 +22,7 @@ namespace KuponySlevomat.Business {
         public TicketController(string path) {
             Tickets = new List<Ticket>();
             databaseQueries = new DatabaseQueries(path);
-            SavedTickets = databaseQueries.GetAllTickets();
+            
 
             //Tickets = TestDataCreator.CreateTestTickets();                   // TESTOVACÍ DATA - zobrazí se po načtení první poukázky
         }
@@ -67,19 +67,29 @@ namespace KuponySlevomat.Business {
             }
         }
 
-        internal int SentAddedTicketToSave() {
-            if (ContainTicketsDuplicate()) 
-                return 0;
-            
+        internal  bool SentAllTicketsToSave() {
             if (databaseQueries.SaveTickets(Tickets.ToArray()) ) {
-                return 1;
+                return true;
             } else {
-                return -1;
+                return false;
+            }
+        }
+
+        internal bool SentNewOnlyTicketsToSave()
+        {
+            if (databaseQueries.SaveTickets(NewTicketsOnly.ToArray()))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
         internal bool ContainTicketsDuplicate()
         {
+            SavedTickets = databaseQueries.GetAllTickets();
             bool containDuplicite = false;
 
             DuplicatedTicketsOnly = new List<Ticket>();
@@ -98,14 +108,7 @@ namespace KuponySlevomat.Business {
                 }
             }
 
-            if (containDuplicite)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return containDuplicite;
         }
 
         internal List<Ticket> GetDuplicatedTicketToSave()

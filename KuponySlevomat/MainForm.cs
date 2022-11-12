@@ -180,23 +180,117 @@ namespace KuponySlevomat {
             lblTotalValue.Text = totalValue.ToString() + " Kč";
         }
 
+        private void ShowInfo(List<Ticket> tickets)
+        {
+            listBoxAddedTickets.Items.Clear();
+            listBoxAddedTickets.Items.AddRange(tickets.ToArray());
+
+            lblCountTickets.Text = tickets.Count.ToString();
+
+            int totalValue = 0;
+            foreach (Ticket tic in tickets)
+            {
+                totalValue += Int32.Parse(tic.Value);
+            }
+            lblTotalValue.Text = totalValue.ToString() + " Kč";
+        }
+
         private Ticket[] ReturnAllAddedTickets() {
             return ticketController.Tickets.ToArray();
         }
 
+        int saveStatus = 1;  // 1 - první klik na tlačítko uložit, 2 - klik na tlačítko uložit po zobrazení pouze stravenek bez duplicit v databázi
         private void btnSave_Click(object sender, EventArgs e) {
-            if (ticketController.Tickets.Count > 0) {
-                int storageStatus = ticketController.SentAddedTicketToSave();
-                if (storageStatus == 1) {
-                    MessageBox.Show("Uloženo");
-                    ticketController.Tickets.Clear();
-                    ShowInfo();
-                } else if (storageStatus == 0) {
-                    MessageBox.Show(" Minimálně jeden z ukládaných kupónů již je v databázi uložen! \n Nelze uložit více stejných kupónů");
-                } else {
-                    MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
+
+            if (saveStatus == 1)
+            {
+                if (ticketController.Tickets.Count > 0) {
+
+                    bool containTicketsDuplicate = ticketController.ContainTicketsDuplicate();
+
+                    if (containTicketsDuplicate == false)
+                    {
+                        bool saved = ticketController.SentAllTicketsToSave();
+                        if (saved)
+                        {
+                            MessageBox.Show("Uloženo");
+                            ticketController.Tickets.Clear();
+                            ShowInfo();
+                        }
+                        else
+                        {
+                            MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
+                        }
+                    }
+                    else
+                    {
+                        DialogResult dr = MessageBox.Show("Některé kupóny již jsou v databázi uloženy. \n \n " +
+                            " Chcete zobrazit seznam bez duplicit? Stiskněte 'Ano' \n " +
+                            " Chcete zobrazit jen duplicity? Stiskněte 'Ne'", "Duplicity", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if (dr == DialogResult.Yes)
+                        {
+                            listBoxAddedTickets.Items.Clear();
+                            listBoxAddedTickets.Items.AddRange(ticketController.NewTicketsOnly.ToArray());
+                            ShowInfo(ticketController.NewTicketsOnly);
+
+                            btnBackToShowAllTickets.Visible = true;
+                            lblViewInfo.Visible = true;
+                            lblViewInfo.Text = "Bez duplicit";
+                            btnDeleteAll.Visible = false;
+                            btnOdebratTicket.Visible = false;
+                            label4.Visible = false;
+                            label12.Visible = false;
+
+                            saveStatus = 2;
+                        }
+                        else if (dr == DialogResult.No)
+                        {
+                            listBoxAddedTickets.Items.Clear();
+                            listBoxAddedTickets.Items.AddRange(ticketController.DuplicatedTicketsOnly.ToArray());
+                            ShowInfo(ticketController.DuplicatedTicketsOnly);
+
+                            btnBackToShowAllTickets.Visible = true;
+                            lblViewInfo.Visible = true;
+                            lblViewInfo.Text = "Duplicity";
+                            btnDeleteAll.Visible = false;
+                            btnOdebratTicket.Visible = false;
+                            label4.Visible = false;
+                            label12.Visible = false;
+
+                            saveStatus = 3;
+                        }
+                    }
                 }
             }
+            else if (saveStatus == 2)
+            {
+                if (ticketController.Tickets.Count > 0)
+                {
+                    bool saved = ticketController.SentNewOnlyTicketsToSave();
+                    if (saved)
+                    {
+                        MessageBox.Show("Uloženo");
+                        ticketController.Tickets.Clear();
+                        ticketController.NewTicketsOnly.Clear();
+                        ticketController.DuplicatedTicketsOnly.Clear();
+                        saveStatus = 1;
+                        ShowInfo();
+                    }
+                    else
+                    {
+                        saveStatus = 1;
+                        MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
+                    }
+                }
+            }
+            else if (saveStatus == 3)
+            {
+                MessageBox.Show("Nelze uložit duplicity!");
+            }
+
+
+
         }
 
         private void btnOdebratTicket_Click(object sender, EventArgs e) {
@@ -650,6 +744,20 @@ namespace KuponySlevomat {
             
         }
 
+        private void btnBackToShowAllTickets_Click(object sender, EventArgs e)
+        {
+            listBoxAddedTickets.Items.Clear();
+            listBoxAddedTickets.Items.AddRange(ticketController.Tickets.ToArray());
+            ShowInfo();
 
+            btnBackToShowAllTickets.Visible = false;
+            lblViewInfo.Visible = false;
+            btnDeleteAll.Visible = true;
+            btnOdebratTicket.Visible = true;
+            label4.Visible = true;
+            label12.Visible = true;
+
+            saveStatus = 1;
+        }
     }
 }
