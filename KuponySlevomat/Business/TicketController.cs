@@ -15,9 +15,14 @@ namespace KuponySlevomat.Business {
         public DatabaseQueries databaseQueries;
         public List<Ticket> Tickets { get; set; }
 
+        Dictionary<string, Ticket> SavedTickets;
+        public List<Ticket> DuplicatedTicketsOnly { get; set; }
+        public List<Ticket> NewTicketsOnly { get; set; }
+
         public TicketController(string path) {
             Tickets = new List<Ticket>();
             databaseQueries = new DatabaseQueries(path);
+            SavedTickets = databaseQueries.GetAllTickets();
 
             //Tickets = TestDataCreator.CreateTestTickets();                   // TESTOVACÍ DATA - zobrazí se po načtení první poukázky
         }
@@ -63,16 +68,7 @@ namespace KuponySlevomat.Business {
         }
 
         internal int SentAddedTicketToSave() {
-            bool containDuplicite = false;
-            Dictionary<string,Ticket> savedTickets = databaseQueries.GetAllTickets();
-
-            foreach (Ticket tic in Tickets) {
-                if (savedTickets.ContainsKey(tic.Ean)) {
-                    containDuplicite = true;
-                }
-            }
-
-            if (containDuplicite) 
+            if (ContainTicketsDuplicate()) 
                 return 0;
             
             if (databaseQueries.SaveTickets(Tickets.ToArray()) ) {
@@ -80,6 +76,46 @@ namespace KuponySlevomat.Business {
             } else {
                 return -1;
             }
+        }
+
+        internal bool ContainTicketsDuplicate()
+        {
+            bool containDuplicite = false;
+
+            DuplicatedTicketsOnly = new List<Ticket>();
+            NewTicketsOnly = new List<Ticket>();
+
+            foreach (Ticket tic in Tickets)
+            {
+                if (SavedTickets.ContainsKey(tic.Ean))
+                {
+                    DuplicatedTicketsOnly.Add(tic);
+                    containDuplicite = true;
+                }
+                else
+                {
+                    NewTicketsOnly.Add(tic);
+                }
+            }
+
+            if (containDuplicite)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        internal List<Ticket> GetDuplicatedTicketToSave()
+        {
+            return DuplicatedTicketsOnly;
+        }
+
+        internal List<Ticket> GetNewTicketToSaveOnly()
+        {
+            return NewTicketsOnly;
         }
 
     }
