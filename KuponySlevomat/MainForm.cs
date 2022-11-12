@@ -274,8 +274,16 @@ namespace KuponySlevomat {
                         ticketController.Tickets.Clear();
                         ticketController.NewTicketsOnly.Clear();
                         ticketController.DuplicatedTicketsOnly.Clear();
-                        saveStatus = 1;
                         ShowInfo();
+
+                        btnBackToShowAllTickets.Visible = false;
+                        lblViewInfo.Visible = false;
+                        btnDeleteAll.Visible = true;
+                        btnOdebratTicket.Visible = true;
+                        label4.Visible = true;
+                        label12.Visible = true;
+
+                        saveStatus = 1;
                     }
                     else
                     {
@@ -288,9 +296,23 @@ namespace KuponySlevomat {
             {
                 MessageBox.Show("Nelze uložit duplicity!");
             }
+        }
 
 
+        private void btnBackToShowAllTickets_Click(object sender, EventArgs e)
+        {
+            listBoxAddedTickets.Items.Clear();
+            listBoxAddedTickets.Items.AddRange(ticketController.Tickets.ToArray());
+            ShowInfo();
 
+            btnBackToShowAllTickets.Visible = false;
+            lblViewInfo.Visible = false;
+            btnDeleteAll.Visible = true;
+            btnOdebratTicket.Visible = true;
+            label4.Visible = true;
+            label12.Visible = true;
+
+            saveStatus = 1;
         }
 
         private void btnOdebratTicket_Click(object sender, EventArgs e) {
@@ -744,20 +766,5 @@ namespace KuponySlevomat {
             
         }
 
-        private void btnBackToShowAllTickets_Click(object sender, EventArgs e)
-        {
-            listBoxAddedTickets.Items.Clear();
-            listBoxAddedTickets.Items.AddRange(ticketController.Tickets.ToArray());
-            ShowInfo();
-
-            btnBackToShowAllTickets.Visible = false;
-            lblViewInfo.Visible = false;
-            btnDeleteAll.Visible = true;
-            btnOdebratTicket.Visible = true;
-            label4.Visible = true;
-            label12.Visible = true;
-
-            saveStatus = 1;
-        }
     }
 }
