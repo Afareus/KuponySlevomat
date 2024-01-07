@@ -392,6 +392,10 @@ namespace KuponySlevomat {
         bool showCompleteList = false;            // nastavuje se při zobrazení panelu 4. (true jen když je zobrazen panel pro kompletní výpis kupónů)
 
         private void btnSearch_Click(object sender, EventArgs e) {
+            SearchTickets();
+        }
+
+        private void SearchTickets() {
             listBoxShowSavedTickets.Items.Clear();
             try {
                 Ticket[] unsortedloadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
@@ -399,7 +403,7 @@ namespace KuponySlevomat {
 
 
                 if (showCompleteList) {
-                    listBoxShowSavedTickets.Items.AddRange(loadedTickets);                                  // pro 100k stravenek trvá cca 30s !!!
+                    listBoxShowSavedTickets.Items.AddRange(loadedTickets.Take(1000).ToArray());
                 } else {
                     ShowPeriodInfo();
 
@@ -728,20 +732,17 @@ namespace KuponySlevomat {
 
         private void menuAddTickets_Click(object sender, EventArgs e) {
             panel1.BringToFront();
-            lblVarovani.Visible = false;
             btnPrint.Visible = false;
         }
 
         private void menuSettings_Click(object sender, EventArgs e) {
             panel3.BringToFront();
-            lblVarovani.Visible = false;
             btnPrint.Visible = false;
         }
 
         private void detailniVypisToolStripMenuItem_Click(object sender, EventArgs e) {
             panel2.BringToFront();
             panel4.BringToFront();
-            lblVarovani.Visible = true;
             showCompleteList = true;
             cBoxTypes.Visible = false;
             labTypes.Visible = false;
@@ -754,7 +755,6 @@ namespace KuponySlevomat {
         private void SouhrnToolStripMenuItem_Click(object sender, EventArgs e) {
             panel2.BringToFront();
             panel5.BringToFront();
-            lblVarovani.Visible = false;
             showCompleteList = false;
             cBoxTypes.Visible = true;
             labTypes.Visible = true;
@@ -766,5 +766,44 @@ namespace KuponySlevomat {
             
         }
 
+        // fokus na textBox "Hledat posle EAN"
+        // vypnutí elementů pro vyhledávání podle data a typu
+        private void textBoxSearchByEAN_Enter(object sender, EventArgs e) {
+
+        }
+
+        // odstranění fokusu z textBox "Hledat posle EAN"
+        // zapnutí elementů pro vyhledávání podle data a typu
+        private void textBoxSearchByEAN_Leave(object sender, EventArgs e) {
+
+        }
+
+        public Ticket TicketToDelete { get; set; }
+
+        // pouze uložit vybraný Ticket do TicketToDelete a pak na základě kliku na tlačítko "smazat", provolat mazací metodu s tímto Ticketem
+        private void listBoxShowSavedTickets_SelectedIndexChanged(object sender, EventArgs e) {
+
+            Ticket ticket = (Ticket)((ListBox)sender).SelectedItem;
+            TicketToDelete = ticket;
+
+            if (TicketToDelete != null) {
+                btnDeleteTicket.Visible = true;
+            }
+        }
+
+        private void btnDeleteTicket_Click(object sender, EventArgs e) {
+            using (var passwordForm = new PasswordForm()) {
+                var result = passwordForm.ShowDialog();
+
+                if (result == DialogResult.OK) {
+                    if (ticketController.databaseQueries.DeleteTicket(TicketToDelete.Ean)) {
+                        MessageBox.Show("Poukázka byla smazána");
+                        SearchTickets();
+                    } else {
+                        MessageBox.Show("Poukázku se nepodařilo smazat");
+                    }
+                }
+            }
+        }
     }
 }

@@ -43,7 +43,6 @@ namespace KuponySlevomat.Queries {
             return true;
         }
 
-
         internal Dictionary<string,Ticket> GetAllTickets() {
             string selectAllQuery = "SELECT * FROM Tickets";
             Dictionary<string, Ticket> tickets = new Dictionary<string, Ticket>();
@@ -61,7 +60,6 @@ namespace KuponySlevomat.Queries {
             }
             return tickets;
         }
-
 
         internal bool SaveTickets(Ticket[] ticketsToSave) {
             using (SqliteConnection conn = new SqliteConnection("data source =" + Path)) {
@@ -111,8 +109,6 @@ namespace KuponySlevomat.Queries {
             return true;
         }
 
-
-
         internal Ticket[] GetTickets(int selectedCompany, DateTimePicker dateTimePickerFrom, DateTimePicker dateTimePickerTo) {
             string dateFrom = dateTimePickerFrom.Value.ToString("yyyy-MM-dd");
             string dateTo = dateTimePickerTo.Value.ToString("yyyy-MM-dd");
@@ -148,7 +144,6 @@ namespace KuponySlevomat.Queries {
             return tickets.ToArray();
         }
 
-
         internal bool IsDbReadAble()
         {
             try
@@ -172,6 +167,46 @@ namespace KuponySlevomat.Queries {
             }
         }
 
+        internal Ticket[] GetTicketByEan(string ean) {
 
+            string query = "SELECT * FROM Tickets WHERE Ean = '" + ean + "'";
+
+            List<Ticket> tickets = new List<Ticket>();
+
+            using (SqliteConnection conn = new SqliteConnection("data source =" + Path)) {
+                SqliteCommand cmd = new SqliteCommand(query, conn);
+                conn.Open();
+                using (SqliteDataReader reader = cmd.ExecuteReader()) {
+                    while (reader.Read()) {
+                        Ticket ticket = new Ticket((string)reader["EAN"], (string)reader["Company"], (string)reader["Type"], (string)reader["Value"], (string)reader["Validity"], (string)reader["Date"]);
+                        tickets.Add(ticket);
+                    }
+                }
+                conn.Close();
+            }
+            return tickets.ToArray();
+        }
+
+        internal bool DeleteTicket(string ean) {
+
+            string query = "DELETE FROM Tickets WHERE Ean = '" + ean + "'";
+
+            try {
+                using (SqliteConnection conn = new SqliteConnection("data source =" + Path)) {
+                    conn.Open();
+                    using (var transaction = conn.BeginTransaction()) {
+                        var command = conn.CreateCommand();
+                        command.CommandText = query;
+                        command.ExecuteNonQuery();
+                        transaction.Commit();
+                    }
+                    conn.Close();
+                }
+                return true;
+
+            } catch (Exception) {
+                return false;
+            }
+        }
     }
 }

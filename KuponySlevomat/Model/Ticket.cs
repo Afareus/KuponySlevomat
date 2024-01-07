@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KuponySlevomat.Model {
-    class Ticket {
+﻿namespace KuponySlevomat.Model {
+    public class Ticket {
 
         public string Ean { get; set; }
         public string Company { get; set; }
@@ -33,11 +27,7 @@ namespace KuponySlevomat.Model {
             string year = Added.Substring(0, 4);
             string AddedCzFormat = $"{day}.{month}.{year}";
 
-            return string.Format("{0,32} {1,14} {2,21} {3, 15} {4,20}", Ean, Company, Type, int.Parse(Value), AddedCzFormat);
-
+            return string.Format("{0,32} {1,14} {2,21} {3, 5} {4,20}", Ean, Company, Type, int.Parse(Value), AddedCzFormat);
         }
-
     }
-
-    
 }

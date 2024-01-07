@@ -475,25 +475,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gabriel\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Gabriel Kovács\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.2.2",
     "restore": {
-      "projectUniqueName": "C:\\Projekty\\KuponySlevomat\\KuponySlevomat\\KuponySlevomat.csproj",
+      "projectUniqueName": "E:\\SSD\\Projekty\\KuponySlevomat_new\\KuponySlevomat\\KuponySlevomat.csproj",
       "projectName": "Sken Poukázek",
-      "projectPath": "C:\\Projekty\\KuponySlevomat\\KuponySlevomat\\KuponySlevomat.csproj",
-      "packagesPath": "C:\\Users\\Gabriel\\.nuget\\packages\\",
-      "outputPath": "C:\\Projekty\\KuponySlevomat\\KuponySlevomat\\obj\\",
+      "projectPath": "E:\\SSD\\Projekty\\KuponySlevomat_new\\KuponySlevomat\\KuponySlevomat.csproj",
+      "packagesPath": "C:\\Users\\Gabriel Kovács\\.nuget\\packages\\",
+      "outputPath": "E:\\SSD\\Projekty\\KuponySlevomat_new\\KuponySlevomat\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Gabriel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Gabriel Kovács\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0-windows7.0"
@@ -549,7 +549,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.412\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }
