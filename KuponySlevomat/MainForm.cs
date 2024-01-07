@@ -398,9 +398,18 @@ namespace KuponySlevomat {
         private void SearchTickets() {
             listBoxShowSavedTickets.Items.Clear();
             try {
-                Ticket[] unsortedloadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
-                Ticket[] loadedTickets = unsortedloadedTickets.OrderBy(x => int.Parse(x.Value)).ToArray();
+                Ticket[] loadedTickets;
 
+                if (!string.IsNullOrEmpty(textBoxSearchByEAN.Text.Trim())) {
+                    loadedTickets = ticketController.databaseQueries.GetTicketByEan(textBoxSearchByEAN.Text.Trim());
+                } else {
+                    Ticket[] unsortedloadedTickets = ticketController.databaseQueries.GetTickets(CBoxCompanySearch.SelectedIndex, dateTimePickerFrom, dateTimePickerTo);
+                    loadedTickets = unsortedloadedTickets.OrderBy(x => int.Parse(x.Value)).ToArray();
+                }
+
+                if (loadedTickets.Count() < 1) {
+                    MessageBox.Show("Nebyly nalezeny žádné odpovídající pouázky");
+                }
 
                 if (showCompleteList) {
                     listBoxShowSavedTickets.Items.AddRange(loadedTickets.Take(1000).ToArray());
@@ -722,8 +731,6 @@ namespace KuponySlevomat {
                 printOperator.SaveTextToDocument();
                 MessageBox.Show("Uloženo");
             }
-            
-            
         }
 
         //______________________________________________________________________________________________________________________________________
@@ -750,6 +757,10 @@ namespace KuponySlevomat {
             lblTotalValueFromDB.Text = "0";
             listBoxShowSavedTickets.Items.Clear();
             btnPrint.Visible = false;
+            btnDeleteTicket.Enabled = false;
+            textBoxSearchByEAN.Visible = true;
+            lblSearchTicketByEan.Visible = true;
+
         }
 
         private void SouhrnToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -763,19 +774,8 @@ namespace KuponySlevomat {
             } else {
                 btnPrint.Visible = true;
             }
-            
-        }
-
-        // fokus na textBox "Hledat posle EAN"
-        // vypnutí elementů pro vyhledávání podle data a typu
-        private void textBoxSearchByEAN_Enter(object sender, EventArgs e) {
-
-        }
-
-        // odstranění fokusu z textBox "Hledat posle EAN"
-        // zapnutí elementů pro vyhledávání podle data a typu
-        private void textBoxSearchByEAN_Leave(object sender, EventArgs e) {
-
+            textBoxSearchByEAN.Visible = false;
+            lblSearchTicketByEan.Visible = false;
         }
 
         public Ticket TicketToDelete { get; set; }
@@ -787,7 +787,7 @@ namespace KuponySlevomat {
             TicketToDelete = ticket;
 
             if (TicketToDelete != null) {
-                btnDeleteTicket.Visible = true;
+                btnDeleteTicket.Enabled = true;
             }
         }
 
@@ -798,11 +798,33 @@ namespace KuponySlevomat {
                 if (result == DialogResult.OK) {
                     if (ticketController.databaseQueries.DeleteTicket(TicketToDelete.Ean)) {
                         MessageBox.Show("Poukázka byla smazána");
-                        SearchTickets();
+
+                        listBoxShowSavedTickets.Items.Clear();
+
+                        if (string.IsNullOrEmpty(textBoxSearchByEAN.Text)) {
+                            SearchTickets();
+                        }
                     } else {
-                        MessageBox.Show("Poukázku se nepodařilo smazat");
+                        MessageBox.Show("Poukázku se nepodařilo smazat. Restartujte aplikaci a zkuste to znova.");
                     }
                 }
+
+                TicketToDelete = null;
+                btnDeleteTicket.Enabled = false;
+            }
+        }
+
+        private void textBoxSearchByEAN_TextChanged(object sender, EventArgs e) {
+            if (string.IsNullOrEmpty(textBoxSearchByEAN.Text)) {
+                dateTimePickerFrom.Enabled = true;
+                dateTimePickerTo.Enabled = true;
+                CBoxCompanySearch.Enabled = true;
+                cBoxTypes.Enabled = true;
+            } else {
+                dateTimePickerFrom.Enabled = false;
+                dateTimePickerTo.Enabled = false;
+                CBoxCompanySearch.Enabled = false;
+                cBoxTypes.Enabled = false;
             }
         }
     }
