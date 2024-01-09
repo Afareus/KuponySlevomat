@@ -11,16 +11,16 @@ using System.Windows.Forms;
 namespace KuponySlevomat {
 
     public partial class PasswordForm : Form {
-    
-        public string ZadaneHeslo { get; private set; }
 
-        public PasswordForm() {
+        string EAN;
+
+        public PasswordForm(string ean) {
             InitializeComponent();
+            EAN = ean;
         }
 
         private void btnOk_Click(object sender, EventArgs e) {
             if (textBoxPassword.Text == "kapitan") {
-                ZadaneHeslo = textBoxPassword.Text;
                 DialogResult = DialogResult.OK;
             } else {
                 MessageBox.Show("Nepltné heslo. Zkuste to znovu.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);

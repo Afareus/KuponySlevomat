@@ -60,9 +60,6 @@ namespace KuponySlevomat {
             this.btnPrint = new System.Windows.Forms.Button();
             this.labTypes = new System.Windows.Forms.Label();
             this.cBoxTypes = new System.Windows.Forms.ComboBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txbSummaryInfo = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnDeleteTicket = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -83,6 +80,9 @@ namespace KuponySlevomat {
             this.label13 = new System.Windows.Forms.Label();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txbSummaryInfo = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCreateDB = new System.Windows.Forms.Button();
@@ -96,8 +96,8 @@ namespace KuponySlevomat {
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -418,8 +418,8 @@ namespace KuponySlevomat {
             this.panel2.Controls.Add(this.lblSearchTicketByEan);
             this.panel2.Controls.Add(this.btnPrint);
             this.panel2.Controls.Add(this.labTypes);
-            this.panel2.Controls.Add(this.cBoxTypes);
             this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.cBoxTypes);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.btnSearch);
             this.panel2.Controls.Add(this.label16);
@@ -485,35 +485,6 @@ namespace KuponySlevomat {
             this.cBoxTypes.Size = new System.Drawing.Size(138, 28);
             this.cBoxTypes.TabIndex = 30;
             // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label3);
-            this.panel5.Controls.Add(this.txbSummaryInfo);
-            this.panel5.Location = new System.Drawing.Point(3, 183);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1090, 421);
-            this.panel5.TabIndex = 28;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(208, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 20);
-            this.label3.TabIndex = 1;
-            // 
-            // txbSummaryInfo
-            // 
-            this.txbSummaryInfo.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbSummaryInfo.Location = new System.Drawing.Point(90, 28);
-            this.txbSummaryInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txbSummaryInfo.Multiline = true;
-            this.txbSummaryInfo.Name = "txbSummaryInfo";
-            this.txbSummaryInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txbSummaryInfo.Size = new System.Drawing.Size(892, 368);
-            this.txbSummaryInfo.TabIndex = 0;
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btnDeleteTicket);
@@ -535,7 +506,7 @@ namespace KuponySlevomat {
             // 
             // btnDeleteTicket
             // 
-            this.btnDeleteTicket.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteTicket.ForeColor = System.Drawing.Color.Black;
             this.btnDeleteTicket.Location = new System.Drawing.Point(850, 365);
             this.btnDeleteTicket.Name = "btnDeleteTicket";
             this.btnDeleteTicket.Size = new System.Drawing.Size(199, 29);
@@ -718,6 +689,35 @@ namespace KuponySlevomat {
             this.dateTimePickerFrom.Size = new System.Drawing.Size(228, 27);
             this.dateTimePickerFrom.TabIndex = 0;
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.txbSummaryInfo);
+            this.panel5.Location = new System.Drawing.Point(8, 183);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1090, 421);
+            this.panel5.TabIndex = 28;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(208, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 20);
+            this.label3.TabIndex = 1;
+            // 
+            // txbSummaryInfo
+            // 
+            this.txbSummaryInfo.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txbSummaryInfo.Location = new System.Drawing.Point(90, 28);
+            this.txbSummaryInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txbSummaryInfo.Multiline = true;
+            this.txbSummaryInfo.Name = "txbSummaryInfo";
+            this.txbSummaryInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txbSummaryInfo.Size = new System.Drawing.Size(892, 368);
+            this.txbSummaryInfo.TabIndex = 0;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.label5);
@@ -831,10 +831,10 @@ namespace KuponySlevomat {
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);

@@ -66,7 +66,7 @@ namespace KuponySlevomat {
                     if (!DuplicateTicket()) {
                         AddTicket();
                     } else {
-                        System.Media.SystemSounds.Hand.Play(); 
+                        System.Media.SystemSounds.Hand.Play();
                         MessageBox.Show("Tento kupón jste již vložili!");
                     }
                 } else {
@@ -180,16 +180,14 @@ namespace KuponySlevomat {
             lblTotalValue.Text = totalValue.ToString() + " Kč";
         }
 
-        private void ShowInfo(List<Ticket> tickets)
-        {
+        private void ShowInfo(List<Ticket> tickets) {
             listBoxAddedTickets.Items.Clear();
             listBoxAddedTickets.Items.AddRange(tickets.ToArray());
 
             lblCountTickets.Text = tickets.Count.ToString();
 
             int totalValue = 0;
-            foreach (Ticket tic in tickets)
-            {
+            foreach (Ticket tic in tickets) {
                 totalValue += Int32.Parse(tic.Value);
             }
             lblTotalValue.Text = totalValue.ToString() + " Kč";
@@ -202,34 +200,26 @@ namespace KuponySlevomat {
         int saveStatus = 1;  // 1 - první klik na tlačítko uložit, 2 - klik na tlačítko uložit po zobrazení pouze stravenek bez duplicit v databázi
         private void btnSave_Click(object sender, EventArgs e) {
 
-            if (saveStatus == 1)
-            {
+            if (saveStatus == 1) {
                 if (ticketController.Tickets.Count > 0) {
 
                     bool containTicketsDuplicate = ticketController.ContainTicketsDuplicate();
 
-                    if (containTicketsDuplicate == false)
-                    {
+                    if (containTicketsDuplicate == false) {
                         bool saved = ticketController.SentAllTicketsToSave();
-                        if (saved)
-                        {
+                        if (saved) {
                             MessageBox.Show("Uloženo");
                             ticketController.Tickets.Clear();
                             ShowInfo();
-                        }
-                        else
-                        {
+                        } else {
                             MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
                         }
-                    }
-                    else
-                    {
+                    } else {
                         DialogResult dr = MessageBox.Show("Některé kupóny již jsou v databázi uloženy. \n \n " +
                             " Chcete zobrazit seznam bez duplicit? Stiskněte 'Ano' \n " +
                             " Chcete zobrazit jen duplicity? Stiskněte 'Ne'", "Duplicity", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                        if (dr == DialogResult.Yes)
-                        {
+                        if (dr == DialogResult.Yes) {
                             listBoxAddedTickets.Items.Clear();
                             listBoxAddedTickets.Items.AddRange(ticketController.NewTicketsOnly.ToArray());
                             ShowInfo(ticketController.NewTicketsOnly);
@@ -243,9 +233,7 @@ namespace KuponySlevomat {
                             label12.Visible = false;
 
                             saveStatus = 2;
-                        }
-                        else if (dr == DialogResult.No)
-                        {
+                        } else if (dr == DialogResult.No) {
                             listBoxAddedTickets.Items.Clear();
                             listBoxAddedTickets.Items.AddRange(ticketController.DuplicatedTicketsOnly.ToArray());
                             ShowInfo(ticketController.DuplicatedTicketsOnly);
@@ -262,14 +250,10 @@ namespace KuponySlevomat {
                         }
                     }
                 }
-            }
-            else if (saveStatus == 2)
-            {
-                if (ticketController.Tickets.Count > 0)
-                {
+            } else if (saveStatus == 2) {
+                if (ticketController.Tickets.Count > 0) {
                     bool saved = ticketController.SentNewOnlyTicketsToSave();
-                    if (saved)
-                    {
+                    if (saved) {
                         MessageBox.Show("Uloženo");
                         ticketController.Tickets.Clear();
                         ticketController.NewTicketsOnly.Clear();
@@ -284,23 +268,18 @@ namespace KuponySlevomat {
                         label12.Visible = true;
 
                         saveStatus = 1;
-                    }
-                    else
-                    {
+                    } else {
                         saveStatus = 1;
                         MessageBox.Show(" Něco se nepovedlo. \n Zkontrolujte v nastavení cestu k databázi.");
                     }
                 }
-            }
-            else if (saveStatus == 3)
-            {
+            } else if (saveStatus == 3) {
                 MessageBox.Show("Nelze uložit duplicity!");
             }
         }
 
 
-        private void btnBackToShowAllTickets_Click(object sender, EventArgs e)
-        {
+        private void btnBackToShowAllTickets_Click(object sender, EventArgs e) {
             listBoxAddedTickets.Items.Clear();
             listBoxAddedTickets.Items.AddRange(ticketController.Tickets.ToArray());
             ShowInfo();
@@ -688,7 +667,7 @@ namespace KuponySlevomat {
                     txbSummaryInfo.Text += "\t__________________________________________________________________________________";
                 }
 
-                
+
             } else {
                 TickestByTypes.Add(loadedTickets.Where(t => t.Company == TicketsCompanies.Companies[0] && t.Type == TicketsTypes.SodexoTypes[cBoxTypes.SelectedIndex - 1]).ToArray());
 
@@ -757,10 +736,8 @@ namespace KuponySlevomat {
             lblTotalValueFromDB.Text = "0";
             listBoxShowSavedTickets.Items.Clear();
             btnPrint.Visible = false;
-            btnDeleteTicket.Enabled = false;
             textBoxSearchByEAN.Visible = true;
             lblSearchTicketByEan.Visible = true;
-
         }
 
         private void SouhrnToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -783,34 +760,31 @@ namespace KuponySlevomat {
         // pouze uložit vybraný Ticket do TicketToDelete a pak na základě kliku na tlačítko "smazat", provolat mazací metodu s tímto Ticketem
         private void listBoxShowSavedTickets_SelectedIndexChanged(object sender, EventArgs e) {
 
-            Ticket ticket = (Ticket)((ListBox)sender).SelectedItem;
-            TicketToDelete = ticket;
-
-            if (TicketToDelete != null) {
-                btnDeleteTicket.Enabled = true;
-            }
+            TicketToDelete = (Ticket)((ListBox)sender).SelectedItem;
         }
 
         private void btnDeleteTicket_Click(object sender, EventArgs e) {
-            using (var passwordForm = new PasswordForm()) {
-                var result = passwordForm.ShowDialog();
 
-                if (result == DialogResult.OK) {
-                    if (ticketController.databaseQueries.DeleteTicket(TicketToDelete.Ean)) {
-                        MessageBox.Show("Poukázka byla smazána");
+            if (TicketToDelete != null) {
+                using (var passwordForm = new PasswordForm(TicketToDelete.Ean)) {
+                    var result = passwordForm.ShowDialog();
 
-                        listBoxShowSavedTickets.Items.Clear();
+                    if (result == DialogResult.OK) {
+                        if (ticketController.databaseQueries.DeleteTicket(TicketToDelete.Ean)) {
+                            MessageBox.Show("Poukázka byla smazána");
 
-                        if (string.IsNullOrEmpty(textBoxSearchByEAN.Text)) {
-                            SearchTickets();
+                            listBoxShowSavedTickets.Items.Clear();
+
+                            if (string.IsNullOrEmpty(textBoxSearchByEAN.Text)) {
+                                SearchTickets();
+                            }
+                        } else {
+                            MessageBox.Show("Poukázku se nepodařilo smazat. Restartujte aplikaci a zkuste to znova.");
                         }
-                    } else {
-                        MessageBox.Show("Poukázku se nepodařilo smazat. Restartujte aplikaci a zkuste to znova.");
                     }
-                }
 
-                TicketToDelete = null;
-                btnDeleteTicket.Enabled = false;
+                    TicketToDelete = null;
+                }
             }
         }
 
