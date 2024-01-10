@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KuponySlevomat {
@@ -17,6 +10,8 @@ namespace KuponySlevomat {
         public PasswordForm(string ean) {
             InitializeComponent();
             EAN = ean;
+
+            lblEAN.Text = "Pro smazaní poukázky " + ean;
         }
 
         private void btnOk_Click(object sender, EventArgs e) {
@@ -30,6 +25,10 @@ namespace KuponySlevomat {
 
         private void btnCancel_Click(object sender, EventArgs e) {
             this.Close();
+        }
+
+        private void PasswordForm_Load(object sender, EventArgs e) {
+
         }
     }
 }

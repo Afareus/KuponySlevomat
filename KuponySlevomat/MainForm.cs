@@ -56,6 +56,9 @@ namespace KuponySlevomat {
             txbEAN.Focus();
         }
 
+        private void CBoxCompany_MouseLeave(object sender, EventArgs e) {
+            txbEAN.Focus();
+        }
 
         private void txbEAN_Enter(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == (char)Keys.Enter) {
@@ -753,6 +756,8 @@ namespace KuponySlevomat {
             }
             textBoxSearchByEAN.Visible = false;
             lblSearchTicketByEan.Visible = false;
+            textBoxSearchByEAN.Text = string.Empty;
+
         }
 
         public Ticket TicketToDelete { get; set; }
@@ -801,5 +806,7 @@ namespace KuponySlevomat {
                 cBoxTypes.Enabled = false;
             }
         }
+
+
     }
 }

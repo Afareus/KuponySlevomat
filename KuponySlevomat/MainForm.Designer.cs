@@ -59,6 +59,9 @@ namespace KuponySlevomat {
             this.lblSearchTicketByEan = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.labTypes = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txbSummaryInfo = new System.Windows.Forms.TextBox();
             this.cBoxTypes = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnDeleteTicket = new System.Windows.Forms.Button();
@@ -80,9 +83,6 @@ namespace KuponySlevomat {
             this.label13 = new System.Windows.Forms.Label();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txbSummaryInfo = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCreateDB = new System.Windows.Forms.Button();
@@ -96,8 +96,8 @@ namespace KuponySlevomat {
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,6 +138,7 @@ namespace KuponySlevomat {
             this.CBoxCompany.Size = new System.Drawing.Size(164, 28);
             this.CBoxCompany.TabIndex = 8;
             this.CBoxCompany.SelectedIndexChanged += new System.EventHandler(this.CBoxCompany_SelectedIndexChanged);
+            this.CBoxCompany.MouseLeave += new System.EventHandler(this.CBoxCompany_MouseLeave);
             // 
             // label1
             // 
@@ -286,7 +287,7 @@ namespace KuponySlevomat {
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.CBoxCompany);
             this.panel1.Controls.Add(this.listBoxAddedTickets);
-            this.panel1.Location = new System.Drawing.Point(0, 28);
+            this.panel1.Location = new System.Drawing.Point(0, 32);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1128, 618);
@@ -456,7 +457,7 @@ namespace KuponySlevomat {
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(936, 129);
+            this.btnPrint.Location = new System.Drawing.Point(791, 124);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(56, 39);
@@ -475,6 +476,35 @@ namespace KuponySlevomat {
             this.labTypes.Size = new System.Drawing.Size(102, 28);
             this.labTypes.TabIndex = 31;
             this.labTypes.Text = "Vyber typ:";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.txbSummaryInfo);
+            this.panel5.Location = new System.Drawing.Point(8, 183);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1090, 421);
+            this.panel5.TabIndex = 28;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(208, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 20);
+            this.label3.TabIndex = 1;
+            // 
+            // txbSummaryInfo
+            // 
+            this.txbSummaryInfo.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txbSummaryInfo.Location = new System.Drawing.Point(90, 28);
+            this.txbSummaryInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txbSummaryInfo.Multiline = true;
+            this.txbSummaryInfo.Name = "txbSummaryInfo";
+            this.txbSummaryInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txbSummaryInfo.Size = new System.Drawing.Size(892, 368);
+            this.txbSummaryInfo.TabIndex = 0;
             // 
             // cBoxTypes
             // 
@@ -614,7 +644,7 @@ namespace KuponySlevomat {
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(798, 129);
+            this.btnSearch.Location = new System.Drawing.Point(655, 124);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(111, 39);
@@ -688,35 +718,6 @@ namespace KuponySlevomat {
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
             this.dateTimePickerFrom.Size = new System.Drawing.Size(228, 27);
             this.dateTimePickerFrom.TabIndex = 0;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label3);
-            this.panel5.Controls.Add(this.txbSummaryInfo);
-            this.panel5.Location = new System.Drawing.Point(8, 183);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1090, 421);
-            this.panel5.TabIndex = 28;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(208, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 20);
-            this.label3.TabIndex = 1;
-            // 
-            // txbSummaryInfo
-            // 
-            this.txbSummaryInfo.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbSummaryInfo.Location = new System.Drawing.Point(90, 28);
-            this.txbSummaryInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txbSummaryInfo.Multiline = true;
-            this.txbSummaryInfo.Name = "txbSummaryInfo";
-            this.txbSummaryInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txbSummaryInfo.Size = new System.Drawing.Size(892, 368);
-            this.txbSummaryInfo.TabIndex = 0;
             // 
             // panel3
             // 
@@ -831,10 +832,10 @@ namespace KuponySlevomat {
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);

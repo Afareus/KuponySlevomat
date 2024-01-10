@@ -160,6 +160,7 @@ E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\Kupon
 E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.InfoForm2.resources
 E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.InfoForm3.resources
 E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.Form1.resources
+E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.PasswordForm.resources
 E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.csproj.GenerateResource.cache
 E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.GeneratedMSBuildEditorConfig.editorconfig
 E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.AssemblyInfoInputs.cache
@@ -170,4 +171,3 @@ E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\Kupon
 E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\ref\KuponySlevomat.dll
 E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.pdb
 E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.genruntimeconfig.cache
-E:\SSD\Projekty\KuponySlevomat_new\KuponySlevomat\obj\Debug\net5.0-windows\KuponySlevomat.PasswordForm.resources
