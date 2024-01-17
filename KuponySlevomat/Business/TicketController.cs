@@ -29,7 +29,10 @@ namespace KuponySlevomat.Business {
 
         internal bool AddSodexoTicketToList(string ean, string date) {
             Ticket ticketToAdd = new SodexoDecoder().DecodeTicket(ean, date);
-            if (int.Parse(ticketToAdd.Validity) > 20 && int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {
+            if (int.Parse(ticketToAdd.Validity) > 20 &&
+                int.Parse(ticketToAdd.Value) > 0 &&
+                int.Parse(ticketToAdd.Value) <= 5000 && 
+                ticketToAdd.Type != "NEZNÁMÝ TYP") {
                 Tickets.Add(ticketToAdd);
                 return true;
             } else {
@@ -39,7 +42,9 @@ namespace KuponySlevomat.Business {
 
         internal bool AddUpTicketToList(string ean, string date) {
             Ticket ticketToAdd = new UpDecoder().DecodeTicket(ean, date);
-            if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {
+            if (int.Parse(ticketToAdd.Value) > 0 && 
+                int.Parse(ticketToAdd.Value) <= 5000 && 
+                ticketToAdd.Type != "NEZNÁMÝ TYP") {
                 Tickets.Add(ticketToAdd);
                 return true;
             } else {
@@ -49,7 +54,9 @@ namespace KuponySlevomat.Business {
 
         internal bool AddEdenredTicketToList(string ean, string date) {
             Ticket ticketToAdd = new EdenredDecoder().DecodeTicket(ean, date);
-            if (int.Parse(ticketToAdd.Value) <= 5000 && ticketToAdd.Type != "NEZNÁMÝ TYP") {
+            if (int.Parse(ticketToAdd.Value) > 0 && 
+                int.Parse(ticketToAdd.Value) <= 5000 && 
+                ticketToAdd.Type != "NEZNÁMÝ TYP") {
                 Tickets.Add(ticketToAdd);
                 return true;
             } else {
@@ -59,7 +66,9 @@ namespace KuponySlevomat.Business {
 
         internal bool AddMojeStravenkaTicketToList(string ean, string date) {
             Ticket ticketToAdd = new MojeStravenkaDecoder().DecodeTicket(ean, date);
-            if (int.Parse(ticketToAdd.Value) <= 5000 && int.Parse(ticketToAdd.Validity) > 20) {        
+            if (int.Parse(ticketToAdd.Value) > 0 && 
+                int.Parse(ticketToAdd.Value) <= 5000 && 
+                int.Parse(ticketToAdd.Validity) > 20) {        
                 Tickets.Add(ticketToAdd);
                 return true;
             } else {
