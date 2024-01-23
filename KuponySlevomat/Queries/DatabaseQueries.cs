@@ -116,7 +116,8 @@ namespace KuponySlevomat.Queries {
             string selectAllQuery;
 
             if (selectedCompany == 1) {
-                selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "' AND Company = 'Sodexo'";
+                
+                selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "' AND Company LIKE '%Sodexo%'";
             } else if (selectedCompany == 2) {
                 selectAllQuery = "SELECT * FROM Tickets WHERE Date BETWEEN '" + dateFrom + "' AND '" + dateTo + "' AND Company = 'Up'";
             } else if (selectedCompany == 3) {

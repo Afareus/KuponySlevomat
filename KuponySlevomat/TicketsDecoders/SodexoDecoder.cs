@@ -14,7 +14,7 @@ namespace KuponySlevomat.TicketsDecoders {
 
             Ticket decodedTicket = new Ticket();
             decodedTicket.Ean = ean;
-            decodedTicket.Company = "Sodexo";
+            decodedTicket.Company = "Pluxee/Sodexo";
             decodedTicket.Added = date;
             decodedTicket.Validity = DecodeValidity();
             decodedTicket.Value = DecodeValue();

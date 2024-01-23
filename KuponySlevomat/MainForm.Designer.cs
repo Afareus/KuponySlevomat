@@ -125,10 +125,10 @@ namespace KuponySlevomat {
             // CBoxCompany
             // 
             this.CBoxCompany.AutoCompleteCustomSource.AddRange(new string[] {
-            "Sodexo, Up, Edenred"});
+            "Pluxee/Sodexo, Up, Edenred"});
             this.CBoxCompany.FormattingEnabled = true;
             this.CBoxCompany.Items.AddRange(new object[] {
-            "Sodexo",
+            "Pluxee/Sodexo",
             "Up",
             "Edenred",
             "Moje Stravenka"});

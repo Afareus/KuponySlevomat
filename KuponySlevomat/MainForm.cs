@@ -28,7 +28,7 @@ namespace KuponySlevomat {
 
         private void InitializeData() {
             CBoxCompanySearch.Items.Insert(0, "Vše");
-            CBoxCompanySearch.Items.Insert(1, "Sodexo");
+            CBoxCompanySearch.Items.Insert(1, "Pluxee/Sodexo");
             CBoxCompanySearch.Items.Insert(2, "Up");
             CBoxCompanySearch.Items.Insert(3, "Edenred");
             CBoxCompanySearch.Items.Insert(4, "Moje Stravenka");
@@ -631,7 +631,7 @@ namespace KuponySlevomat {
             if (cBoxTypes.SelectedIndex == 0 || CBoxCompanySearch.SelectedIndex == 0) {         // když josu vybrány všechny typy , nebo všechny společnosti
 
                 for (int i = 0; i < TicketsTypes.SodexoTypes.Count; i++) {                      // projede všechny typy Sodexo stravanek
-                    TickestByTypes.Add(loadedTickets.Where(t => t.Company == TicketsCompanies.Companies[0] && t.Type == TicketsTypes.SodexoTypes[i]).ToArray());
+                    TickestByTypes.Add(loadedTickets.Where(t => TicketsCompanies.Companies[0].Contains(t.Company) && t.Type == TicketsTypes.SodexoTypes[i]).ToArray());
                 }
 
                 bool emptySelect = true;

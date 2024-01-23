@@ -10,7 +10,7 @@ namespace KuponySlevomat.TicketsData {
         // TODO: Nepředělat to na ENUM ?
 
         public static List<string> Companies = new List<string>() {
-            "Sodexo",
+            "Pluxee/Sodexo",
             "Up",
             "Edenred",
             "Moje Stravenka"

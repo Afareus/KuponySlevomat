@@ -27,7 +27,7 @@ namespace KuponySlevomat.TestData {
             for (int i = 40000; i > 20000; i--) {
                 Ticket ticket = new Ticket();
                 ticket.Ean = "2521001124762000050" + String.Format("{0:00000}", i.ToString());
-                ticket.Company = "Sodexo";
+                ticket.Company = "Pluxee/Sodexo";
                 ticket.Type = TicketsData.TicketsTypes.SodexoTypes[i % 10];
                 int val = (int)(Math.Round((Double)((i % 5000) / 500), 2) * 500) + 500;
                 ticket.Value = val.ToString();
