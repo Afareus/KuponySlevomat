@@ -217,7 +217,7 @@
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.2.5"
+        "ProductVersion" = "8:1.3.0"
         "Manufacturer" = "8:Slevomat"
         "ARPHELPTELEPHONE" = "8:+420605373222"
         "ARPHELPLINK" = "8:afareus89@gmail.com"
