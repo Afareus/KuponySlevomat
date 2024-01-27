@@ -240,6 +240,7 @@ namespace KuponySlevomat
             }
             else
             {
+                System.Media.SystemSounds.Beep.Play();
                 MessageBox.Show("Nevybral jsi Firmu");
             }
         }
